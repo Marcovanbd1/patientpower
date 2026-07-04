@@ -132,9 +132,10 @@ p:last-child{margin-bottom:0}
 .share-role{font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:2.5rem;display:block}
 .share-headline{font-family:"Playfair Display",serif;font-size:clamp(1.2rem,5vw,1.6rem);color:var(--cream);margin-bottom:0.8rem;line-height:1.3}
 .share-sub{font-size:0.88rem;color:rgba(248,245,240,0.6);margin-bottom:2rem;line-height:1.7}
-.whatsapp-btn{display:inline-flex;align-items:center;gap:0.7rem;background:#25D366;color:#fff;border:none;border-radius:100px;padding:0.9rem 1.8rem;font-size:0.85rem;font-weight:500;letter-spacing:0.04em;text-decoration:none;font-family:"Inter",sans-serif;transition:background 0.2s,transform 0.1s}
-.whatsapp-btn:hover{background:#1ebe5d;transform:scale(1.02)}
-.whatsapp-btn svg{width:20px;height:20px;flex-shrink:0}
+.copy-btn,.copy-btn-mid{display:inline-flex;align-items:center;gap:0.7rem;background:transparent;color:var(--gold);border:1px solid rgba(201,168,76,0.35);border-radius:100px;padding:0.9rem 1.8rem;font-size:0.82rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;font-family:"Inter",sans-serif;cursor:pointer;transition:border-color 0.2s,background 0.2s,transform 0.1s}
+.copy-btn:hover,.copy-btn-mid:hover{border-color:var(--gold);background:rgba(201,168,76,0.06);transform:scale(1.02)}
+.copy-btn svg,.copy-btn-mid svg{width:16px;height:16px;flex-shrink:0;stroke:var(--gold)}
+.copy-btn-mid{padding:0.75rem 1.5rem;font-size:0.78rem}
 
 /* FOOTER */
 footer{background:var(--black);border-top:1px solid rgba(201,168,76,0.07);padding:2rem 1.5rem;text-align:center}
@@ -146,9 +147,7 @@ footer{background:var(--black);border-top:1px solid rgba(201,168,76,0.07);paddin
 
 .mid-share{background:var(--dark);padding:2.5rem 1.5rem;text-align:center;border-top:1px solid rgba(201,168,76,0.08);border-bottom:1px solid rgba(201,168,76,0.08)}
 .mid-share-label{font-size:0.88rem;color:var(--mid);margin-bottom:1.2rem;font-style:italic;font-family:"Playfair Display",serif}
-.whatsapp-btn-mid{display:inline-flex;align-items:center;gap:0.7rem;background:#25D366;color:#fff;border:none;border-radius:100px;padding:0.75rem 1.5rem;font-size:0.82rem;font-weight:500;letter-spacing:0.04em;text-decoration:none;font-family:"Inter",sans-serif;transition:background 0.2s,transform 0.1s}
-.whatsapp-btn-mid:hover{background:#1ebe5d;transform:scale(1.02)}
-.whatsapp-btn-mid svg{width:18px;height:18px;flex-shrink:0}
+
 /* REVEAL */
 .reveal{opacity:0;transform:translateY(16px);transition:opacity 0.65s ease,transform 0.65s ease}
 .reveal.visible{opacity:1;transform:translateY(0)}
@@ -202,11 +201,11 @@ footer{background:var(--black);border-top:1px solid rgba(201,168,76,0.07);paddin
 
 <!-- MID SHARE -->
 <div class="mid-share reveal">
-  <p class="mid-share-label">Know someone who needs this?</p>
-  <a class="whatsapp-btn-mid" href="https://wa.me/?text=Have%20you%20seen%20this%3F%20patientpower.netlify.app" target="_blank">
-    <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.118.554 4.107 1.523 5.83L.057 23.928a.5.5 0 00.609.61l6.213-1.49A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.9a9.9 9.9 0 01-5.031-1.371l-.36-.214-3.733.895.944-3.63-.235-.374A9.86 9.86 0 012.1 12C2.1 6.534 6.534 2.1 12 2.1c5.466 0 9.9 4.434 9.9 9.9 0 5.466-4.434 9.9-9.9 9.9z"/></svg>
-    Share via WhatsApp
-  </a>
+  <p class="mid-share-label">Know someone who would love this?</p>
+<button class="copy-btn-mid" onclick="copyLink(this)">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" xmlns="http://www.w3.org/2000/svg"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+    Copy link to share
+  </button>
 </div>
 
 <!-- JOURNEYS -->
@@ -296,11 +295,11 @@ footer{background:var(--black);border-top:1px solid rgba(201,168,76,0.07);paddin
   <span class="share-role">Speaking at HETT 2026</span>
   <span class="share-nhs">Building inside the NHS · Weymouth and Portland PCN, Dorset</span>
   <h2 class="share-headline">If this belongs in front of someone you know, send it to them.</h2>
-  <p class="share-sub">Screenshot this page · Share the link · patientpower.netlify.app</p>
-  <a class="whatsapp-btn" href="https://wa.me/?text=Have%20you%20seen%20this%3F%20patientpower.netlify.app" target="_blank">
-    <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.118.554 4.107 1.523 5.83L.057 23.928a.5.5 0 00.609.61l6.213-1.49A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.9a9.9 9.9 0 01-5.031-1.371l-.36-.214-3.733.895.944-3.63-.235-.374A9.86 9.86 0 012.1 12C2.1 6.534 6.534 2.1 12 2.1c5.466 0 9.9 4.434 9.9 9.9 0 5.466-4.434 9.9-9.9 9.9z"/></svg>
-    Share via WhatsApp
-  </a>
+  <p class="share-sub">patientpower.netlify.app</p>
+<button class="copy-btn" onclick="copyLink(this)">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" xmlns="http://www.w3.org/2000/svg"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+    Copy link to share
+  </button>
 </section>
 
 <!-- FOOTER -->
@@ -309,6 +308,16 @@ footer{background:var(--black);border-top:1px solid rgba(201,168,76,0.07);paddin
 </footer>
 
 <script>
+function copyLink(btn) {
+  navigator.clipboard.writeText("https://patientpower.netlify.app").then(function() {
+    const original = btn.innerHTML;
+    btn.innerHTML = "<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'><polyline points='20 6 9 17 4 12'></polyline></svg> Copied!";
+    btn.style.borderColor = "var(--gold)";
+    btn.style.background = "rgba(201,168,76,0.1)";
+    setTimeout(function(){ btn.innerHTML = original; btn.style.borderColor = ""; btn.style.background = ""; }, 2000);
+  });
+}
+
 const RATE = 15.046;
 const start = Date.now();
 const counterEl = document.getElementById("counter");
