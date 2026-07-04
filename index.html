@@ -10,7 +10,7 @@
 <meta name="theme-color" content="#0A0F0D">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&family=Lora:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -89,7 +89,7 @@ p:last-child{margin-bottom:0}
 .journey-text strong{display:block;color:var(--gold);font-size:0.7rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:0.5rem;font-family:"Inter",sans-serif}
 
 /* AFTER NOTE PIVOT */
-.after-pivot{text-align:center;padding:4rem 1.5rem;background:var(--black);position:relative;overflow:hidden}
+.after-pivot{text-align:center;padding:4rem 1.5rem;background:var(--black);position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
 .after-pivot::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 50% 50%,rgba(201,168,76,0.06) 0%,transparent 70%);pointer-events:none}
 .after-pivot-line1{font-family:"Playfair Display",serif;font-size:clamp(1.5rem,6vw,2.2rem);font-weight:400;color:var(--cream);display:block;margin-bottom:0.3rem}
 .after-pivot-line2{font-family:"Playfair Display",serif;font-size:clamp(1.5rem,6vw,2.2rem);font-weight:400;font-style:italic;color:var(--gold);display:block}
@@ -104,15 +104,30 @@ p:last-child{margin-bottom:0}
 /* SPOKEN NOTE */
 .spoken-note{font-family:"Playfair Display",serif;font-style:italic;font-size:clamp(1.05rem,4vw,1.25rem);color:var(--gold);border-left:2px solid var(--gold);padding:0.8rem 1.2rem;margin:2rem 0;line-height:1.5}
 
-/* AFTER NOTE CARD */
-.an-card{background:var(--dark2);border:1px solid rgba(201,168,76,0.2);border-radius:16px;overflow:hidden;margin:2.5rem 0}
-.an-card-header{background:rgba(201,168,76,0.08);border-bottom:1px solid rgba(201,168,76,0.15);padding:0.9rem 1.5rem;display:flex;align-items:center;justify-content:space-between}
-.an-card-title{font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold)}
-.an-card-tag{font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--dim)}
-.an-row{padding:1.2rem 1.5rem;border-bottom:1px solid rgba(201,168,76,0.07)}
-.an-row:last-child{border-bottom:none}
-.an-row-label{font-size:0.62rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:0.45rem;font-weight:500}
-.an-row-text{font-size:0.95rem;line-height:1.8;color:rgba(248,245,240,0.88)}
+
+/* AFTER NOTE CARD - DOCUMENT STYLE */
+.an-card{background:#ffffff;border:1px solid #e0e0e0;border-radius:12px;overflow:hidden;margin:2.5rem 0;box-shadow:0 4px 24px rgba(0,0,0,0.12)}
+.an-card-header{background:#f7f7f5;border-bottom:1px solid #e8e8e8;padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:0.5rem}
+.an-card-title{font-family:"DM Sans",sans-serif;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:#aaa;font-weight:500}
+.an-card-tag{font-family:"DM Sans",sans-serif;font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:#bbb}
+.an-card-body{padding:1.5rem}
+.an-doc-title{font-family:"Lora",serif;font-size:1.1rem;font-weight:400;line-height:1.4;color:#1a1a1a;margin-bottom:0.6rem}
+.an-doc-intro{font-family:"DM Sans",sans-serif;font-size:0.88rem;line-height:1.7;color:#555;margin-bottom:1.2rem}
+.an-section-label{font-family:"DM Sans",sans-serif;font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:#aaa;margin-bottom:0.6rem;display:block;font-weight:500}
+.an-med-card{background:#f7f7f5;border-radius:8px;padding:0.65rem 1rem;margin-bottom:0.4rem}
+.an-med-name{font-family:"DM Sans",sans-serif;font-size:0.88rem;font-weight:500;color:#1a1a1a;margin-bottom:0.15rem}
+.an-med-detail{font-family:"DM Sans",sans-serif;font-size:0.8rem;color:#555;line-height:1.5}
+.an-next-block{margin:1rem 0;border-left:2px solid #4a90d9;padding:0.6rem 0.9rem;background:#eef4fb;border-radius:0 6px 6px 0}
+.an-next-block p{font-family:"DM Sans",sans-serif;font-size:0.82rem;line-height:1.6;color:#1a1a1a}
+.an-warning{margin:1rem 0;border-left:2px solid #e07b3a;padding:0.6rem 0.9rem;background:#fdf3ec;border-radius:0 6px 6px 0}
+.an-warning-label{font-family:"DM Sans",sans-serif;font-size:0.65rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:#e07b3a;margin-bottom:0.4rem;display:block}
+.an-warning ul{padding-left:1rem;margin:0}
+.an-warning li{font-family:"DM Sans",sans-serif;font-size:0.82rem;line-height:1.7;color:#1a1a1a}
+.an-link-block{padding:0.7rem 1rem;border:1px solid #ddd;border-radius:8px;display:flex;align-items:center;justify-content:space-between;text-decoration:none;background:#fff;margin-top:0.9rem}
+.an-link-text{font-family:"DM Sans",sans-serif;font-size:0.82rem;color:#1a1a1a;font-weight:500;margin-bottom:2px}
+.an-link-sub{font-family:"DM Sans",sans-serif;font-size:0.72rem;color:#aaa}
+.an-link-arrow{color:#aaa;font-size:1rem}
+.an-footer-note{margin-top:1rem;padding-top:0.9rem;border-top:1px solid #e8e8e8;font-family:"DM Sans",sans-serif;font-size:0.72rem;color:#aaa;line-height:1.6}
 
 /* PENNY */
 .penny{margin:2.5rem 0;padding:1.8rem 1.5rem;border-left:2px solid var(--gold);background:rgba(201,168,76,0.04);border-radius:0 8px 8px 0}
@@ -148,6 +163,14 @@ footer{background:var(--black);border-top:1px solid rgba(201,168,76,0.07);paddin
 .mid-share{background:var(--dark);padding:2.5rem 1.5rem;text-align:center;border-top:1px solid rgba(201,168,76,0.08);border-bottom:1px solid rgba(201,168,76,0.08)}
 .mid-share-label{font-size:0.88rem;color:var(--mid);margin-bottom:1.2rem;font-style:italic;font-family:"Playfair Display",serif}
 
+.after-pivot-frame{border:1px solid rgba(201,168,76,0.4);border-radius:4px;padding:2.5rem 2.5rem;display:inline-flex;flex-direction:column;align-items:center;gap:0.3rem;position:relative}
+.after-pivot-frame::before{content:"";position:absolute;inset:-6px;border:1px solid rgba(201,168,76,0.12);border-radius:6px;pointer-events:none}
+
+.methodology-link{margin-top:2.5rem;padding-top:2rem;border-top:1px solid rgba(201,168,76,0.12);text-align:center}
+.methodology-prompt{font-family:"Playfair Display",serif;font-style:italic;font-size:clamp(0.95rem,3.5vw,1.1rem);color:var(--mid);margin-bottom:1rem}
+.methodology-btn{display:inline-flex;align-items:center;gap:0.6rem;color:var(--gold);font-size:0.82rem;letter-spacing:0.08em;text-transform:uppercase;text-decoration:none;border:1px solid rgba(201,168,76,0.3);border-radius:100px;padding:0.75rem 1.5rem;transition:border-color 0.2s,background 0.2s}
+.methodology-btn:hover{border-color:var(--gold);background:rgba(201,168,76,0.06)}
+.methodology-arrow{font-size:1rem;letter-spacing:0}
 /* REVEAL */
 .reveal{opacity:0;transform:translateY(16px);transition:opacity 0.65s ease,transform 0.65s ease}
 .reveal.visible{opacity:1;transform:translateY(0)}
@@ -233,8 +256,10 @@ footer{background:var(--black);border-top:1px solid rgba(201,168,76,0.07);paddin
 
 <!-- AFTER NOTE PIVOT -->
 <div class="after-pivot reveal">
-  <span class="after-pivot-line1">The appointment ends.</span>
-  <span class="after-pivot-line2">The After Note begins.</span>
+  <div class="after-pivot-frame">
+    <span class="after-pivot-line1">The appointment ends.</span>
+    <span class="after-pivot-line2">The After Note begins.</span>
+  </div>
 </div>
 
 <!-- AFTER NOTE EXPLANATION -->
@@ -262,12 +287,57 @@ footer{background:var(--black);border-top:1px solid rgba(201,168,76,0.07);paddin
         <span class="an-card-title">After Note</span>
         <span class="an-card-tag">Diabetes Review · Dr Patel · 4 July 2026</span>
       </div>
-      <div class="an-row"><span class="an-row-label">What just happened</span><span class="an-row-text">You had your annual diabetes review with Dr Patel. Your HbA1c has come down from 64 to 57 since January. That is real progress. Your blood pressure was 138/84, slightly high. Your weight was 94kg.</span></div>
-      <div class="an-row"><span class="an-row-label">What did we agree</span><span class="an-row-text">Dr Patel is increasing your Metformin from 500mg twice a day to 500mg three times a day, with food. She is also starting you on Ramipril 2.5mg once a day for your blood pressure. Your new prescriptions will be ready at the pharmacy by tomorrow afternoon.</span></div>
-      <div class="an-row"><span class="an-row-label">What do I do next</span><span class="an-row-text">Book a blood test in six weeks at the Riverside Health Centre phlebotomy clinic. You can book online at dorset.nhs.uk/bloodtests or call 01305 820000. Dr Patel needs these results before your next appointment. Your next review is booked for 14 January 2027 at 10.20am with the diabetic nurse, Emma Clarke.</span></div>
-      <div class="an-row"><span class="an-row-label">Where can I get more help</span><span class="an-row-text">Diabetes UK have a free helpline: 0345 123 2399. Your local peer support group meets every third Tuesday at Weymouth Library. Details at thelocalsocial.org.</span></div>
+      <div class="an-card-body">
+        <h3 class="an-doc-title">Your diabetes review and what to do next</h3>
+        <p class="an-doc-intro">Your HbA1c has come down from 64 to 57 since January. That is real progress. Your blood pressure was slightly high at 138/84, so Dr Patel is making two changes to your medication today.</p>
+
+        <span class="an-section-label">What to take</span>
+        <div class="an-med-card">
+          <p class="an-med-name">Metformin — increased dose</p>
+          <p class="an-med-detail">500mg three times a day, with food. Previously twice a day.</p>
+        </div>
+        <div class="an-med-card">
+          <p class="an-med-name">Ramipril — new prescription</p>
+          <p class="an-med-detail">2.5mg once a day for your blood pressure. Your prescriptions will be ready at the pharmacy by tomorrow afternoon.</p>
+        </div>
+        <div class="an-med-card">
+          <p class="an-med-name">Your other medications</p>
+          <p class="an-med-detail">Continue these as normal.</p>
+        </div>
+
+        <div class="an-next-block">
+          <p><strong>What to do next:</strong> book a blood test in six weeks at Riverside Health Centre phlebotomy clinic. Online at dorset.nhs.uk/bloodtests or call 01305 820000. Dr Patel needs these results before your next appointment, booked for 14 January 2027 at 10.20am with Emma Clarke, diabetic nurse.</p>
+        </div>
+
+        <div class="an-warning">
+          <span class="an-warning-label">Get help sooner if</span>
+          <ul>
+            <li>you feel dizzy or faint after starting Ramipril</li>
+            <li>your blood sugar readings are consistently above 15</li>
+            <li>you feel significantly more unwell than usual</li>
+          </ul>
+        </div>
+
+        <a class="an-link-block" href="https://www.diabetes.org.uk" target="_blank">
+          <div>
+            <p class="an-link-text">Diabetes UK</p>
+            <p class="an-link-sub">Free helpline: 0345 123 2399 · Support and advice</p>
+          </div>
+          <span class="an-link-arrow">→</span>
+        </a>
+
+        <p class="an-footer-note">From Dr Patel at Royal Manor Surgery, Weymouth and Portland PCN. Questions? Contact the surgery.</p>
+      </div>
     </div>
     <p>Nothing for completeness. Everything for utility.</p>
+
+    <div class="methodology-link">
+      <p class="methodology-prompt">Want to understand how every decision in that note was made?</p>
+      <a class="methodology-btn" href="https://what-is-an-after-note.netlify.app" target="_blank">
+        Read the full After Note methodology
+        <span class="methodology-arrow">→</span>
+      </a>
+    </div>
   </div>
 </section>
 
