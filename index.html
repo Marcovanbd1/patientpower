@@ -3,797 +3,757 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What an After Note looks like</title>
 <meta name="description" content="An After Note is generated from the same consultation as the clinical record, written in plain language for the patient, and delivered to their phone before they leave the building.">
 <meta property="og:title" content="What an After Note looks like">
 <meta property="og:description" content="Same consultation. Two documents. One written for the record, one written for the patient.">
 <meta property="og:type" content="website">
-<title>What an After Note looks like</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  html, body {
-    height: 100%;
-    background: #ffffff;
-    color: #1a1a1a;
-    font-family: Arial, Helvetica, sans-serif;
-  }
-
-  /* SECTION 0: intro + CTA */
-  .section-intro {
-    min-height: 60vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 7vh 6vw 6vh;
-    background: #ffffff;
-  }
-  .intro-eyebrow {
-    font-size: 11px;
-    font-weight: bold;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: #1C9099;
-    margin-bottom: 0.8vh;
-  }
-  .section-intro h1 {
-    font-size: 26px;
-    font-weight: bold;
-    color: #0B3D5C;
-    max-width: 680px;
-    margin-bottom: 1.6vh;
-  }
-  .section-intro p {
-    font-size: 14.5px;
-    line-height: 1.65;
-    color: #4a545c;
-    max-width: 620px;
-  }
-  .section-intro p + p {
-    margin-top: 1.2vh;
-  }
-  .intro-explainer {
-    margin-top: 3vh;
-    padding-top: 2.4vh;
-    border-top: 1px solid #e2e6e8;
-    font-size: 13px;
-    font-style: italic;
-    color: #6b7680;
-    max-width: 560px;
+  :root{
+    --paper:#F1F2EC;
+    --ink:#16211D;
+    --ink-soft:#4B564E;
+    --clinical:#4C5C6B;
+    --clinical-bg:#E7ECEF;
+    --care:#1F6F5C;
+    --care-bg:#E8F3EE;
+    --line:#D9DACF;
+    --radius:14px;
+    --font-display:'Fraunces', Georgia, serif;
+    --font-body:'Inter', -apple-system, sans-serif;
+    --font-mono:'IBM Plex Mono', monospace;
   }
 
-  .section-compare {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    border-top: 1px solid #e2e6e8;
+  *{ box-sizing:border-box; }
+
+  html{ scroll-behavior:smooth; }
+
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--font-body);
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
   }
 
-  /* TOP BAR — mimics a plain corporate product header */
-  .topbar {
-    flex: 0 0 auto;
-    background: #0B3D5C;
-    color: #ffffff;
-    padding: 1.4vh 2.6vw;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  .topbar-brand {
-    display: flex;
-    align-items: center;
-    gap: 0.6vw;
-  }
-  .topbar-mark {
-    width: 28px;
-    height: 28px;
-    background: #1C9099;
-    border-radius: 5px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    font-size: 13px;
-    color: #ffffff;
-    letter-spacing: 0.02em;
-  }
-  .topbar-name {
-    font-size: 15px;
-    font-weight: bold;
-    letter-spacing: 0.02em;
-  }
-  .topbar-sub {
-    font-size: 11px;
-    color: #BFD8E3;
-  }
-  .topbar-right {
-    font-size: 11.5px;
-    color: #BFD8E3;
-    text-align: right;
-    max-width: 320px;
-    line-height: 1.5;
+  .wrap{
+    max-width:760px;
+    margin:0 auto;
+    padding:0 24px;
   }
 
-  /* HEADER STRIP */
-  .header {
-    flex: 0 0 auto;
-    padding: 1.6vh 2.6vw 1.2vh;
-    border-bottom: 1px solid #e2e6e8;
-  }
-  .header h1 {
-    font-size: 19px;
-    font-weight: bold;
-    color: #0B3D5C;
-  }
-  .header p {
-    font-size: 12px;
-    color: #6b7680;
-    margin-top: 0.4vh;
+  .wrap-wide{
+    max-width:920px;
+    margin:0 auto;
+    padding:0 24px;
   }
 
-  /* GRID */
-  .grid {
-    flex: 1 1 auto;
-    min-height: 0;
-    display: grid;
-    grid-template-columns: 1fr 1px 1fr;
-    gap: 0;
-    padding: 1.6vh 2.6vw;
-  }
-  .divider { background: #e2e6e8; margin: 0 1.4vw; }
+  section{ padding:64px 0; }
 
-  .col {
-    min-height: 0;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
+  @media (max-width:640px){
+    section{ padding:44px 0; }
   }
 
-  /* LEFT: styled as a generic clinical record module */
-  .record-panel {
-    background: #F4F6F7;
-    border: 1px solid #d8dee1;
-    border-radius: 4px;
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    min-height: 0;
-    overflow: hidden;
-  }
-  .record-titlebar {
-    background: #0B3D5C;
-    color: #ffffff;
-    font-size: 11.5px;
-    font-weight: bold;
-    letter-spacing: 0.03em;
-    padding: 0.8vh 1vw;
-    display: flex;
-    justify-content: space-between;
-  }
-  .record-titlebar span.mod {
-    color: #BFD8E3;
-    font-weight: normal;
-  }
-  .record-body { padding: 1.2vh 1vw; overflow: hidden; flex: 1; display: flex; flex-direction: column; justify-content: center; }
-  .rec-block { margin-bottom: 1.2vh; }
-  .rec-head {
-    font-size: 10px;
-    font-weight: bold;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    color: #5b6770;
-    margin-bottom: 0.3vh;
-  }
-  .rec-text {
-    font-size: 12.5px;
-    line-height: 1.5;
-    color: #2a2f33;
+  /* ---------- Hero ---------- */
+
+  .hero{ padding-top:72px; padding-bottom:88px; }
+
+  .thesis{
+    font-family:var(--font-display);
+    font-optical-sizing:auto;
+    font-weight:500;
+    font-style:italic;
+    font-size:clamp(19px, 2.6vw, 24px);
+    line-height:1.45;
+    color:var(--ink-soft);
+    max-width:600px;
+    margin:0 0 40px;
   }
 
-  /* RIGHT: styled as a patient message */
-  .connect-panel {
-    background: #ffffff;
-    border: 1px solid #d8dee1;
-    border-radius: 4px;
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    min-height: 0;
-    overflow: hidden;
-  }
-  .connect-titlebar {
-    background: #1C9099;
-    color: #ffffff;
-    font-size: 11.5px;
-    font-weight: bold;
-    letter-spacing: 0.03em;
-    padding: 0.8vh 1vw;
-    display: flex;
-    justify-content: space-between;
-  }
-  .connect-titlebar span.mod {
-    color: #DFF3F4;
-    font-weight: normal;
-  }
-  .connect-body { padding: 1.3vh 1.1vw; overflow: hidden; flex: 1; display: flex; flex-direction: column; justify-content: center; }
-
-  .after-title {
-    font-size: 15px;
-    font-weight: bold;
-    color: #0B3D5C;
-    margin-bottom: 0.7vh;
-  }
-  .after-intro {
-    font-size: 12px;
-    line-height: 1.5;
-    color: #3a4247;
-    margin-bottom: 1.1vh;
-  }
-  .after-section-label {
-    font-size: 10px;
-    font-weight: bold;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    color: #5b6770;
-    margin-bottom: 0.5vh;
-  }
-  .med-row { display: flex; gap: 0.6vw; margin-bottom: 0.6vh; }
-  .med-card {
-    background: #F4F6F7;
-    border-radius: 4px;
-    padding: 0.7vh 0.8vw;
-    flex: 1;
-    border-left: 3px solid #1C9099;
-  }
-  .med-name { font-size: 11.5px; font-weight: bold; color: #0B3D5C; margin-bottom: 0.1vh; }
-  .med-detail { font-size: 10.5px; color: #3a4247; line-height: 1.4; }
-
-  .callout {
-    margin: 1vh 0;
-    padding: 0.6vh 0.8vw;
-    background: #E7F3F4;
-    border-radius: 4px;
-    border-left: 3px solid #1C9099;
-  }
-  .callout p { font-size: 11px; line-height: 1.5; color: #1a2b30; }
-  .callout strong { font-weight: bold; }
-
-  .warning {
-    margin: 1vh 0;
-    padding: 0.6vh 0.8vw;
-    background: #FDF1E7;
-    border-radius: 4px;
-    border-left: 3px solid #C67A2E;
-  }
-  .warning-label {
-    font-size: 10px; font-weight: bold; letter-spacing: 0.05em;
-    text-transform: uppercase; color: #C67A2E; margin-bottom: 0.4vh;
-  }
-  .warning ul { padding-left: 1.1em; margin: 0; }
-  .warning li { font-size: 10.5px; line-height: 1.5; color: #1a2b30; }
-
-  .link-row {
-    margin-top: 0.9vh;
-    padding: 0.55vh 0.8vw;
-    border: 1px solid #d8dee1;
-    border-radius: 4px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background: #ffffff;
-  }
-  .link-text { font-size: 11px; color: #0B3D5C; font-weight: bold; }
-  .link-sub { font-size: 10px; color: #6b7680; }
-  .link-arrow { color: #1C9099; font-size: 13px; }
-
-  .delivery-note {
-    margin-top: 1vh;
-    padding-top: 0.9vh;
-    border-top: 1px solid #e2e6e8;
-    font-size: 10px;
-    color: #6b7680;
-  }
-  .delivery-note b { color: #1C9099; }
-
-  /* FOOTER */
-  .footer {
-    flex: 0 0 auto;
-    padding: 1vh 2.6vw 1.4vh;
-    border-top: 1px solid #e2e6e8;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .footer-tag {
-    font-size: 11.5px;
-    color: #0B3D5C;
-    font-weight: bold;
-  }
-  .footer-sub {
-    font-size: 10.5px;
-    color: #6b7680;
-  }
-  /* SECTION 2: dispatch mockup */
-  .section-dispatch {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 6vh 4vw;
-    background: #F4F6F7;
-    border-top: 1px solid #e2e6e8;
+  h1{
+    font-family:var(--font-display);
+    font-optical-sizing:auto;
+    font-weight:600;
+    font-size:clamp(34px, 6vw, 52px);
+    line-height:1.08;
+    letter-spacing:-0.01em;
+    margin:0 0 20px;
   }
 
-  .dispatch-intro {
-    text-align: center;
-    max-width: 640px;
-    margin-bottom: 3.5vh;
-  }
-  .dispatch-eyebrow {
-    font-size: 11px;
-    font-weight: bold;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: #1C9099;
-    margin-bottom: 0.6vh;
-  }
-  .dispatch-intro h2 {
-    font-size: 24px;
-    font-weight: bold;
-    color: #0B3D5C;
-    margin-bottom: 0.8vh;
-  }
-  .dispatch-intro p {
-    font-size: 14px;
-    line-height: 1.6;
-    color: #4a545c;
+  .lede{
+    font-size:17px;
+    color:var(--ink-soft);
+    max-width:520px;
+    margin:0;
   }
 
-  .dispatch-window {
-    width: 100%;
-    max-width: 620px;
-    background: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 12px 34px rgba(11,61,92,0.16);
-    overflow: hidden;
-  }
-  .dispatch-titlebar {
-    background: #0B3D5C;
-    color: #ffffff;
-    padding: 1.3vh 1.4vw;
-    font-size: 13px;
-    display: flex;
-    gap: 0.5vw;
-  }
-  .dispatch-titlebar b { font-weight: bold; }
-  .dispatch-titlebar span.sep { color: #6d93a8; }
-  .dispatch-titlebar span.meta { color: #BFD8E3; }
+  /* ---------- Proof ---------- */
 
-  .dispatch-tabs {
-    display: flex;
-    gap: 1.8vw;
-    padding: 1.1vh 1.4vw 0;
-    border-bottom: 1px solid #e2e6e8;
-  }
-  .dispatch-tab {
-    font-size: 12.5px;
-    color: #7c8790;
-    padding-bottom: 1vh;
-  }
-  .dispatch-tab.active {
-    color: #0B3D5C;
-    font-weight: bold;
-    border-bottom: 2px solid #1C9099;
+  .eyebrow{
+    font-family:var(--font-mono);
+    font-size:11px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    margin:0 0 10px;
   }
 
-  .dispatch-body { padding: 1.8vh 1.4vw; }
-  .dispatch-label {
-    font-size: 10.5px;
-    font-weight: bold;
-    letter-spacing: 0.06em;
-    color: #9aa4ab;
-    margin-bottom: 1.2vh;
+  .section-title{
+    font-family:var(--font-display);
+    font-weight:600;
+    font-size:clamp(24px, 3.4vw, 30px);
+    margin:0 0 36px;
+    max-width:520px;
   }
 
-  .dispatch-row {
-    display: flex;
-    align-items: flex-start;
-    gap: 0.8vw;
-    padding: 1.1vh 0.4vw;
-    border-bottom: 1px solid #eef1f2;
-  }
-  .dispatch-row:last-of-type { border-bottom: none; }
-  .dispatch-row.highlight {
-    background: #E7F3F4;
-    border-radius: 6px;
-    border-bottom: none;
-    padding: 1.1vh 0.8vw;
-    position: relative;
-  }
-  .dispatch-check {
-    width: 18px;
-    height: 18px;
-    border-radius: 4px;
-    border: 2px solid #c7ced2;
-    flex: 0 0 auto;
-    margin-top: 0.2vh;
-  }
-  .dispatch-check.checked {
-    background: #0B3D5C;
-    border-color: #0B3D5C;
-    position: relative;
-  }
-  .dispatch-row.highlight .dispatch-check.checked {
-    background: #1C9099;
-    border-color: #1C9099;
-  }
-  .dispatch-check.checked::after {
-    content: "";
-    position: absolute;
-    left: 5px;
-    top: 1px;
-    width: 5px;
-    height: 9px;
-    border: solid white;
-    border-width: 0 2px 2px 0;
-    transform: rotate(45deg);
-  }
-  .dispatch-row-name {
-    font-size: 13px;
-    font-weight: bold;
-    color: #1a2b30;
-  }
-  .dispatch-row.highlight .dispatch-row-name { color: #0B3D5C; }
-  .dispatch-row-desc {
-    font-size: 11.5px;
-    color: #7c8790;
-    margin-top: 0.1vh;
-  }
-  .dispatch-new-badge {
-    position: absolute;
-    right: 0.8vw;
-    top: 50%;
-    transform: translateY(-50%);
-    background: #1C9099;
-    color: #ffffff;
-    font-size: 10px;
-    font-weight: bold;
-    padding: 0.3vh 0.6vw;
-    border-radius: 999px;
+  .panels{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    overflow:hidden;
   }
 
-  .dispatch-actions {
-    display: flex;
-    justify-content: flex-end;
-    gap: 0.8vw;
-    padding: 1.6vh 1.4vw;
-    border-top: 1px solid #e2e6e8;
-  }
-  .dispatch-btn {
-    font-size: 12.5px;
-    font-weight: bold;
-    padding: 0.9vh 1.2vw;
-    border-radius: 5px;
-  }
-  .dispatch-btn.cancel {
-    color: #4a545c;
-    background: #ffffff;
-    border: 1px solid #d8dee1;
-  }
-  .dispatch-btn.confirm {
-    color: #ffffff;
-    background: #0B3D5C;
-    border: 1px solid #0B3D5C;
+  @media (max-width:720px){
+    .panels{ grid-template-columns:1fr; }
   }
 
-  /* SECTION 3: why now */
-  .section-whynow {
-    min-height: 70vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 8vh 6vw;
-    background: #0B3D5C;
-    border-top: 1px solid #e2e6e8;
-  }
-  .whynow-eyebrow {
-    font-size: 11px;
-    font-weight: bold;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: #6FC7CC;
-    margin-bottom: 0.8vh;
-  }
-  .section-whynow h2 {
-    font-size: 24px;
-    font-weight: bold;
-    color: #ffffff;
-    max-width: 680px;
-    margin-bottom: 2vh;
-  }
-  .section-whynow p {
-    font-size: 14px;
-    line-height: 1.7;
-    color: #BFD8E3;
-    max-width: 620px;
-  }
-  .section-whynow p + p {
-    margin-top: 1.6vh;
+  .panel{
+    background:var(--paper);
+    padding:28px 26px 32px;
   }
 
-  /* SECTION 4: close */
-  .section-close {
-    min-height: 40vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 8vh 6vw;
-    background: #ffffff;
+  .panel.clinical{ background:var(--clinical-bg); }
+  .panel.care{ background:var(--care-bg); }
+
+  .panel-label{
+    font-family:var(--font-mono);
+    font-size:11px;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    display:flex;
+    align-items:center;
+    gap:8px;
+    margin-bottom:18px;
   }
-  .close-eyebrow {
-    font-size: 11px;
-    font-weight: bold;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: #1C9099;
-    margin-bottom: 0.8vh;
+
+  .panel.clinical .panel-label{ color:var(--clinical); }
+  .panel.care .panel-label{ color:var(--care); }
+
+  .dot{
+    width:7px; height:7px; border-radius:50%;
+    display:inline-block;
   }
-  .section-close h2 {
-    font-size: 20px;
-    font-weight: bold;
-    color: #0B3D5C;
-    margin-bottom: 2.4vh;
+  .panel.clinical .dot{ background:var(--clinical); }
+  .panel.care .dot{ background:var(--care); }
+
+  .field{ margin-bottom:16px; }
+  .field:last-child{ margin-bottom:0; }
+
+  .field-name{
+    font-family:var(--font-mono);
+    font-size:10.5px;
+    letter-spacing:0.04em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    opacity:0.75;
+    margin-bottom:4px;
   }
-  .close-contact {
-    font-size: 13.5px;
-    line-height: 1.8;
-    color: #3a4247;
+
+  .field-body{ font-size:14.5px; color:var(--ink); }
+
+  .care h3{
+    font-family:var(--font-display);
+    font-weight:600;
+    font-size:19px;
+    margin:0 0 14px;
   }
-  .close-contact .name {
-    font-weight: bold;
-    color: #0B3D5C;
-    font-size: 14.5px;
+
+  .care p{ font-size:14.5px; margin:0 0 14px; }
+
+  .care ul{ margin:0 0 14px; padding-left:18px; font-size:14.5px; }
+  .care li{ margin-bottom:5px; }
+
+  .care .callout{
+    background:rgba(31,111,92,0.08);
+    border-radius:10px;
+    padding:12px 14px;
+    font-size:14px;
+    margin-bottom:14px;
   }
-  .close-contact a {
-    color: #1C9099;
-    text-decoration: none;
-    font-weight: bold;
+
+  .proof-foot{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-top:16px;
+    font-family:var(--font-mono);
+    font-size:11px;
+    color:var(--ink-soft);
+    flex-wrap:wrap;
+    gap:8px;
   }
-  .close-contact a:hover {
-    text-decoration: underline;
+
+  /* ---------- Dispatch / interactive ---------- */
+
+  .dispatch{
+    display:grid;
+    grid-template-columns:1.15fr 0.85fr;
+    gap:28px;
+    align-items:start;
+  }
+
+  @media (max-width:720px){
+    .dispatch{ grid-template-columns:1fr; }
+  }
+
+  .system-card{
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    overflow:hidden;
+  }
+
+  .system-bar{
+    background:var(--ink);
+    color:var(--paper);
+    font-family:var(--font-mono);
+    font-size:11px;
+    letter-spacing:0.04em;
+    padding:11px 18px;
+    display:flex;
+    justify-content:space-between;
+  }
+
+  .system-body{ padding:20px 18px; }
+
+  .system-patient{
+    font-size:13px;
+    color:var(--ink-soft);
+    padding-bottom:14px;
+    margin-bottom:14px;
+    border-bottom:1px solid var(--line);
+  }
+
+  .action-row{
+    display:flex;
+    align-items:flex-start;
+    gap:12px;
+    padding:11px 0;
+  }
+
+  .action-row + .action-row{ border-top:1px solid var(--line); }
+
+  .checkbox{
+    width:18px; height:18px;
+    border:1.5px solid #B9BDB2;
+    border-radius:5px;
+    flex-shrink:0;
+    margin-top:2px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+
+  .checkbox.checked{
+    background:var(--ink-soft);
+    border-color:var(--ink-soft);
+  }
+
+  .checkbox svg{ width:11px; height:11px; display:none; }
+  .checkbox.checked svg{ display:block; }
+
+  .action-text .t1{ font-size:14.5px; font-weight:500; }
+  .action-text .t2{ font-size:12.5px; color:var(--ink-soft); }
+
+  .action-row.live{ cursor:pointer; user-select:none; }
+  .action-row.live .t1{ color:var(--care); }
+  .action-row.live:focus-visible{ outline:2px solid var(--care); outline-offset:3px; border-radius:8px; }
+
+  .tap-hint{
+    font-family:var(--font-mono);
+    font-size:10.5px;
+    letter-spacing:0.03em;
+    color:var(--care);
+    margin-top:2px;
+    display:flex;
+    align-items:center;
+    gap:5px;
+  }
+
+  .tap-hint svg{ width:11px; height:11px; }
+
+  .switch{
+    width:38px;
+    height:22px;
+    border-radius:11px;
+    background:#D7DBD3;
+    position:relative;
+    flex-shrink:0;
+    margin-top:1px;
+    transition:background 0.2s ease;
+  }
+
+  .switch.on{ background:var(--care); }
+
+  .switch::after{
+    content:"";
+    position:absolute;
+    top:2px; left:2px;
+    width:18px; height:18px;
+    border-radius:50%;
+    background:#fff;
+    box-shadow:0 1px 3px rgba(0,0,0,0.25);
+    transition:transform 0.2s ease;
+  }
+
+  .switch.on::after{ transform:translateX(16px); }
+
+  /* phone */
+
+  .phone-frame{
+    background:linear-gradient(155deg, #2B2E30, #101112);
+    border-radius:52px;
+    padding:14px;
+    max-width:250px;
+    margin:0 auto;
+    box-shadow:0 24px 40px -20px rgba(20,25,22,0.35), inset 0 0 0 1px rgba(255,255,255,0.06);
+    position:relative;
+  }
+
+  .phone-frame::before{
+    content:"";
+    position:absolute;
+    left:50%;
+    top:0;
+    transform:translate(-50%, 6px);
+    width:34%;
+    height:22px;
+    background:#0A0A0A;
+    border-radius:14px;
+    z-index:2;
+  }
+
+  .phone-screen{
+    background:#FBFBFA;
+    border-radius:38px;
+    min-height:400px;
+    padding:44px 14px 26px;
+    position:relative;
+    overflow:hidden;
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-end;
+    box-shadow:inset 0 0 0 1px rgba(0,0,0,0.04);
+  }
+
+  .status-bar{
+    position:absolute;
+    top:0; left:0; right:0;
+    height:40px;
+    display:flex;
+    align-items:flex-end;
+    justify-content:space-between;
+    padding:0 20px 8px;
+    font-family:var(--font-body);
+    font-weight:600;
+    font-size:12px;
+    color:var(--ink);
+  }
+
+  .status-bar .signal{ display:flex; gap:3px; align-items:flex-end; }
+  .status-bar .signal span{ width:3px; background:var(--ink); border-radius:1px; }
+  .status-bar .signal span:nth-child(1){ height:4px; }
+  .status-bar .signal span:nth-child(2){ height:6px; }
+  .status-bar .signal span:nth-child(3){ height:8px; }
+  .status-bar .signal span:nth-child(4){ height:10px; }
+
+  .status-bar .battery{
+    width:20px; height:10px;
+    border:1.3px solid var(--ink);
+    border-radius:3px;
+    position:relative;
+    display:inline-block;
+  }
+  .status-bar .battery::after{
+    content:"";
+    position:absolute;
+    right:-3px; top:2.5px;
+    width:2px; height:4px;
+    background:var(--ink);
+    border-radius:0 1px 1px 0;
+  }
+  .status-bar .battery::before{
+    content:"";
+    position:absolute;
+    inset:1.5px;
+    width:70%;
+    background:var(--ink);
+    border-radius:1px;
+  }
+
+  .lock-time{
+    position:absolute;
+    top:56px; left:0; right:0;
+    text-align:center;
+    font-family:var(--font-display);
+    font-weight:500;
+    font-size:15px;
+    color:var(--ink-soft);
+    opacity:0.7;
+  }
+
+  .home-indicator{
+    position:absolute;
+    bottom:8px; left:50%;
+    transform:translateX(-50%);
+    width:110px; height:4px;
+    background:var(--ink);
+    opacity:0.25;
+    border-radius:3px;
+  }
+
+  .phone-idle{
+    font-family:var(--font-mono);
+    font-size:11px;
+    color:#B9BDB2;
+    text-align:center;
+    margin:auto;
+    transition:opacity 0.25s ease;
+  }
+
+  .msg-bubble{
+    background:var(--care-bg);
+    border:1px solid rgba(31,111,92,0.18);
+    border-radius:16px;
+    padding:13px 14px;
+    font-size:12.5px;
+    line-height:1.45;
+    opacity:0;
+    transform:translateY(10px);
+    transition:opacity 0.35s ease, transform 0.35s ease;
+    box-shadow:0 6px 16px -8px rgba(20,25,22,0.15);
+  }
+
+  .msg-bubble.show{ opacity:1; transform:translateY(0); }
+
+  .msg-bubble .msg-sender{
+    font-family:var(--font-mono);
+    font-size:10px;
+    letter-spacing:0.05em;
+    text-transform:uppercase;
+    color:var(--care);
+    opacity:0.85;
+    margin-bottom:5px;
+  }
+
+  .msg-bubble .msg-title{
+    font-weight:600;
+    margin-bottom:6px;
+    font-size:13px;
+  }
+
+  .msg-link{
+    display:inline-flex;
+    align-items:center;
+    gap:5px;
+    margin-top:10px;
+    padding-top:10px;
+    border-top:1px solid rgba(31,111,92,0.18);
+    color:var(--care);
+    font-weight:600;
+    font-size:12px;
+    text-decoration:none;
+  }
+  .msg-link:hover{ text-decoration:underline; }
+  .msg-link svg{ width:11px; height:11px; flex-shrink:0; }
+
+  .msg-time{
+    font-family:var(--font-mono);
+    font-size:10px;
+    color:var(--ink-soft);
+    text-align:center;
+    margin-top:8px;
+    opacity:0;
+    transition:opacity 0.35s ease 0.1s;
+  }
+  .msg-time.show{ opacity:1; }
+
+  .dispatch-caption{
+    font-size:13px;
+    color:var(--ink-soft);
+    text-align:center;
+    margin-top:14px;
+  }
+
+  /* ---------- Why now ---------- */
+
+  .why p{
+    font-size:16px;
+    color:var(--ink-soft);
+    max-width:600px;
+  }
+
+  /* ---------- Close ---------- */
+
+  .close{ border-top:1px solid var(--line); }
+
+  .close-thesis{
+    font-family:var(--font-display);
+    font-style:italic;
+    font-weight:500;
+    font-size:clamp(18px, 2.4vw, 22px);
+    max-width:560px;
+    margin:0 0 36px;
+    color:var(--ink-soft);
+  }
+
+  .contact{
+    display:flex;
+    align-items:center;
+    gap:16px;
+    flex-wrap:wrap;
+  }
+
+  .contact-name{ font-weight:600; font-size:16px; }
+  .contact-role{ font-size:13.5px; color:var(--ink-soft); margin-top:2px; }
+
+  .contact-actions{
+    display:flex;
+    gap:10px;
+    margin-top:20px;
+    flex-wrap:wrap;
+  }
+
+  .btn{
+    font-family:var(--font-body);
+    font-size:14px;
+    font-weight:500;
+    padding:11px 18px;
+    border-radius:9px;
+    text-decoration:none;
+    display:inline-block;
+    border:1px solid transparent;
+  }
+
+  .btn-primary{
+    background:var(--care);
+    color:#fff;
+  }
+  .btn-primary:hover{ background:#195C4C; }
+
+  .btn-secondary{
+    background:transparent;
+    color:var(--ink);
+    border-color:var(--line);
+  }
+  .btn-secondary:hover{ border-color:var(--ink-soft); }
+
+  footer{
+    padding:28px 0 48px;
+    font-family:var(--font-mono);
+    font-size:11px;
+    color:var(--ink-soft);
+  }
+
+  a{ color:inherit; }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ transition:none !important; scroll-behavior:auto !important; }
   }
 </style>
 </head>
 <body>
 
-<div class="section-intro">
-  <div class="intro-eyebrow">What is an After Note</div>
-  <h1>Same consultation. Two documents. Written for different readers.</h1>
-  <p>Every consultation already produces a clinical note, written for the record. An After Note is generated from that same note, at that same moment, but written for the patient in plain language, covering what to take, when to worry, and what happens next.</p>
-  <p>It sits alongside the letter, the fit note, and the referral as one more option on the dispatch screen, not a new step in the workflow.</p>
-  <p class="intro-explainer">Below, the GP clinical note on the left, the After Note on the right. The clinical note is about to be filed in the record. The After Note lands on the patient's phone before they reach the car park.</p>
-</div>
+<section class="hero wrap">
+  <p class="thesis">We are asking what patient communication looks like when it is treated as seriously as the clinical care itself.</p>
+  <h1>Same consultation.<br>Two documents.</h1>
+  <p class="lede">An After Note is generated from the same clinical note, at the same moment, but written in plain language for the patient. It reaches their phone before they leave the building.</p>
+</section>
 
-<div class="section-compare">
+<section class="wrap-wide">
+  <p class="eyebrow">The proof</p>
+  <h2 class="section-title">Written for different readers</h2>
 
-  <div class="topbar">
-    <div class="topbar-brand">
-      <div class="topbar-mark">GP</div>
-      <div>
-        <div class="topbar-name">GP Clinical System</div>
-        <div class="topbar-sub">Patient record, illustrative view</div>
+  <div class="panels">
+    <div class="panel clinical">
+      <div class="panel-label"><span class="dot"></span> Clinical record — for the record</div>
+
+      <div class="field">
+        <div class="field-name">History</div>
+        <div class="field-body">Follow up for worsening breathing. Pre existing respiratory condition. Travelling to the Caribbean on Sunday, concerned about the trip. No red flag symptoms.</div>
       </div>
-    </div>
-    <div class="topbar-right">
-      Same consultation, two documents, one system
-    </div>
-  </div>
-
-  <div class="header">
-    <h1>Clinical record and patient message, from a single consultation</h1>
-    <p>Respiratory review, worsening symptoms, travelling on Sunday.</p>
-  </div>
-
-  <div class="grid">
-
-    <div class="col">
-      <div class="record-panel">
-        <div class="record-titlebar">
-          <span>CLINICAL NOTE</span>
-          <span class="mod">Written for the record</span>
-        </div>
-        <div class="record-body">
-          <div class="rec-block">
-            <p class="rec-head">History</p>
-            <p class="rec-text">Follow up for worsening breathing. Pre existing respiratory condition. Travelling to the Caribbean on Sunday, concerned about the trip. No red flag symptoms.</p>
-          </div>
-          <div class="rec-block">
-            <p class="rec-head">Medications</p>
-            <p class="rec-text">Foster inhaler, carbocisteine.</p>
-          </div>
-          <div class="rec-block">
-            <p class="rec-head">Examination</p>
-            <p class="rec-text">Mild wheeze and a few crackles noted.</p>
-          </div>
-          <div class="rec-block">
-            <p class="rec-head">Diagnosis</p>
-            <p class="rec-text">Worsening breathing.</p>
-          </div>
-          <div class="rec-block">
-            <p class="rec-head">Plan</p>
-            <p class="rec-text">Antibiotics twice daily for seven days. Oral steroids once daily for five days, with food. Continue existing medications.</p>
-          </div>
-          <div class="rec-block">
-            <p class="rec-head">Safety netting</p>
-            <p class="rec-text">If not better by Sunday, book Thursday or Friday. If symptoms worsen, return.</p>
-          </div>
-        </div>
+      <div class="field">
+        <div class="field-name">Medications</div>
+        <div class="field-body">Foster inhaler, carbocisteine.</div>
+      </div>
+      <div class="field">
+        <div class="field-name">Examination</div>
+        <div class="field-body">Mild wheeze and a few crackles noted.</div>
+      </div>
+      <div class="field">
+        <div class="field-name">Plan</div>
+        <div class="field-body">Antibiotics twice daily for seven days. Oral steroids once daily for five days, with food. Continue existing medications.</div>
+      </div>
+      <div class="field">
+        <div class="field-name">Safety netting</div>
+        <div class="field-body">If not better by Sunday, book Thursday or Friday. If symptoms worsen, return.</div>
       </div>
     </div>
 
-    <div class="divider"></div>
+    <div class="panel care">
+      <div class="panel-label"><span class="dot"></span> After Note — for the patient</div>
+      <h3>Your breathing, and what to do before Sunday</h3>
+      <p>You have been prescribed a short course of antibiotics and steroids to help improve your breathing over the next few days.</p>
 
-    <div class="col">
-      <div class="connect-panel">
-        <div class="connect-titlebar">
-          <span>AFTER NOTE</span>
-          <span class="mod">Written for the patient</span>
-        </div>
-        <div class="connect-body">
-          <h2 class="after-title">Your breathing, and what to do before Sunday</h2>
-          <p class="after-intro">You have been prescribed a short course of antibiotics and steroids to help improve your breathing over the next few days.</p>
-
-          <p class="after-section-label">What to take</p>
-          <div class="med-row">
-            <div class="med-card">
-              <p class="med-name">Antibiotics</p>
-              <p class="med-detail">Twice a day for 7 days, with breakfast and evening meal.</p>
-            </div>
-            <div class="med-card">
-              <p class="med-name">Steroids</p>
-              <p class="med-detail">Once a day for 5 days, with breakfast. Take with food.</p>
-            </div>
-            <div class="med-card">
-              <p class="med-name">Usual inhalers</p>
-              <p class="med-detail">Continue as normal, alongside these.</p>
-            </div>
-          </div>
-
-          <div class="callout">
-            <p><strong>Before you travel:</strong> this treatment aims to improve your breathing before your trip. If you are not improving by Sunday, contact the surgery before travelling.</p>
-          </div>
-
-          <div class="warning">
-            <p class="warning-label">Get medical help sooner if</p>
-            <ul>
-              <li>your breathing gets worse, or you feel short of breath at rest</li>
-              <li>you develop chest pain, or feel significantly more unwell or confused</li>
-              <li>you are struggling to speak in full sentences</li>
-            </ul>
-          </div>
-
-          <a class="link-row" href="https://www.gov.uk/foreign-travel-advice" target="_blank" rel="noopener">
-            <div>
-              <p class="link-text">Going abroad</p>
-              <p class="link-sub">What to do if you become unwell while travelling</p>
-            </div>
-            <span class="link-arrow">→</span>
-          </a>
-
-          <div class="delivery-note">Delivered to the patient's phone before they leave the building, generated from the note on the left.</div>
-        </div>
+      <div class="field">
+        <div class="field-name">Antibiotics</div>
+        <div class="field-body">Twice a day for 7 days, with breakfast and evening meal.</div>
       </div>
-    </div>
-
-  </div>
-
-  <div class="footer">
-    <div class="footer-tag">One record. Two audiences.</div>
-    <div class="footer-sub">Developed with Neighbourhood CoLab CIC</div>
-  </div>
-
-</div>
-
-<div class="section-dispatch">
-
-  <div class="dispatch-intro">
-    <p class="dispatch-eyebrow">Where it lives</p>
-    <h2>One more box at the moment that already exists</h2>
-    <p>Every GP system already asks the clinician what to send at the end of a consultation. An After Note is one more option in that list, not a new step in the workflow.</p>
-  </div>
-
-  <div class="dispatch-window">
-    <div class="dispatch-titlebar">
-      <b>GP Clinical System</b>
-      <span class="sep">—</span>
-      <span>Consultation</span>
-      <span class="sep">|</span>
-      <span class="meta">Patient: Mrs A. Thomas, DOB 12/03/1968</span>
-    </div>
-
-    <div class="dispatch-tabs">
-      <div class="dispatch-tab">Consultation</div>
-      <div class="dispatch-tab">Medications</div>
-      <div class="dispatch-tab">Referrals</div>
-      <div class="dispatch-tab active">Dispatch</div>
-    </div>
-
-    <div class="dispatch-body">
-      <p class="dispatch-label">SELECT ACTIONS FOR THIS CONSULTATION</p>
-
-      <div class="dispatch-row">
-        <div class="dispatch-check checked"></div>
-        <div>
-          <div class="dispatch-row-name">Send letter to patient</div>
-          <div class="dispatch-row-desc">Standard consultation summary letter</div>
-        </div>
+      <div class="field">
+        <div class="field-name">Steroids</div>
+        <div class="field-body">Once a day for 5 days, with breakfast. Take with food.</div>
+      </div>
+      <div class="field">
+        <div class="field-name">Usual inhalers</div>
+        <div class="field-body">Continue as normal, alongside these.</div>
       </div>
 
-      <div class="dispatch-row">
-        <div class="dispatch-check"></div>
-        <div>
-          <div class="dispatch-row-name">Refer patient to</div>
-          <div class="dispatch-row-desc">Open referral form</div>
-        </div>
-      </div>
+      <div class="callout"><strong>Before you travel:</strong> this treatment aims to improve your breathing before your trip. If you are not improving by Sunday, contact the surgery before travelling.</div>
 
-      <div class="dispatch-row">
-        <div class="dispatch-check"></div>
-        <div>
-          <div class="dispatch-row-name">Issue fit note</div>
-          <div class="dispatch-row-desc">Generate fit note for employer</div>
-        </div>
-      </div>
-
-      <div class="dispatch-row">
-        <div class="dispatch-check"></div>
-        <div>
-          <div class="dispatch-row-name">Send prescription to pharmacy</div>
-          <div class="dispatch-row-desc">Electronic prescription service</div>
-        </div>
-      </div>
-
-      <div class="dispatch-row highlight">
-        <div class="dispatch-check checked"></div>
-        <div>
-          <div class="dispatch-row-name">Send After Note to patient</div>
-          <div class="dispatch-row-desc">Patient receives their After Note on their phone before leaving the building</div>
-        </div>
-        <div class="dispatch-new-badge">New</div>
-      </div>
-    </div>
-
-    <div class="dispatch-actions">
-      <div class="dispatch-btn cancel">Cancel</div>
-      <div class="dispatch-btn confirm">Confirm and close</div>
+      <p style="margin-bottom:6px;"><strong>Get medical help sooner if</strong></p>
+      <ul>
+        <li>your breathing gets worse, or you feel short of breath at rest</li>
+        <li>you develop chest pain, or feel significantly more unwell or confused</li>
+        <li>you are struggling to speak in full sentences</li>
+      </ul>
     </div>
   </div>
 
-</div>
-
-<div class="section-whynow">
-  <p class="whynow-eyebrow">Why now</p>
-  <h2>Patient communication is moving faster than the systems built to hold it</h2>
-  <p>A lot of new investment is going into this space right now, tools that generate patient facing summaries, automated messaging, ambient documentation. Some of it works well. Most of it sits outside the clinical record entirely, disconnected from the note that was actually written.</p>
-  <p>The systems that already hold the record are in the strongest position to do this properly, generated from the same consultation, inside the same system, without a second tool for practices to manage.</p>
-</div>
-
-<div class="section-close">
-  <p class="close-eyebrow">Get in touch</p>
-  <h2>Happy to talk through how this could work</h2>
-  <div class="close-contact">
-    <div class="name">Mark Winterburn</div>
-    <div>Digital and Transformation Lead, NHS Primary Care</div>
-    <div><a href="https://www.linkedin.com/in/mark-winterburn/?skipRedirect=true" target="_blank" rel="noopener">Get in touch on LinkedIn</a></div>
+  <div class="proof-foot">
+    <span>One consultation, two audiences</span>
+    <span>Delivered before the patient leaves the building</span>
   </div>
-</div>
+</section>
+
+<section class="wrap-wide">
+  <p class="eyebrow">Where it lives</p>
+  <h2 class="section-title">One more option where the decision already happens</h2>
+  <p class="lede" style="margin-bottom:14px;">This could work inside your GP system or EPR, whether that's Medicus, TPP or EMIS.</p>
+  <p class="lede" style="margin-bottom:36px;">Every clinical system already asks what to send at the end of a consultation. An After Note sits in that same list. Try it.</p>
+
+  <div class="dispatch">
+    <div class="system-card">
+      <div class="system-bar"><span>GP CLINICAL SYSTEM</span><span>MRS A. THOMAS</span></div>
+      <div class="system-body">
+        <div class="system-patient">Consultation — respiratory review — dispatch</div>
+
+        <div class="action-row">
+          <div class="checkbox checked"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><path d="M4 12l6 6L20 6"/></svg></div>
+          <div class="action-text"><div class="t1">Send letter to patient</div><div class="t2">Standard consultation summary</div></div>
+        </div>
+        <div class="action-row">
+          <div class="checkbox"></div>
+          <div class="action-text"><div class="t1">Issue fit note</div><div class="t2">For employer</div></div>
+        </div>
+        <div class="action-row">
+          <div class="checkbox checked"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><path d="M4 12l6 6L20 6"/></svg></div>
+          <div class="action-text"><div class="t1">Send prescription to pharmacy</div><div class="t2">Electronic prescription service</div></div>
+        </div>
+        <div class="action-row live" id="afterNoteRow" role="switch" aria-checked="true" tabindex="0">
+          <div class="switch on" id="afterNoteCheckbox"></div>
+          <div class="action-text">
+            <div class="t1">Send After Note to patient</div>
+            <div class="t2">Arrives on their phone before they leave</div>
+            <div class="tap-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M9 11l3 3L22 4M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Tap to preview</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="phone-frame">
+        <div class="phone-screen">
+          <div class="status-bar">
+            <span>9:41</span>
+            <span style="display:flex; align-items:center; gap:5px;">
+              <span class="signal"><span></span><span></span><span></span><span></span></span>
+              <span class="battery"></span>
+            </span>
+          </div>
+          <div class="lock-time">9:41</div>
+          <p class="phone-idle" id="phoneIdle" style="opacity:0;">Waiting to send</p>
+          <div class="msg-bubble show" id="msgBubble">
+            <div class="msg-sender">Your After Note</div>
+            <div class="msg-title">Your breathing, and what to do before Sunday</div>
+            Antibiotics twice a day for 7 days. Steroids once a day for 5 days, with food. Contact the surgery if not improving by Sunday, before travelling.
+            <a class="msg-link" href="https://www.gov.uk/foreign-travel-advice" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M14 5h5v5M19 5l-7 7M9 5H6a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-3"/></svg>
+              Going abroad, what to do if unwell while travelling
+            </a>
+          </div>
+          <div class="home-indicator"></div>
+        </div>
+      </div>
+      <p class="msg-time show" id="msgTime" style="text-align:center;">Delivered · before leaving the building</p>
+    </div>
+  </div>
+</section>
+
+<section class="wrap why">
+  <p class="eyebrow">Why now</p>
+  <p>Patient facing tools are multiplying faster than the systems built to hold them. Many sit outside the clinical record entirely, disconnected from the note that was actually written.</p>
+  <p>The systems that already hold the record are best placed to do this properly. Generated from the same consultation, inside the same system, without another tool for practices to manage.</p>
+</section>
+
+<section class="wrap close">
+  <p class="close-thesis">Happy to talk through how this could work.</p>
+  <div class="contact">
+    <div>
+      <div class="contact-name">Mark Winterburn</div>
+      <div class="contact-role">Digital and Transformation Lead, NHS Primary Care</div>
+    </div>
+  </div>
+  <div class="contact-actions">
+    <a class="btn btn-primary" href="mailto:hello@neighbourhoodcolab.co.uk">Email hello@neighbourhoodcolab.co.uk</a>
+    <a class="btn btn-secondary" href="https://www.linkedin.com/in/mark-winterburn/?skipRedirect=true">Message on LinkedIn</a>
+  </div>
+</section>
+
+<footer class="wrap">Developed with Neighbourhood CoLab CIC</footer>
+
+<script>
+  (function(){
+    var row = document.getElementById('afterNoteRow');
+    var checkbox = document.getElementById('afterNoteCheckbox');
+    var bubble = document.getElementById('msgBubble');
+    var idle = document.getElementById('phoneIdle');
+    var time = document.getElementById('msgTime');
+    var on = true;
+
+    function render(){
+      checkbox.classList.toggle('on', on);
+      row.setAttribute('aria-checked', on);
+      bubble.classList.toggle('show', on);
+      time.classList.toggle('show', on);
+      idle.style.opacity = on ? 0 : 1;
+    }
+
+    function toggle(){ on = !on; render(); }
+
+    row.addEventListener('click', toggle);
+    row.addEventListener('keydown', function(e){
+      if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); toggle(); }
+    });
+  })();
+</script>
 
 </body>
 </html>
