@@ -214,6 +214,14 @@
 
   .contact__email{ font-family:var(--serif); font-size:clamp(1.4rem, 1.1rem + 1.4vw, 1.9rem); display:inline-block; margin-bottom:0.6rem; }
 
+  .rundown__body .signature{
+    margin-top:1.8rem;
+    font-family:var(--serif);
+    font-style:italic;
+    font-size:0.95rem;
+    color:var(--paper-dim);
+  }
+
   .colour-bars{
     width:100%;
     height:28px;
@@ -349,7 +357,8 @@ const profile = {
     item:"07", type:"LIVE",
     title:"Get in touch",
     email:"hello@neighbourhoodcolab.co.uk",
-    note:"I promise I'll read it."
+    note:"I promise I'll read it.",
+    signature:"Mark Winterburn"
   }
 };
 
@@ -411,6 +420,7 @@ function buildContact(c){
     <div class="rundown__body">
       <a class="contact__email" href="mailto:${c.email}">${c.email}</a>
       <p>${c.note}</p>
+      <p class="signature">${c.signature}</p>
     </div>
   </section>`;
 }
