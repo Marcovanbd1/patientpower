@@ -3,434 +3,441 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>What happens after the consultation</title>
-<meta name="description" content="Clinical care is held to a standard. What patients are told when they leave the room rarely is. Afternote is built to close that gap.">
-<meta property="og:title" content="What happens after the consultation">
-<meta property="og:description" content="We are asking what patient communication looks like when it is treated as seriously as the clinical care itself.">
-<meta property="og:type" content="website">
+<title>The CoLab Lens · Mark Winterburn</title>
+<meta name="description" content="The CoLab Lens: four voices reading what a machine cannot. An idea from Mark Winterburn.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-
   :root{
-    --paper:#F1F2EC;
-    --ink:#16211D;
-    --ink-soft:#4B564E;
-    --clinical:#4C5C6B;
-    --clinical-bg:#E7ECEF;
-    --care:#1F6F5C;
-    --care-bg:#E8F3EE;
-    --line:#D9DACF;
-    --radius:14px;
-    --font-display:'Fraunces', Georgia, serif;
-    --font-body:'Inter', -apple-system, sans-serif;
-    --font-mono:'IBM Plex Mono', monospace;
+    --ink:#10161d;
+    --ink-2:#1a222b;
+    --ink-3:#232d38;
+    --stone:#d9d2c2;
+    --paper:#ece6d9;
+    --paper-dim:#a9b3bc;
+    --signal:#d6402c;
+    --slate:#7f97a3;
+    --line:rgba(236,230,217,0.14);
+    --serif:'Fraunces', serif;
+    --sans:'IBM Plex Sans', sans-serif;
+    --mono:'IBM Plex Mono', monospace;
+    --measure:38rem;
   }
 
   *{ box-sizing:border-box; }
   html{ scroll-behavior:smooth; }
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+    *{ animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; }
+  }
 
   body{
     margin:0;
-    background:var(--paper);
-    color:var(--ink);
-    font-family:var(--font-body);
-    line-height:1.55;
+    background:var(--ink);
+    color:var(--paper);
+    font-family:var(--sans);
+    font-size:17px;
+    line-height:1.65;
     -webkit-font-smoothing:antialiased;
   }
 
-  .wrap{ max-width:760px; margin:0 auto; padding:0 24px; }
-  .wrap-wide{ max-width:920px; margin:0 auto; padding:0 24px; }
+  a{ color:var(--stone); text-decoration-color:var(--signal); text-underline-offset:3px; }
+  a:hover{ color:var(--paper); }
+  a:focus-visible, button:focus-visible{ outline:2px solid var(--signal); outline-offset:3px; }
 
-  section{ padding:64px 0; }
-  @media (max-width:640px){ section{ padding:44px 0; } }
-
-  .eyebrow{
-    font-family:var(--font-mono);
-    font-size:11px;
+  .masthead{
+    position:sticky; top:0; z-index:20;
+    display:flex; align-items:center; justify-content:space-between;
+    gap:1rem;
+    padding:0.85rem 1.5rem;
+    background:rgba(16,22,29,0.88);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+    font-family:var(--mono);
+    font-size:0.72rem;
     letter-spacing:0.08em;
     text-transform:uppercase;
-    color:var(--ink-soft);
-    margin:0 0 10px;
   }
-
-  .section-title{
-    font-family:var(--font-display);
-    font-weight:600;
-    font-size:clamp(24px, 3.4vw, 30px);
-    margin:0 0 16px;
-    max-width:600px;
+  .masthead__onair{ display:flex; align-items:center; gap:0.5rem; color:var(--stone); }
+  .tally{
+    width:8px; height:8px; border-radius:50%;
+    background:var(--signal);
+    box-shadow:0 0 0 0 rgba(214,64,44,0.6);
+    animation:pulse 2.4s ease-in-out infinite;
   }
-
-  .section-sub{
-    font-size:16px;
-    color:var(--ink-soft);
-    max-width:560px;
-    margin:0 0 40px;
+  @keyframes pulse{
+    0%{ box-shadow:0 0 0 0 rgba(214,64,44,0.5); }
+    70%{ box-shadow:0 0 0 7px rgba(214,64,44,0); }
+    100%{ box-shadow:0 0 0 0 rgba(214,64,44,0); }
   }
+  .masthead__name{ display:none; color:var(--paper-dim); }
+  .masthead__right{ display:flex; align-items:center; gap:1.1rem; color:var(--paper-dim); }
+  @media (min-width:640px){ .masthead__name{ display:inline; } }
 
-  /* ---------- Hero ---------- */
+  main{ max-width:52rem; margin:0 auto; padding:0 1.5rem; }
 
-  .hero{ padding-top:76px; padding-bottom:80px; }
+  .rundown__item{
+    padding:4.5rem 0;
+    border-bottom:1px solid var(--line);
+    opacity:0; transform:translateY(14px);
+    transition:opacity 0.7s ease, transform 0.7s ease;
+  }
+  .rundown__item.is-visible{ opacity:1; transform:translateY(0); }
+  .rundown__item:last-of-type{ border-bottom:none; }
 
-  .thesis{
-    font-family:var(--font-display);
-    font-optical-sizing:auto;
+  .rundown__meta{
+    display:flex; flex-wrap:wrap; gap:0.9rem; align-items:baseline;
+    font-family:var(--mono);
+    font-size:0.72rem;
+    letter-spacing:0.09em;
+    text-transform:uppercase;
+    color:var(--slate);
+    margin-bottom:1.1rem;
+  }
+  .rundown__badge{ padding:0.15rem 0.5rem; border:1px solid currentColor; border-radius:2px; }
+  .rundown__badge--live{ color:var(--signal); }
+
+  .rundown__title{
+    font-family:var(--serif);
     font-weight:500;
+    font-size:clamp(1.7rem, 1.2rem + 2vw, 2.6rem);
+    line-height:1.15;
+    margin:0 0 1.4rem 0;
+    max-width:22ch;
+  }
+  .rundown__body{ max-width:var(--measure); color:var(--paper); }
+  .rundown__body p{ margin:0 0 1.1rem 0; }
+  .rundown__body p:last-child{ margin-bottom:0; }
+  .rundown__list{ margin:0; padding:0; list-style:none; max-width:var(--measure); }
+  .rundown__list li{ position:relative; padding-left:1.3rem; margin-bottom:0.9rem; }
+  .rundown__list li::before{ content:"·"; position:absolute; left:0.25rem; top:0; color:var(--signal); font-weight:600; }
+  .rundown__list strong{ color:var(--stone); font-weight:600; }
+
+  /* Lens demo, item 01 */
+  .lens-demo{ padding-top:3.5rem; }
+  .lens-demo__sentence{
+    font-family:var(--serif);
     font-style:italic;
-    font-size:clamp(19px, 2.6vw, 24px);
-    line-height:1.45;
-    color:var(--ink-soft);
-    max-width:600px;
-    margin:0 0 40px;
+    font-weight:400;
+    font-size:clamp(1.3rem, 1.05rem + 1.3vw, 1.8rem);
+    color:var(--paper);
+    max-width:28ch;
+    margin:0 0 2rem 0;
+    line-height:1.4;
   }
-
-  h1{
-    font-family:var(--font-display);
-    font-optical-sizing:auto;
-    font-weight:600;
-    font-size:clamp(34px, 6vw, 54px);
-    line-height:1.1;
-    letter-spacing:-0.01em;
-    margin:0 0 20px;
-  }
-
-  .lede{ font-size:17px; color:var(--ink-soft); max-width:540px; margin:0; }
-
-  /* ---------- Rigour compare ---------- */
-
-  .compare{
-    display:grid;
-    grid-template-columns:1fr auto 1fr;
-    gap:28px;
-    align-items:center;
-  }
-
-  @media (max-width:720px){
-    .compare{ grid-template-columns:1fr; gap:0; }
-  }
-
-  .compare-col{
-    border:1px solid var(--line);
-    border-radius:var(--radius);
-    padding:26px 24px;
-    background:#fff;
-  }
-
-  .compare-col h3{
-    font-family:var(--font-display);
-    font-weight:600;
-    font-size:18px;
-    margin:0 0 14px;
-  }
-
-  .compare-col ul{ margin:0; padding-left:18px; font-size:14.5px; color:var(--ink); }
-  .compare-col li{ margin-bottom:8px; }
-
-  .compare-mid{
-    font-family:var(--font-mono);
-    font-size:11px;
-    letter-spacing:0.04em;
-    text-transform:uppercase;
-    color:var(--ink-soft);
-    text-align:center;
-    padding:14px 0;
-  }
-
-  @media (max-width:720px){
-    .compare-mid{ padding:6px 0; }
-  }
-
-  /* ---------- Four readers ---------- */
-
-  .readers{
-    display:grid;
-    grid-template-columns:repeat(4, 1fr);
-    gap:1px;
-    background:var(--line);
-    border:1px solid var(--line);
-    border-radius:var(--radius);
-    overflow:hidden;
-  }
-
-  @media (max-width:820px){
-    .readers{ grid-template-columns:1fr 1fr; }
-  }
-  @media (max-width:480px){
-    .readers{ grid-template-columns:1fr; }
-  }
-
-  .reader{
-    background:var(--paper);
-    padding:26px 20px 28px;
-  }
-
-  .reader-role{
-    font-family:var(--font-mono);
-    font-size:10.5px;
-    letter-spacing:0.05em;
-    text-transform:uppercase;
-    color:var(--care);
-    margin-bottom:10px;
-  }
-
-  .reader h4{
-    font-family:var(--font-display);
-    font-weight:600;
-    font-size:16.5px;
-    margin:0 0 10px;
-  }
-
-  .reader p{ font-size:13.5px; color:var(--ink-soft); margin:0; }
-
-  .readers-caption{
-    font-size:13px;
-    color:var(--ink-soft);
-    text-align:center;
-    margin-top:24px;
-  }
-
-  /* ---------- Proof ---------- */
-
-  .panels{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:1px;
-    background:var(--line);
-    border:1px solid var(--line);
-    border-radius:var(--radius);
-    overflow:hidden;
-  }
-
-  @media (max-width:720px){ .panels{ grid-template-columns:1fr; } }
-
-  .panel{ background:var(--paper); padding:28px 26px 32px; }
-  .panel.clinical{ background:var(--clinical-bg); }
-  .panel.care{ background:var(--care-bg); }
-
-  .panel-label{
-    font-family:var(--font-mono);
-    font-size:11px;
+  .lens-demo__button{
+    font-family:var(--mono);
+    font-size:0.85rem;
     letter-spacing:0.06em;
     text-transform:uppercase;
-    display:flex;
-    align-items:center;
-    gap:8px;
-    margin-bottom:18px;
+    color:var(--signal);
+    background:transparent;
+    border:1px solid var(--signal);
+    padding:0.75rem 1.4rem;
+    cursor:pointer;
+    transition:background 0.25s ease, color 0.25s ease;
   }
-
-  .panel.clinical .panel-label{ color:var(--clinical); }
-  .panel.care .panel-label{ color:var(--care); }
-
-  .dot{ width:7px; height:7px; border-radius:50%; display:inline-block; }
-  .panel.clinical .dot{ background:var(--clinical); }
-  .panel.care .dot{ background:var(--care); }
-
-  .field{ margin-bottom:16px; }
-  .field:last-child{ margin-bottom:0; }
-
-  .field-name{
-    font-family:var(--font-mono);
-    font-size:10.5px;
-    letter-spacing:0.04em;
+  .lens-demo__button:hover{ background:var(--signal); color:var(--ink); }
+  .lens-demo__voices{
+    margin-top:2.5rem;
+    padding-top:2rem;
+    border-top:1px solid var(--line);
+    display:grid;
+    gap:1.6rem;
+  }
+  .lens-demo__voices[hidden]{ display:none; }
+  .lens-demo__voice{ opacity:0; transform:translateY(8px); animation:voiceIn 0.6s ease forwards; }
+  .lens-demo__voice:nth-child(1){ animation-delay:0.05s; }
+  .lens-demo__voice:nth-child(2){ animation-delay:0.25s; }
+  .lens-demo__voice:nth-child(3){ animation-delay:0.45s; }
+  .lens-demo__voice:nth-child(4){ animation-delay:0.65s; }
+  @keyframes voiceIn{ to{ opacity:1; transform:translateY(0); } }
+  .lens-demo__role{
+    display:block;
+    font-family:var(--mono);
+    font-size:0.72rem;
+    letter-spacing:0.09em;
     text-transform:uppercase;
-    color:var(--ink-soft);
-    opacity:0.75;
-    margin-bottom:4px;
+    color:var(--signal);
+    margin-bottom:0.4rem;
   }
-
-  .field-body{ font-size:14.5px; color:var(--ink); }
-
-  .care h3{ font-family:var(--font-display); font-weight:600; font-size:19px; margin:0 0 14px; }
-  .care .callout{
-    background:rgba(31,111,92,0.08);
-    border-radius:10px;
-    padding:12px 14px;
-    font-size:14px;
-    margin-bottom:14px;
+  .lens-demo__voice p{ margin:0; max-width:var(--measure); color:var(--paper); }
+  .lens-demo__scope{
+    margin-top:2.2rem;
+    padding-top:1.6rem;
+    border-top:1px solid var(--line);
+    font-family:var(--serif);
+    font-weight:600;
+    font-size:clamp(1.4rem, 1.1rem + 1.2vw, 1.9rem);
+    color:var(--stone);
+    opacity:0; transform:translateY(8px);
+    animation:voiceIn 0.7s ease forwards;
+    animation-delay:0.9s;
   }
+  .lens-demo__scope[hidden]{ display:none; }
 
-  .proof-foot{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    margin-top:16px;
-    font-family:var(--font-mono);
-    font-size:11px;
-    color:var(--ink-soft);
-    flex-wrap:wrap;
-    gap:8px;
+  .screen-wall{ display:grid; grid-template-columns:repeat(8,1fr); gap:4px; max-width:15rem; margin:1.6rem 0 0.6rem 0; }
+  .screen-wall span{ display:block; aspect-ratio:4/3; background:var(--ink-3); border:1px solid var(--line); }
+  .screen-wall span.is-live{ background:var(--signal); border-color:var(--signal); }
+  .screen-wall__caption{ font-family:var(--mono); font-size:0.68rem; letter-spacing:0.06em; text-transform:uppercase; color:var(--paper-dim); margin-bottom:1.6rem; }
+
+  /* Aside, Mark's own note */
+  .rundown__item.aside{ border-left:2px solid var(--line); padding-left:1.5rem; }
+  .rundown__item.aside .rundown__title{ font-size:clamp(1.3rem, 1.1rem + 1vw, 1.8rem); color:var(--stone); }
+  .rundown__item.aside .rundown__body{ color:var(--paper-dim); font-size:0.95rem; }
+  .rundown__item.aside .rundown__body em{ color:var(--paper-dim); font-style:italic; }
+  .aside__photo{
+    width:8.5rem; aspect-ratio:3/4;
+    border:1px solid var(--line);
+    overflow:hidden;
+    margin:0 0 1.6rem 0;
+    position:relative;
   }
-
-  /* ---------- Close ---------- */
-
-  .close{ border-top:1px solid var(--line); }
-
-  .close-thesis{
-    font-family:var(--font-display);
-    font-style:italic;
-    font-weight:500;
-    font-size:clamp(18px, 2.4vw, 22px);
-    max-width:580px;
-    margin:0 0 36px;
-    color:var(--ink-soft);
-  }
-
-  .contact{ display:flex; align-items:center; gap:16px; flex-wrap:wrap; }
-  .contact-name{ font-weight:600; font-size:16px; }
-  .contact-role{ font-size:13.5px; color:var(--ink-soft); margin-top:2px; }
-
-  .contact-actions{ display:flex; gap:10px; margin-top:20px; flex-wrap:wrap; }
-
-  .btn{
-    font-family:var(--font-body);
-    font-size:14px;
-    font-weight:500;
-    padding:11px 18px;
-    border-radius:9px;
-    text-decoration:none;
-    display:inline-block;
-    border:1px solid transparent;
-  }
-
-  .btn-primary{ background:var(--care); color:#fff; }
-  .btn-primary:hover{ background:#195C4C; }
-
-  .btn-secondary{ background:transparent; color:var(--ink); border-color:var(--line); }
-  .btn-secondary:hover{ border-color:var(--ink-soft); }
+  .aside__photo img{ width:100%; height:100%; object-fit:cover; display:block; filter:grayscale(1) contrast(1.08) brightness(0.92); }
+  .aside__photo::after{ content:""; position:absolute; inset:0; background:var(--slate); mix-blend-mode:color; opacity:0.55; }
 
   footer{
-    padding:28px 0 48px;
-    font-family:var(--font-mono);
-    font-size:11px;
-    color:var(--ink-soft);
+    max-width:52rem; margin:0 auto; padding:3rem 1.5rem 5rem;
+    font-family:var(--mono); font-size:0.72rem; letter-spacing:0.05em;
+    color:var(--paper-dim);
+    display:flex; flex-wrap:wrap; justify-content:space-between; gap:1rem;
   }
+  footer a{ color:var(--paper-dim); }
+  footer a:hover{ color:var(--stone); }
 
-  a{ color:inherit; }
+  .contact__email{ font-family:var(--serif); font-size:clamp(1.4rem, 1.1rem + 1.4vw, 1.9rem); display:inline-block; margin-bottom:0.6rem; }
 
-  @media (prefers-reduced-motion: reduce){ *{ transition:none !important; scroll-behavior:auto !important; } }
+  .colour-bars{
+    width:100%;
+    height:28px;
+    margin-top:2rem;
+    background:linear-gradient(to right,
+      #ffffff 0%, #ffffff 14.28%,
+      #ffff00 14.28%, #ffff00 28.56%,
+      #00ffff 28.56%, #00ffff 42.84%,
+      #00ff00 42.84%, #00ff00 57.12%,
+      #ff00ff 57.12%, #ff00ff 71.4%,
+      #ff0000 71.4%, #ff0000 85.68%,
+      #0000ff 85.68%, #0000ff 100%
+    );
+  }
+  .colour-bars__caption{
+    margin:0;
+    padding:0.9rem 1.5rem 0;
+    text-align:center;
+    font-family:var(--mono);
+    font-size:0.68rem;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--paper-dim);
+  }
 </style>
 </head>
 <body>
 
-<section class="hero wrap">
-  <p class="thesis">We are asking what patient communication looks like when it is treated as seriously as the clinical care itself.</p>
-  <h1>The treatment plan gets scrutiny.<br>What the patient hears rarely does.</h1>
-  <p class="lede">A course of antibiotics goes through dosing checks, safety netting and review. The words a patient takes home about it are usually whatever was left over at the end of a ten minute appointment.</p>
-</section>
+<header class="masthead">
+  <span class="masthead__onair"><span class="tally" aria-hidden="true"></span>ON AIR</span>
+  <span class="masthead__name">THE COLAB LENS</span>
+  <span class="masthead__right">
+    <span id="clock">00:00:00</span>
+    <span>PORTLAND, DORSET</span>
+  </span>
+</header>
 
-<section class="wrap-wide">
-  <p class="eyebrow">The gap</p>
-  <h2 class="section-title">Two things get written. Only one gets held to a standard</h2>
+<main id="main"></main>
 
-  <div class="compare">
-    <div class="compare-col">
-      <h3>The clinical record</h3>
-      <ul>
-        <li>Structured fields, checked against guidelines</li>
-        <li>Reviewed and signed off by a clinician</li>
-        <li>Safety netting written into the plan</li>
-        <li>Held to a professional and legal standard</li>
-      </ul>
+<div class="colour-bars" aria-hidden="true"></div>
+<p class="colour-bars__caption">NORMAL SERVICE WILL BE RESUMED SHORTLY</p>
+
+<footer>
+  <span>Last rebuilt 31 July 2026</span>
+  <span><a href="https://www.linkedin.com/in/mark-winterburn/" target="_blank" rel="noopener">LinkedIn</a></span>
+</footer>
+
+<script>
+/*
+  Two halves: the rundown scaffolding below, and the actual content in the
+  `profile` object. Fork this for anyone, any sector, by rewriting `profile`
+  and leaving the scaffolding alone.
+*/
+const profile = {
+  lensDemo:{
+    item:"01", type:"LIVE",
+    sentence:"Patient reports feeling fine. Keen to go home today.",
+    buttonLabel:"Run it through the lens",
+    voices:[
+      { role:"Nurse", text:"Keen can mean eager to leave. It can also mean pushing through exhaustion because staying feels unbearable. Worth one more check before that word gets trusted." },
+      { role:"Counselling psychologist", text:"A bright, definite mood straight after a frightening admission is not always the whole story. Worth one gentle question rather than a closed file." },
+      { role:"Social worker", text:"Fine assumes somewhere safe to go home to, and someone there when the door closes. Has anyone actually checked." },
+      { role:"Applied philosopher", text:"Fine is doing an enormous amount of work in that sentence. Language this flat rarely survives contact with what actually happened." }
+    ],
+    scope:"It lives wherever a machine reaches a human."
+  },
+  sections: [
+    {
+      item:"02", type:"IDENT",
+      title:"This is the CoLab Lens",
+      paragraphs:[
+        "What just happened above has a name. The same seven words, read four times over: once as a nurse would read them, once as a counselling psychologist, once as a social worker, once as an applied philosopher. None of those four readings is wrong. Where they disagree is usually where the thing worth catching was hiding."
+      ]
+    },
+    {
+      item:"03", type:"LIVE",
+      title:"Said plainly",
+      paragraphs:[
+        "Here is the audacious part, stated without much dressing up. Every sentence that leaves a machine and reaches a person deserves that same pass, not only a clinical one. We are fully aware of how that sounds. It is being built anyway, one Afternote at a time."
+      ]
+    },
+    {
+      item:"04", type:"VT",
+      title:"Where this actually stands",
+      intro:"Here's where each of these actually stands, across five GP practices and 74,000 patients on the Weymouth and Portland peninsula:",
+      list:[
+        "<strong>Afternotes</strong>: currently being built by hand, one real anonymised clinical note at a time. A plain account of what happened in an appointment, written for the patient, not about them, designed to arrive on their phone before they reach the car park.",
+        "<strong>MyScribe</strong>: publicly announced, still being built. The patient's own scribe, free forever, owned by the person it was written about, once the speech engineering behind it is in place.",
+        "<strong>Neighbourhood Signals</strong>: the space before demand. A pilot lasting ninety one days, already complete, reading anonymised signals across the neighbourhood before anyone actually needs to ask for help. Funding decision due late September.",
+        "<strong>HETT Show, ExCeL London, 29 September</strong>: still ahead. Opening panel, Neighbourhood Health, From Framework to Function."
+      ],
+      outro:"Every one of these, not only Afternotes, is run through the same Lens described above before it reaches a person."
+    },
+    {
+      item:"05", type:"IDENT",
+      title:"Four voices, one postcode",
+      paragraphs:[
+        "Neighbourhood CoLab CIC was built by four people who have known each other since they were ten years old, growing up together in Weymouth and on Portland. A nurse. A counselling psychologist. A social worker. An applied philosopher. Over a century of frontline experience between the four of us.",
+        "It was set up as a community interest company on purpose, rather than a consultancy or a start up chasing an exit, because the value this work creates should stay in the neighbourhood that made it.",
+        "Justin Jones, Lucy Winterburn and Dr Bruce A. Fernie, the social worker, the nurse and the counselling psychologist of the four, are the ones doing the academic and scholarly work underneath it. All three are postgraduates, and between them they're giving the Lens its intellectual spine, rather than leaving it as four strong instincts loosely tied together. I'm the one of the four who isn't contributing to that particular part."
+      ]
+    },
+    {
+      item:"06", type:"OOV",
+      title:"A note from the one who started it",
+      aside:true,
+      photo:{ src:"assets/portrait.jpg", alt:"Mark Winterburn on the Isle of Portland" },
+      paragraphs:[
+        "<em>This isn't the point of this page, just useful context.</em>",
+        "I'm the applied philosopher of the four. Born in London, a degree in applied philosophy and political studies before I understood what the word applied would come to mean, then twenty years as a Playout Director across the BBC, Channel Four, ITV and BT Sport: the live news and sport that actually reached people's homes, minute by minute. A curved wall of a hundred silent screens, and the job was knowing which single feed among them actually needed to go out live."
+      ],
+      visual:"screenwall",
+      visualCaption:"One of these goes out. That was the job.",
+      paragraphsAfter:[
+        "Thirty years on I walked into NHS primary care and recognised the same discipline wearing different clothes. A patient record full of detail, and only some of it is what a person can actually carry home and use. Illich, Rawls, Weil and Aristotle, learned in the nineteen nineties, came back into use as working tools for exactly this kind of problem.",
+        "I've been public, sometimes loudly, about who gets to hold power over public data, and about the difference between infrastructure built to serve a place and infrastructure built to extract value from it.",
+        "Off the clock: twenty five years of Ashtanga practice, a Geese bassline currently being learned properly as a year long commitment, and a YouTube channel taking shape under the handle @marksphilosophy."
+      ]
+    }
+  ],
+  contact:{
+    item:"07", type:"LIVE",
+    title:"Get in touch",
+    email:"hello@neighbourhoodcolab.co.uk",
+    note:"I promise I'll read it."
+  }
+};
+
+function renderMeta(item, type){
+  const badgeClass = type === "LIVE" ? "rundown__badge rundown__badge--live" : "rundown__badge";
+  return `<div class="rundown__meta"><span>ITEM ${item}</span><span class="${badgeClass}">${type}</span></div>`;
+}
+
+function renderScreenWall(caption){
+  const total = 24, liveIndex = 14;
+  let cells = "";
+  for(let i=0;i<total;i++){ cells += `<span class="${i===liveIndex ? "is-live" : ""}"></span>`; }
+  return `<div class="screen-wall" role="img" aria-label="A grid of screens, one highlighted as the live feed">${cells}</div><div class="screen-wall__caption">${caption}</div>`;
+}
+
+function renderBodyBlock(section){
+  let html = "";
+  if(section.intro) html += `<p>${section.intro}</p>`;
+  if(section.paragraphs) html += section.paragraphs.map(p=>`<p>${p}</p>`).join("");
+  if(section.visual === "screenwall") html += renderScreenWall(section.visualCaption);
+  if(section.paragraphsAfter) html += section.paragraphsAfter.map(p=>`<p>${p}</p>`).join("");
+  if(section.list) html += `<ul class="rundown__list">${section.list.map(l=>`<li>${l}</li>`).join("")}</ul>`;
+  if(section.outro) html += `<p>${section.outro}</p>`;
+  return html;
+}
+
+function buildLensDemo(d){
+  const meta = renderMeta(d.item, d.type);
+  const voicesHtml = d.voices.map(v=>`<div class="lens-demo__voice"><span class="lens-demo__role">${v.role}</span><p>${v.text}</p></div>`).join("");
+  return `
+  <section class="rundown__item lens-demo" id="item-${d.item}">
+    ${meta}
+    <p class="lens-demo__sentence">&ldquo;${d.sentence}&rdquo;</p>
+    <button class="lens-demo__button" id="lensButton" aria-expanded="false">${d.buttonLabel}</button>
+    <div class="lens-demo__voices" id="lensVoices" hidden>${voicesHtml}</div>
+    <p class="lens-demo__scope" id="lensScope" hidden>${d.scope}</p>
+  </section>`;
+}
+
+function buildSection(s){
+  const meta = renderMeta(s.item, s.type);
+  const classes = "rundown__item" + (s.aside ? " aside" : "");
+  const photoHtml = s.photo ? `<div class="aside__photo"><img src="${s.photo.src}" alt="${s.photo.alt}"></div>` : "";
+  return `
+  <section class="${classes}" id="item-${s.item}">
+    ${meta}
+    <h2 class="rundown__title">${s.title}</h2>
+    ${photoHtml}
+    <div class="rundown__body">${renderBodyBlock(s)}</div>
+  </section>`;
+}
+
+function buildContact(c){
+  const meta = renderMeta(c.item, c.type);
+  return `
+  <section class="rundown__item" id="item-${c.item}">
+    ${meta}
+    <h2 class="rundown__title">${c.title}</h2>
+    <div class="rundown__body">
+      <a class="contact__email" href="mailto:${c.email}">${c.email}</a>
+      <p>${c.note}</p>
     </div>
-    <div class="compare-mid">versus</div>
-    <div class="compare-col">
-      <h3>What the patient takes home</h3>
-      <ul>
-        <li>Whatever was said out loud, if remembered</li>
-        <li>A leaflet, sometimes the right one</li>
-        <li>No one checking it was understood</li>
-        <li>Held to no standard at all</li>
-      </ul>
-    </div>
-  </div>
-</section>
+  </section>`;
+}
 
-<section class="wrap-wide">
-  <p class="eyebrow">How Afternote closes it</p>
-  <h2 class="section-title">Read by four people, not one</h2>
-  <p class="section-sub">Every Afternote is shaped by four professional perspectives, the same rigour a complex case gets in an MDT, applied to the words a patient is sent home with.</p>
+const main = document.getElementById("main");
+main.innerHTML = buildLensDemo(profile.lensDemo)
+  + profile.sections.map(buildSection).join("")
+  + buildContact(profile.contact);
 
-  <div class="readers">
-    <div class="reader">
-      <div class="reader-role">Nurse</div>
-      <h4>Is it safe and usable</h4>
-      <p>Are the instructions something someone could actually follow at home, and does the safety netting say what to watch for.</p>
-    </div>
-    <div class="reader">
-      <div class="reader-role">Social worker</div>
-      <h4>Can they act on it</h4>
-      <p>Does the note account for who is around to help, what support exists, and what happens if there is no one.</p>
-    </div>
-    <div class="reader">
-      <div class="reader-role">Clinical psychologist</div>
-      <h4>What is it like to read this</h4>
-      <p>Is the tone right for someone who may be frightened, tired or overwhelmed, and is there anything left unsaid that needed saying.</p>
-    </div>
-    <div class="reader">
-      <div class="reader-role">Applied philosopher</div>
-      <h4>Whose story is this</h4>
-      <p>Does the note give the patient back some authorship of what happened to them, rather than leaving them as a subject of someone else's record.</p>
-    </div>
-  </div>
+// Lens demo interaction
+const lensButton = document.getElementById("lensButton");
+const lensVoices = document.getElementById("lensVoices");
+const lensScope = document.getElementById("lensScope");
+lensButton.addEventListener("click", ()=>{
+  const isOpen = lensButton.getAttribute("aria-expanded") === "true";
+  lensButton.setAttribute("aria-expanded", String(!isOpen));
+  if(!isOpen){
+    lensVoices.hidden = false;
+    lensScope.hidden = false;
+  } else {
+    lensVoices.hidden = true;
+    lensScope.hidden = true;
+  }
+});
 
-  <p class="readers-caption">A clinical note answers one question. This asks four.</p>
-</section>
+// Studio clock
+function tick(){
+  const now = new Date();
+  const pad = n => String(n).padStart(2,"0");
+  document.getElementById("clock").textContent = `${pad(now.getHours())}:${pad(now.getMinutes())}:${pad(now.getSeconds())}`;
+}
+tick();
+setInterval(tick, 1000);
 
-<section class="wrap-wide">
-  <p class="eyebrow">What it actually produces</p>
-  <h2 class="section-title">Same consultation, written for a different reader</h2>
-
-  <div class="panels">
-    <div class="panel clinical">
-      <div class="panel-label"><span class="dot"></span> Clinical record, for the record</div>
-      <div class="field">
-        <div class="field-name">Plan</div>
-        <div class="field-body">Antibiotics twice daily for seven days. Oral steroids once daily for five days, with food. Continue existing medications.</div>
-      </div>
-      <div class="field">
-        <div class="field-name">Safety netting</div>
-        <div class="field-body">If not better by Sunday, book Thursday or Friday. If symptoms worsen, return.</div>
-      </div>
-    </div>
-
-    <div class="panel care">
-      <div class="panel-label"><span class="dot"></span> Afternote, for the patient</div>
-      <h3>Your breathing, and what to do before Sunday</h3>
-      <div class="field">
-        <div class="field-name">Antibiotics</div>
-        <div class="field-body">Twice a day for 7 days, with breakfast and evening meal.</div>
-      </div>
-      <div class="field">
-        <div class="field-name">Steroids</div>
-        <div class="field-body">Once a day for 5 days, with breakfast. Take with food.</div>
-      </div>
-      <div class="callout"><strong>Before you travel:</strong> this treatment aims to improve your breathing before your trip. If you are not improving by Sunday, contact the surgery before travelling.</div>
-    </div>
-  </div>
-
-  <div class="proof-foot">
-    <span>One consultation, two audiences</span>
-    <span>Generated from the same clinical note, at the same moment</span>
-  </div>
-</section>
-
-<section class="wrap close">
-  <p class="close-thesis">If patient communication in your organisation deserves the same rigour as the care itself, talk to us.</p>
-  <div class="contact">
-    <div>
-      <div class="contact-name">Mark Winterburn</div>
-      <div class="contact-role">Digital and Transformation Lead, NHS Primary Care</div>
-    </div>
-  </div>
-  <div class="contact-actions">
-    <a class="btn btn-primary" href="mailto:hello@neighbourhoodcolab.co.uk">Email hello@neighbourhoodcolab.co.uk</a>
-    <a class="btn btn-secondary" href="https://www.linkedin.com/in/mark-winterburn/?skipRedirect=true">Message on LinkedIn</a>
-  </div>
-</section>
-
-<footer class="wrap">Developed with Neighbourhood CoLab CIC</footer>
-
+// Scroll reveal
+const items = document.querySelectorAll(".rundown__item");
+if("IntersectionObserver" in window){
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add("is-visible"); io.unobserve(e.target); } });
+  }, { threshold:0.12 });
+  items.forEach(i=>io.observe(i));
+} else {
+  items.forEach(i=>i.classList.add("is-visible"));
+}
+</script>
 </body>
 </html>
