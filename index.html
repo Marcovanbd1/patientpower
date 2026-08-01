@@ -138,14 +138,21 @@
   /* Status cards, item 04 */
   .status-cards{ display:grid; gap:1rem; max-width:var(--measure); margin:0; padding:0; list-style:none; }
   .status-card{
-    display:grid;
-    grid-template-columns:auto 1fr;
-    gap:0.9rem;
-    align-items:start;
+    display:block;
+    width:100%;
+    text-align:left;
+    font-family:inherit;
+    cursor:pointer;
     padding:1.1rem 1.2rem;
     background:var(--ink-2);
     border:1px solid var(--line);
     border-radius:3px;
+  }
+  .status-card__row{
+    display:grid;
+    grid-template-columns:auto 1fr;
+    gap:0.9rem;
+    align-items:start;
   }
   .status-card__dot{
     margin-top:0.45rem;
@@ -169,8 +176,23 @@
     color:var(--slate);
     margin-bottom:0.35rem;
   }
-  .status-card__body{ margin:0; color:var(--paper); }
-  .status-card__body strong{ color:var(--stone); font-weight:600; }
+  .status-card__teaser{ margin:0; color:var(--paper); }
+  .status-card__teaser strong{ color:var(--stone); font-weight:600; }
+  .status-card__more{
+    margin:0.2rem 0 0 0;
+    font-family:var(--mono);
+    font-size:0.66rem;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--slate);
+  }
+  .status-card__full{
+    margin:0.7rem 0 0 0;
+    padding-top:0.7rem;
+    border-top:1px solid var(--line);
+    color:var(--paper-dim);
+  }
+  .status-card__full[hidden]{ display:none; }
 
   /* Register-change divider before item 04 */
   .register-divider{ max-width:52rem; margin:0 auto; padding:0 1.5rem; }
@@ -185,7 +207,6 @@
     color:var(--slate);
   }
 
-  /* Lens demo, item 01 */
   .lens-demo{ padding-top:3.5rem; }
   .lens-demo__eyebrow{
     font-family:var(--mono);
@@ -444,10 +465,10 @@ const profile = {
       title:"Where this actually stands",
       intro:"Here's where each of these actually stands, across five GP practices and 74,000 patients on the Weymouth and Portland peninsula:",
       statusCards:[
-        { state:"build", label:"In build", name:"Afternotes", body:"currently being built by hand, one real anonymised clinical note at a time. A plain account of what happened in an appointment, written for the patient, not about them, designed to arrive on their phone before they reach the car park." },
-        { state:"build", label:"In build", name:"MyScribe", body:"publicly announced, still being built. The patient's own scribe, free forever, owned by the person it was written about, once the speech engineering behind it is in place." },
-        { state:"complete", label:"Complete, awaiting decision", name:"Neighbourhood Signals", body:"the space before demand. A pilot lasting ninety one days, already complete, reading anonymised signals across the neighbourhood before anyone actually needs to ask for help. Funding decision due late September." },
-        { state:"scheduled", label:"Scheduled", name:"HETT Show, ExCeL London, 29 September", body:"still ahead. Opening panel, Neighbourhood Health, From Framework to Function." }
+        { state:"build", label:"In build", name:"Afternotes", teaser:"Currently being built by hand, one real anonymised clinical note at a time.", full:"A plain account of what happened in an appointment, written for the patient, not about them, designed to arrive on their phone before they reach the car park." },
+        { state:"build", label:"In build", name:"MyScribe", teaser:"Publicly announced, still being built.", full:"The patient's own scribe, free forever, owned by the person it was written about, once the speech engineering behind it is in place." },
+        { state:"complete", label:"Complete, awaiting decision", name:"Neighbourhood Signals", teaser:"The space before demand, already complete.", full:"A pilot lasting ninety one days, reading anonymised signals across the neighbourhood before anyone actually needs to ask for help. Funding decision due late September." },
+        { state:"scheduled", label:"Scheduled", name:"HETT Show, ExCeL London, 29 September", teaser:"Still ahead.", full:"Opening panel, Neighbourhood Health, From Framework to Function." }
       ],
       outro:"Every one of these, not only Afternotes, is run through the same Lens described above before it reaches a person."
     },
@@ -472,7 +493,7 @@ const profile = {
       visual:"screenwall",
       visualCaption:"One of these goes out. That was the job.",
       paragraphsAfter:[
-        "Thirty years on I walked into NHS primary care and recognised the same discipline wearing different clothes. A patient record full of detail, and only some of it is what a person can actually carry home and use. Illich, Rawls, Weil and Aristotle, learned in the nineteen nineties, came back into use as working tools for exactly this kind of problem.",
+        "Twenty five years on I walked into NHS primary care and recognised the same discipline wearing different clothes. A patient record full of detail, and only some of it is what a person can actually carry home and use. Illich, Rawls, Weil and Aristotle, learned in the nineteen nineties, came back into use as working tools for exactly this kind of problem.",
         "I've been public, sometimes loudly, about who gets to hold power over public data, and about the difference between infrastructure built to serve a place and infrastructure built to extract value from it.",
         "Off the clock: twenty five years of Ashtanga practice, a Geese bassline currently being learned properly as a year long commitment, and a YouTube channel taking shape under the handle @marksphilosophy."
       ]
@@ -541,13 +562,19 @@ const statusDotClass = {
 };
 
 function buildStatusCards(list){
-  return `<ul class="status-cards">${list.map(item=>`
-    <li class="status-card">
-      <span class="status-card__dot ${statusDotClass[item.state]}" aria-hidden="true"></span>
-      <div>
-        <span class="status-card__label">${item.label}</span>
-        <p class="status-card__body"><strong>${item.name}</strong>: ${item.body}</p>
-      </div>
+  return `<ul class="status-cards">${list.map((item,i)=>`
+    <li>
+      <button class="status-card" data-status-index="${i}" aria-expanded="false">
+        <span class="status-card__row">
+          <span class="status-card__dot ${statusDotClass[item.state]}" aria-hidden="true"></span>
+          <span>
+            <span class="status-card__label">${item.label}</span>
+            <p class="status-card__teaser"><strong>${item.name}</strong>: ${item.teaser}</p>
+            <p class="status-card__more">Tap for more</p>
+          </span>
+        </span>
+        <p class="status-card__full" hidden>${item.full}</p>
+      </button>
     </li>`).join("")}</ul>`;
 }
 
@@ -593,6 +620,14 @@ main.innerHTML = buildLensDemo(profile.lensDemo)
   + buildContact(profile.contact);
 
 // Lens demo interaction
+document.querySelectorAll(".status-card").forEach(card=>{
+  card.addEventListener("click", ()=>{
+    const isOpen = card.getAttribute("aria-expanded") === "true";
+    card.setAttribute("aria-expanded", String(!isOpen));
+    card.querySelector(".status-card__full").hidden = isOpen;
+    card.querySelector(".status-card__more").textContent = isOpen ? "Tap for more" : "Tap to collapse";
+  });
+});
 const lensButton = document.getElementById("lensButton");
 const lensVoices = document.getElementById("lensVoices");
 const lensScope = document.getElementById("lensScope");
