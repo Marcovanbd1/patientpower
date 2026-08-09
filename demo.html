@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Afternote — Ask, Listen, Lens, Save · Mark Winterburn</title>
+<meta name="description" content="How Afternote works: Ask, Listen, Lens, Save — walked through step by step.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0b0d0f;
+    --panel:#14171a;
+    --panel-2:#181c1f;
+    --text:#e8e6df;
+    --text-dim:#9a9d9c;
+    --text-faint:#5f6362;
+    --tally:#e1362c;
+    --amber:#e8a33d;
+    --teal:#3fa9a0;
+    --hairline:#262a2d;
+    --mono: 'IBM Plex Mono', ui-monospace, monospace;
+    --serif: 'Source Serif 4', Georgia, serif;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--serif);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--teal);}
+  a:hover{color:var(--amber);}
+  a:focus-visible, button:focus-visible{
+    outline:2px solid var(--amber);
+    outline-offset:3px;
+  }
+
+  .bars{display:flex; width:100%; height:5px;}
+  .bars span{flex:1;}
+  .bars span:nth-child(1){background:#e8e6df;}
+  .bars span:nth-child(2){background:#e8a33d;}
+  .bars span:nth-child(3){background:#3fa9a0;}
+  .bars span:nth-child(4){background:#5f9e4c;}
+  .bars span:nth-child(5){background:#b060b8;}
+  .bars span:nth-child(6){background:#e1362c;}
+  .bars span:nth-child(7){background:#2a5fa8;}
+
+  .wrap{max-width:640px; margin:0 auto; padding:0 24px;}
+
+  header.slate{padding:40px 0 32px;}
+  .back{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--text-faint);
+    text-decoration:none;
+    margin-bottom:22px;
+  }
+  .back:hover{color:var(--amber);}
+
+  .ident{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-family:var(--mono);
+    font-size:12px;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--text-dim);
+  }
+  .tally{
+    width:8px;height:8px;border-radius:50%;
+    background:var(--tally);
+    box-shadow:0 0 6px 1px rgba(225,54,44,0.7);
+    animation:pulse 2.6s ease-in-out infinite;
+    flex-shrink:0;
+  }
+  @media (prefers-reduced-motion: reduce){ .tally{animation:none;} }
+  @keyframes pulse{0%,100%{opacity:1;} 50%{opacity:0.45;}}
+  .timecode{margin-left:auto; color:var(--text-faint);}
+
+  h1.headline{
+    font-family:var(--mono);
+    font-weight:600;
+    font-size:clamp(26px, 7vw, 38px);
+    letter-spacing:0.02em;
+    margin:18px 0 12px;
+    line-height:1.2;
+  }
+  h1.headline .dot{color:var(--amber); margin:0 2px;}
+
+  .pivot{
+    font-family:var(--serif);
+    font-size:17px;
+    color:var(--text-dim);
+    max-width:50ch;
+  }
+
+  .cue{
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--amber);
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:18px;
+  }
+  .cue::before{content:""; width:20px;height:1px; background:var(--amber); opacity:0.6;}
+
+  .reel{display:flex; flex-direction:column;}
+  .clip{
+    padding:36px 0;
+    border-top:1px solid var(--hairline);
+  }
+  .clip-head{
+    display:flex;
+    align-items:baseline;
+    gap:12px;
+    margin-bottom:16px;
+  }
+  .clip-num{
+    font-family:var(--mono);
+    font-size:13px;
+    color:var(--text-faint);
+    margin-right:2px;
+  }
+  .clip-title{
+    font-family:var(--mono);
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    font-size:14px;
+    font-weight:600;
+    color:var(--teal);
+  }
+  .clip-desc{
+    font-size:16px;
+    color:var(--text-dim);
+    margin:0 0 18px;
+    max-width:52ch;
+  }
+
+  .monitor{
+    position:relative;
+    border:1px solid var(--hairline);
+    background:var(--panel);
+    padding:18px 16px;
+  }
+  .monitor .rec{
+    display:flex;
+    align-items:center;
+    gap:6px;
+    font-family:var(--mono);
+    font-size:10.5px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--text-faint);
+    margin-bottom:14px;
+  }
+  .monitor .rec .dot{
+    width:6px;height:6px;border-radius:50%;
+    background:var(--tally);
+    box-shadow:0 0 4px 1px rgba(225,54,44,0.7);
+    animation:pulse 2.6s ease-in-out infinite;
+  }
+  @media (prefers-reduced-motion: reduce){ .monitor .rec .dot{animation:none;} }
+
+  .quote{
+    font-family:var(--serif);
+    font-style:italic;
+    font-size:18px;
+    color:var(--text);
+    margin:0;
+  }
+
+  .wave{
+    display:flex;
+    align-items:flex-end;
+    gap:3px;
+    height:34px;
+    margin-bottom:6px;
+  }
+  .wave span{
+    flex:1;
+    background:var(--teal);
+    opacity:0.75;
+    border-radius:1px;
+  }
+
+  .voices{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+  }
+  .voice{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:space-between;
+    align-items:baseline;
+    column-gap:12px;
+    row-gap:2px;
+    font-family:var(--mono);
+    font-size:12.5px;
+    padding-bottom:8px;
+    border-bottom:1px solid var(--hairline);
+  }
+  .voice:last-child{border-bottom:none; padding-bottom:0;}
+  .voice .role{color:var(--text);}
+  .voice .reads{color:var(--text-faint); text-transform:uppercase; letter-spacing:0.06em; font-size:10.5px;}
+
+  .save-list{
+    list-style:none;
+    margin:0;
+    padding:0;
+    display:flex;
+    flex-direction:column;
+    gap:9px;
+  }
+  .save-list li{
+    font-size:15px;
+    color:var(--text-dim);
+    padding-left:16px;
+    position:relative;
+  }
+  .save-list li::before{
+    content:"—";
+    position:absolute;
+    left:0;
+    color:var(--amber);
+  }
+
+  .scope{
+    font-family:var(--mono);
+    font-size:11.5px;
+    color:var(--text-faint);
+    margin-top:16px;
+    letter-spacing:0.03em;
+  }
+
+  section.branch-section{
+    padding:44px 0;
+    border-top:1px solid var(--hairline);
+  }
+  .branch{display:flex; flex-direction:column; gap:2px;}
+  .branch-link{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:16px;
+    padding:18px 16px;
+    background:var(--panel);
+    border:1px solid var(--hairline);
+    text-decoration:none;
+    color:var(--text);
+    transition:border-color 0.15s ease, background 0.15s ease;
+  }
+  .branch-link:hover{border-color:var(--amber); background:var(--panel-2);}
+  .branch-link .label{
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--text-faint);
+    display:block;
+    margin-bottom:4px;
+  }
+  .branch-link .title{font-family:var(--serif); font-size:17px;}
+  .branch-link .arrow{font-family:var(--mono); color:var(--amber); font-size:18px;}
+
+  footer{
+    padding:40px 0 56px;
+    border-top:1px solid var(--hairline);
+    font-family:var(--mono);
+    font-size:11.5px;
+    color:var(--text-faint);
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:10px;
+  }
+  footer a{color:var(--text-faint);}
+  footer a:hover{color:var(--amber);}
+
+  @media (max-width:480px){
+    .wrap{padding:0 18px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="bars"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+
+<div class="wrap">
+
+  <header class="slate">
+    <a class="back" href="index.html">← Mark Winterburn</a>
+    <div class="ident">
+      <span class="tally" aria-hidden="true"></span>
+      <span>On air</span>
+      <span class="timecode">Portland, Dorset</span>
+    </div>
+    <h1 class="headline">Ask <span class="dot">·</span> Listen <span class="dot">·</span> Lens <span class="dot">·</span> Save</h1>
+    <p class="pivot">Four steps, walked through one at a time — how a conversation becomes an Afternote.</p>
+  </header>
+
+  <div class="reel">
+
+    <div class="clip">
+      <div class="clip-head">
+        <span class="clip-num">01</span>
+        <span class="clip-title">Ask</span>
+      </div>
+      <p class="clip-desc">Afternote asks permission to record, out loud, before anything runs.</p>
+      <div class="monitor">
+        <div class="rec"><span class="dot" aria-hidden="true"></span>Afternote asking</div>
+        <p class="quote">"Do you mind if I record this, just for my own records?"</p>
+      </div>
+    </div>
+
+    <div class="clip">
+      <div class="clip-head">
+        <span class="clip-num">02</span>
+        <span class="clip-title">Listen</span>
+      </div>
+      <p class="clip-desc">MyScribe captures the conversation as it happens, in the room, without anyone needing to type.</p>
+      <div class="monitor">
+        <div class="rec"><span class="dot" aria-hidden="true"></span>Captured by MyScribe</div>
+        <div class="wave" aria-hidden="true">
+          <span style="height:40%"></span><span style="height:70%"></span><span style="height:30%"></span>
+          <span style="height:85%"></span><span style="height:50%"></span><span style="height:65%"></span>
+          <span style="height:25%"></span><span style="height:55%"></span><span style="height:75%"></span>
+          <span style="height:35%"></span><span style="height:60%"></span><span style="height:45%"></span>
+        </div>
+        <div class="rec" style="margin:10px 0 0;">Today · 12 min consultation</div>
+      </div>
+    </div>
+
+    <div class="clip">
+      <div class="clip-head">
+        <span class="clip-num">03</span>
+        <span class="clip-title">Lens</span>
+      </div>
+      <p class="clip-desc">The CoLab Lens reads the conversation back through four professional voices before anything is kept — the people who know what will land, and do no harm.</p>
+      <div class="monitor">
+        <div class="rec"><span class="dot" aria-hidden="true"></span>Reviewed by your CoLab Lens</div>
+        <div class="voices">
+          <div class="voice"><span class="role">Nurse</span><span class="reads">Clinical accuracy</span></div>
+          <div class="voice"><span class="role">Social worker</span><span class="reads">Practical safety</span></div>
+          <div class="voice"><span class="role">Counselling psychologist</span><span class="reads">Emotional impact</span></div>
+          <div class="voice"><span class="role">Applied philosopher</span><span class="reads">Coherence and meaning</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="clip">
+      <div class="clip-head">
+        <span class="clip-num">04</span>
+        <span class="clip-title">Save</span>
+      </div>
+      <p class="clip-desc">What comes out is your Afternote — saved, and yours to revisit anytime.</p>
+      <div class="monitor">
+        <div class="rec"><span class="dot" aria-hidden="true"></span>Saved · Your Afternote</div>
+        <ul class="save-list">
+          <li>What just happened</li>
+          <li>What we agreed</li>
+          <li>What to watch out for</li>
+          <li>What to do next</li>
+        </ul>
+      </div>
+      <p class="scope">The same lens, every professional conversation — GP · Solicitor · Estate agent · Mental health assessment</p>
+    </div>
+
+  </div>
+
+  <section class="branch-section">
+    <div class="cue">Next</div>
+    <div class="branch">
+      <a class="branch-link" href="https://www.linkedin.com/in/mark-winterburn/" target="_blank" rel="noopener">
+        <span>
+          <span class="label">Connect</span>
+          <span class="title">Find me on LinkedIn</span>
+        </span>
+        <span class="arrow">→</span>
+      </a>
+      <a class="branch-link" href="mailto:hello@markwinterburn.uk">
+        <span>
+          <span class="label">Talk to me</span>
+          <span class="title">Commissioners, partners, press</span>
+        </span>
+        <span class="arrow">→</span>
+      </a>
+      <a class="branch-link" href="index.html">
+        <span>
+          <span class="label">Back</span>
+          <span class="title">Return to the front page</span>
+        </span>
+        <span class="arrow">→</span>
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    <span>Last rebuilt 09 Aug 2026</span>
+    <a href="https://www.linkedin.com/in/mark-winterburn/" target="_blank" rel="noopener">linkedin.com/in/mark-winterburn</a>
+  </footer>
+
+</div>
+
+</body>
+</html>
