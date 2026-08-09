@@ -311,7 +311,19 @@
     font-family:var(--mono);
     color:var(--amber);
     font-size:18px;
+    flex-shrink:0;
+    display:flex;
+    align-items:center;
   }
+  button.branch-link{
+    font:inherit;
+    cursor:pointer;
+    -webkit-appearance:none;
+    appearance:none;
+    width:100%;
+  }
+  .copy-icon svg{display:block; width:18px; height:18px;}
+  .copy-confirm{color:var(--teal);}
 
   footer{
     padding:40px 0 56px;
@@ -432,17 +444,19 @@
       <a class="branch-link" href="demo.html">
         <span>
           <span class="label">See it working</span>
-          <span class="title">Walk through Ask · Listen · Lens · Save</span>
+          <span class="title">Walk through demo: Ask &gt; Listen &gt; Lens &gt; Save</span>
         </span>
         <span class="arrow">→</span>
       </a>
-      <a class="branch-link" href="mailto:hello@markwinterburn.uk">
+      <button type="button" class="branch-link" id="talk-btn" onclick="copyEmail()">
         <span>
           <span class="label">Talk to me</span>
-          <span class="title">Commissioners, partners, press</span>
+          <span class="title" id="talk-title">hello@markwinterburn.uk</span>
         </span>
-        <span class="arrow">→</span>
-      </a>
+        <span class="arrow copy-icon" id="talk-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="1.5"></rect><path d="M5 15H4.5A1.5 1.5 0 0 1 3 13.5v-9A1.5 1.5 0 0 1 4.5 3h9A1.5 1.5 0 0 1 15 4.5V5"></path></svg>
+        </span>
+      </button>
     </div>
   </section>
 
@@ -452,6 +466,44 @@
   </footer>
 
 </div>
+
+<script>
+function copyEmail(){
+  var email = "hello@markwinterburn.uk";
+  var title = document.getElementById('talk-title');
+  var icon = document.getElementById('talk-icon');
+  var original = title.textContent;
+  var originalIcon = icon.innerHTML;
+
+  function showCopied(){
+    title.textContent = "Copied to clipboard";
+    title.classList.add('copy-confirm');
+    icon.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"></path></svg>';
+    setTimeout(function(){
+      title.textContent = original;
+      title.classList.remove('copy-confirm');
+      icon.innerHTML = originalIcon;
+    }, 1800);
+  }
+
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(email).then(showCopied).catch(function(){ fallbackCopy(email, showCopied); });
+  } else {
+    fallbackCopy(email, showCopied);
+  }
+}
+function fallbackCopy(text, cb){
+  var ta = document.createElement('textarea');
+  ta.value = text;
+  ta.style.position = 'fixed';
+  ta.style.opacity = '0';
+  document.body.appendChild(ta);
+  ta.select();
+  try { document.execCommand('copy'); } catch(e){}
+  document.body.removeChild(ta);
+  if(cb) cb();
+}
+</script>
 
 </body>
 </html>
