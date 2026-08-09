@@ -155,16 +155,13 @@
     letter-spacing:0.02em;
     margin:8px 0 18px;
     line-height:1.15;
+    word-break:normal;
+    overflow-wrap:break-word;
   }
-  h1.headline .step{
-    display:inline;
-  }
-  h1.headline .step::after{
-    content:"·";
+  h1.headline .dot{
     color:var(--amber);
-    margin:0 10px;
+    margin:0 2px;
   }
-  h1.headline .step:last-child::after{content:"";}
 
   .pivot{
     font-family:var(--serif);
@@ -354,9 +351,7 @@
       <span class="timecode">Portland, Dorset</span>
     </div>
     <div class="name">Mark Winterburn</div>
-    <h1 class="headline">
-      <span class="step">Ask</span><span class="step">Listen</span><span class="step">Lens</span><span class="step">Save</span>
-    </h1>
+    <h1 class="headline">Ask <span class="dot">·</span> Listen <span class="dot">·</span> Lens <span class="dot">·</span> Save</h1>
     <p class="pivot">If you've just watched that happen on a phone at HETT — this is what's behind it. If you've arrived some other way, welcome: same page either way.</p>
   </header>
 
