@@ -173,14 +173,10 @@
   .strip-cap:first-child{ text-align:left; }
   .strip-cap:last-child{ text-align:right; }
 
-  @media (max-width:480px){
-    .header-row{
-      flex-direction:column;
-      gap:14px;
-    }
-    .lens-strip{
-      width:100%;
-      height:56px;
+  @media (max-width:380px){
+    .strip-cap{
+      font-size:8px;
+      letter-spacing:0.06em;
     }
     .strip-caps{
       top:calc(50% + 12px);
@@ -240,6 +236,25 @@
     max-width:46ch;
   }
   .pivot strong{color:var(--text); font-weight:600;}
+
+  .scroll-cue{
+    margin-top:32px;
+  }
+  .scroll-arrow{
+    display:inline-block;
+    font-family:var(--mono);
+    font-size:18px;
+    color:var(--text-faint);
+    opacity:0.4;
+    animation:scrollBob 2.6s ease-in-out infinite;
+  }
+  @keyframes scrollBob{
+    0%,100%{ transform:translateY(0); opacity:0.3; }
+    50%{ transform:translateY(6px); opacity:0.65; }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .scroll-arrow{ animation:none; opacity:0.4; }
+  }
 
   .cue{
     font-family:var(--mono);
@@ -555,6 +570,9 @@
     <div class="name">Mark Winterburn</div>
     <h1 class="headline">Founder: CoLab Lens</h1>
     <p class="pivot"><strong>Built to be looked through</strong> — wherever a machine talks to a person, and it matters, the Lens sits between them.</p>
+    <div class="scroll-cue" aria-hidden="true">
+      <span class="scroll-arrow">↓</span>
+    </div>
   </header>
 
   <section id="moonshot">
@@ -692,6 +710,7 @@
   </section>
 
   <footer>
+    <span>This page is a scrollsite made by M.R.Winterburn</span>
     <span>Last rebuilt 11 Aug 2026</span>
     <a href="https://www.linkedin.com/in/mark-winterburn/" target="_blank" rel="noopener">linkedin.com/in/mark-winterburn</a>
   </footer>
