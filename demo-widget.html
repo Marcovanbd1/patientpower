@@ -213,6 +213,9 @@
     min-height:0;
     overflow:hidden;
     z-index:2;
+    touch-action: pan-y;
+    -webkit-user-select:none;
+    user-select:none;
   }
   .track{
     display:flex;
@@ -867,12 +870,14 @@
   viewport.addEventListener('pointermove', (e) => {
     if(!dragging) return;
     dragDeltaPx = e.clientX - dragStartX;
+    // once it's clearly a horizontal swipe, stop the browser treating it as a scroll attempt
+    if(Math.abs(dragDeltaPx) > 6 && e.cancelable) e.preventDefault();
     // resistance at the ends
     if((index === 0 && dragDeltaPx > 0) || (index === N-1 && dragDeltaPx < 0)){
       dragDeltaPx *= 0.35;
     }
     applyTransform(dragDeltaPx);
-  });
+  }, { passive: false });
 
   function endDrag(){
     if(!dragging) return;
