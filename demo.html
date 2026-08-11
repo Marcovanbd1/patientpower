@@ -3,8 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Afternote — Ask, Listen, Lens, Save · Mark Winterburn</title>
-<meta name="description" content="How Afternote works: Ask, Listen, Lens, Save — walked through step by step.">
+<title>Afternote — watch it happen · Mark Winterburn</title>
+<meta name="description" content="Every appointment ends the same way. Watch what happens after this one, from MyScribe, through the CoLab Lens, to your Afternote.">
+<meta property="og:title" content="Afternote — watch it happen">
+<meta property="og:description" content="Every appointment ends the same way. Watch what happens after this one, from MyScribe, through the CoLab Lens, to your Afternote.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://markwinterburn.uk/demo">
+<meta property="og:image" content="https://markwinterburn.uk/og/afternote-share.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Afternote — watch it happen">
+<meta name="twitter:description" content="Every appointment ends the same way. Watch what happens after this one.">
+<meta name="twitter:image" content="https://markwinterburn.uk/og/afternote-share.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
@@ -125,133 +136,31 @@
   }
   .cue::before{content:""; width:20px;height:1px; background:var(--amber); opacity:0.6;}
 
-  .reel{display:flex; flex-direction:column;}
-  .clip{
-    padding:36px 0;
-    border-top:1px solid var(--hairline);
-  }
-  .clip-head{
-    display:flex;
-    align-items:baseline;
-    gap:12px;
-    margin-bottom:16px;
-  }
-  .clip-num{
-    font-family:var(--mono);
-    font-size:13px;
-    color:var(--text-faint);
-    margin-right:2px;
-  }
-  .clip-title{
-    font-family:var(--mono);
-    text-transform:uppercase;
-    letter-spacing:0.08em;
-    font-size:14px;
-    font-weight:600;
-    color:var(--teal);
-  }
-  .clip-desc{
-    font-size:16px;
-    color:var(--text-dim);
-    margin:0 0 18px;
-    max-width:52ch;
-  }
-
-  .monitor{
+  /* ---------- embedded interactive widget ---------- */
+  .widget-section{ padding:8px 0 44px; }
+  .widget-frame{
     position:relative;
     border:1px solid var(--hairline);
-    background:var(--panel);
-    padding:18px 16px;
+    border-radius:18px;
+    overflow:hidden;
+    background:#ece7dc; /* matches the widget's own room background, avoids a flash before it paints */
   }
-  .monitor .rec{
-    display:flex;
-    align-items:center;
-    gap:6px;
+  .widget-frame iframe{
+    display:block;
+    width:100%;
+    height:760px;
+    border:0;
+  }
+  .widget-caption{
     font-family:var(--mono);
-    font-size:10.5px;
-    letter-spacing:0.08em;
-    text-transform:uppercase;
+    font-size:11px;
+    letter-spacing:0.06em;
     color:var(--text-faint);
-    margin-bottom:14px;
+    text-align:center;
+    margin-top:12px;
   }
-  .monitor .rec .dot{
-    width:6px;height:6px;border-radius:50%;
-    background:var(--tally);
-    box-shadow:0 0 4px 1px rgba(225,54,44,0.7);
-    animation:pulse 2.6s ease-in-out infinite;
-  }
-  @media (prefers-reduced-motion: reduce){ .monitor .rec .dot{animation:none;} }
-
-  .quote{
-    font-family:var(--serif);
-    font-style:italic;
-    font-size:18px;
-    color:var(--text);
-    margin:0;
-  }
-
-  .wave{
-    display:flex;
-    align-items:flex-end;
-    gap:3px;
-    height:34px;
-    margin-bottom:6px;
-  }
-  .wave span{
-    flex:1;
-    background:var(--teal);
-    opacity:0.75;
-    border-radius:1px;
-  }
-
-  .voices{
-    display:flex;
-    flex-direction:column;
-    gap:10px;
-  }
-  .voice{
-    display:flex;
-    flex-wrap:wrap;
-    justify-content:space-between;
-    align-items:baseline;
-    column-gap:12px;
-    row-gap:2px;
-    font-family:var(--mono);
-    font-size:12.5px;
-    padding-bottom:8px;
-    border-bottom:1px solid var(--hairline);
-  }
-  .voice:last-child{border-bottom:none; padding-bottom:0;}
-  .voice .role{color:var(--text);}
-  .voice .reads{color:var(--text-faint); text-transform:uppercase; letter-spacing:0.06em; font-size:10.5px;}
-
-  .save-list{
-    list-style:none;
-    margin:0;
-    padding:0;
-    display:flex;
-    flex-direction:column;
-    gap:9px;
-  }
-  .save-list li{
-    font-size:15px;
-    color:var(--text-dim);
-    padding-left:16px;
-    position:relative;
-  }
-  .save-list li::before{
-    content:"—";
-    position:absolute;
-    left:0;
-    color:var(--amber);
-  }
-
-  .scope{
-    font-family:var(--mono);
-    font-size:11.5px;
-    color:var(--text-faint);
-    margin-top:16px;
-    letter-spacing:0.03em;
+  @media (max-width:480px){
+    .widget-frame iframe{ height:700px; }
   }
 
   section.branch-section{
@@ -333,77 +242,20 @@
       <span class="timecode">Portland, Dorset</span>
     </div>
     <h1 class="headline">Ask <span class="dot">→</span> Listen <span class="dot">→</span> Lens <span class="dot">→</span> Save</h1>
-    <p class="pivot">Four steps, walked through one at a time — how a conversation becomes an Afternote.</p>
+    <p class="pivot">Every appointment ends the same way. Watch what happens after this one.</p>
   </header>
 
-  <div class="reel">
-
-    <div class="clip">
-      <div class="clip-head">
-        <span class="clip-num">01</span>
-        <span class="clip-title">Ask</span>
-      </div>
-      <p class="clip-desc">You ask, out loud, before anything runs. Your consent to receive it, their consent to be recorded — nothing happens without both.</p>
-      <div class="monitor">
-        <div class="rec"><span class="dot" aria-hidden="true"></span>You, asking</div>
-        <p class="quote">"Do you mind if I record this, just for my own records?"</p>
-      </div>
+  <section class="widget-section">
+    <div class="cue">Live</div>
+    <div class="widget-frame">
+      <iframe
+        src="demo-widget.html"
+        title="Afternote interactive demo: Ask, Listen, Lens, Save"
+        loading="lazy"
+      ></iframe>
     </div>
-
-    <div class="clip">
-      <div class="clip-head">
-        <span class="clip-num">02</span>
-        <span class="clip-title">Listen</span>
-      </div>
-      <p class="clip-desc">MyScribe captures the conversation as it happens, in the room, without anyone needing to type.</p>
-      <div class="monitor">
-        <div class="rec"><span class="dot" aria-hidden="true"></span>Captured by MyScribe</div>
-        <div class="wave" aria-hidden="true">
-          <span style="height:40%"></span><span style="height:70%"></span><span style="height:30%"></span>
-          <span style="height:85%"></span><span style="height:50%"></span><span style="height:65%"></span>
-          <span style="height:25%"></span><span style="height:55%"></span><span style="height:75%"></span>
-          <span style="height:35%"></span><span style="height:60%"></span><span style="height:45%"></span>
-        </div>
-        <div class="rec" style="margin:10px 0 0;">Today · 12 min consultation</div>
-      </div>
-    </div>
-
-    <div class="clip">
-      <div class="clip-head">
-        <span class="clip-num">03</span>
-        <span class="clip-title">Lens</span>
-      </div>
-      <p class="clip-desc">The CoLab Lens reads the conversation back through four professional voices before anything is kept — the people who know what will land, and do no harm.</p>
-      <div class="monitor">
-        <div class="rec"><span class="dot" aria-hidden="true"></span>Reviewed by your CoLab Lens</div>
-        <div class="voices">
-          <div class="voice"><span class="role">Nurse</span><span class="reads">Accuracy</span></div>
-          <div class="voice"><span class="role">Social worker</span><span class="reads">Practical safety</span></div>
-          <div class="voice"><span class="role">Counselling psychologist</span><span class="reads">Emotional impact</span></div>
-          <div class="voice"><span class="role">Applied philosopher</span><span class="reads">Coherence and meaning</span></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="clip">
-      <div class="clip-head">
-        <span class="clip-num">04</span>
-        <span class="clip-title">Save</span>
-      </div>
-      <p class="clip-desc">What comes out is your Afternote — saved, and yours to revisit anytime.</p>
-      <div class="monitor">
-        <div class="rec"><span class="dot" aria-hidden="true"></span>Saved · Your Afternote</div>
-        <ul class="save-list">
-          <li>What just happened</li>
-          <li>What we agreed</li>
-          <li>What to watch out for</li>
-          <li>What to do next</li>
-        </ul>
-      </div>
-      <p class="scope">The same lens, every professional conversation — GP · Solicitor · Estate agent · Mental health assessment</p>
-    </div>
-
-  </div>
+    <p class="widget-caption">Plays on its own — swipe, use the arrows, or tap a dot to take over.</p>
+  </section>
 
   <section class="branch-section">
     <div class="cue">Next</div>
@@ -435,7 +287,7 @@
   </section>
 
   <footer>
-    <span>Last rebuilt 09 Aug 2026</span>
+    <span>Last rebuilt 11 Aug 2026</span>
     <a href="https://www.linkedin.com/in/mark-winterburn/" target="_blank" rel="noopener">linkedin.com/in/mark-winterburn</a>
   </footer>
 
