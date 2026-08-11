@@ -37,7 +37,7 @@
   }
 
   *{box-sizing:border-box; -webkit-tap-highlight-color:transparent; user-select:none;}
-  html,body{height:100%;}
+  html,body{height:100%; overflow-x:hidden;}
 
   body{
     margin:0;
@@ -613,6 +613,14 @@
   @media (max-height: 700px){
     .stage{ gap:10px; }
     .hint{ display:none; }
+  }
+
+  /* the arrow buttons plus the phone can exceed a narrow screen's width,
+     which throws the whole row off-center — below ~380px, drop the arrows
+     and let swipe + the dots carry navigation instead */
+  @media (max-width: 380px){
+    .arrow-btn{ display:none; }
+    .phone-row{ justify-content:center; }
   }
 </style>
 </head>
