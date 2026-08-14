@@ -420,6 +420,75 @@
   .colab p{font-size:16px; color:var(--text-dim); margin:0 0 12px;}
   .colab strong{color:var(--text); font-weight:600;}
 
+  .product{
+    padding:22px 24px;
+    background:var(--panel);
+    border:1px solid var(--hairline);
+    border-left:3px solid var(--accent, var(--teal));
+  }
+  .product .plabel{
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--text-faint);
+    margin-bottom:6px;
+  }
+  .product .pname{
+    font-family:var(--serif);
+    font-weight:600;
+    font-size:22px;
+    color:var(--text);
+    margin:0 0 18px;
+  }
+  .spark{
+    display:flex;
+    flex-direction:column;
+  }
+  .spark-row{
+    display:flex;
+    gap:16px;
+    padding:14px 0;
+    border-top:1px solid var(--hairline);
+  }
+  .spark-row:first-child{border-top:none; padding-top:0;}
+  .spark-label{
+    font-family:var(--mono);
+    font-size:10.5px;
+    letter-spacing:0.09em;
+    text-transform:uppercase;
+    color:var(--accent, var(--teal));
+    width:82px;
+    flex-shrink:0;
+    padding-top:2px;
+  }
+  .spark-row p{
+    margin:0;
+    font-size:15.5px;
+    color:var(--text-dim);
+  }
+  .spark-row.pitch{border-top:1px solid var(--hairline);}
+  .spark-row.pitch p{color:var(--text); font-weight:500;}
+  .spark-row.pitch .spark-label{color:var(--text);}
+  .product .mini-dims{
+    display:flex;
+    flex-wrap:wrap;
+    gap:6px;
+    margin-top:10px;
+  }
+  .product .mini-dim{
+    font-family:var(--mono);
+    font-size:10.5px;
+    letter-spacing:0.03em;
+    padding:4px 8px;
+    border:1px solid var(--hairline);
+    color:var(--text-faint);
+  }
+  @media (max-width:420px){
+    .spark-row{flex-direction:column; gap:4px;}
+    .spark-label{width:auto;}
+  }
+
   .hett-card{
     display:block;
     border:1px solid var(--hairline);
@@ -604,18 +673,107 @@
     </div>
   </section>
 
-  <section id="lens">
-    <div class="cue">The Lens</div>
-    <div class="bio">
-      <p>Four disciplines. Five dimensions. A must pass for everything that leaves a machine and touches a human. The reassurance that someone checked, before it reached you.</p>
-      <p class="dim">The NHS is the hardest proving ground on earth. That's exactly where he started.</p>
+  <section id="products">
+    <div class="cue">Four things. Each one a product.</div>
+    <p class="pivot" style="margin-bottom:32px;">Built inside the NHS because it's the hardest proving ground there is. Every product below is built to the same design rule: nothing leaves until it's been through the Lens.</p>
+
+    <div class="product" style="--accent:var(--amber); margin-bottom:20px;">
+      <div class="plabel">Product 01</div>
+      <h3 class="pname">CoLab Lens</h3>
+      <div class="spark">
+        <div class="spark-row">
+          <span class="spark-label">The Thing</span>
+          <p>A licensable safety and quality-of-communication layer that sits between any machine output and the person receiving it.</p>
+        </div>
+        <div class="spark-row">
+          <span class="spark-label">The Action</span>
+          <p>Reads text back through four professional lenses — accuracy, practical safety, emotional impact, coherence and meaning — across five dimensions.</p>
+        </div>
+        <div class="spark-row">
+          <span class="spark-label">The Group</span>
+          <p>Any organisation whose systems talk to people who are tired, stressed, or overwhelmed — anywhere it matters.</p>
+        </div>
+        <div class="spark-row pitch">
+          <span class="spark-label">The Pitch</span>
+          <p>License the Lens. Put a checked, human-safe layer between your AI and the people it talks to.</p>
+        </div>
+      </div>
+      <div class="mini-dims">
+        <span class="mini-dim">Tone Gradient</span>
+        <span class="mini-dim">Disclosure Readiness</span>
+        <span class="mini-dim">Omission Topology</span>
+        <span class="mini-dim">Relational Load</span>
+        <span class="mini-dim">Temporal Pressure</span>
+      </div>
     </div>
-    <div class="dims">
-      <span class="dim">Tone Gradient</span>
-      <span class="dim">Disclosure Readiness</span>
-      <span class="dim">Omission Topology</span>
-      <span class="dim">Relational Load</span>
-      <span class="dim">Temporal Pressure</span>
+
+    <div class="product" style="--accent:var(--teal); margin-bottom:20px;">
+      <div class="plabel">Product 02</div>
+      <h3 class="pname">Afternote</h3>
+      <div class="spark">
+        <div class="spark-row">
+          <span class="spark-label">The Thing</span>
+          <p>A "what's next," sent to the person's phone before they leave the building.</p>
+        </div>
+        <div class="spark-row">
+          <span class="spark-label">The Action</span>
+          <p>Any appointment, in any setting, is turned into what happened, what was agreed, what to watch for, what to do next — landing on their phone before they've walked out the door.</p>
+        </div>
+        <div class="spark-row">
+          <span class="spark-label">The Group</span>
+          <p>Any service built on one-to-one appointments, in any setting — GP appointments, assessments, social care visits, difficult calls.</p>
+        </div>
+        <div class="spark-row pitch">
+          <span class="spark-label">The Pitch</span>
+          <p>Commission Afternote for your service.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="product" style="--accent:var(--lens-blue); margin-bottom:20px;">
+      <div class="plabel">Product 03</div>
+      <h3 class="pname">MyScribe</h3>
+      <div class="spark">
+        <div class="spark-row">
+          <span class="spark-label">The Thing</span>
+          <p>An app. The listening engine underneath Afternote, in the person's own pocket.</p>
+        </div>
+        <div class="spark-row">
+          <span class="spark-label">The Action</span>
+          <p>Captures a conversation as it happens, in the room, without anyone typing — always person-triggered, and purely extractive: nothing is added that wasn't actually said.</p>
+        </div>
+        <div class="spark-row">
+          <span class="spark-label">The Group</span>
+          <p>Anyone walking into an appointment who wants their own record of it. They download it — no service has to switch anything on for them.</p>
+        </div>
+        <div class="spark-row pitch">
+          <span class="spark-label">The Pitch</span>
+          <p>Download MyScribe. We're hoping to demo it live at HETT 2026, 29–30 September.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="product" style="--accent:#5f9e4c;">
+      <div class="plabel">Product 04</div>
+      <h3 class="pname">Neighbourhood Signals</h3>
+      <div class="spark">
+        <div class="spark-row">
+          <span class="spark-label">The Thing</span>
+          <p>The Lens, applied at the level of a whole community instead of one conversation.</p>
+        </div>
+        <div class="spark-row">
+          <span class="spark-label">The Action</span>
+          <p>Listens to what a neighbourhood is already saying in public channels and turns it into qualitative signal — open, public, no actions or recommendations attached.</p>
+        </div>
+        <div class="spark-row">
+          <span class="spark-label">The Group</span>
+          <p>ICBs, PCNs, and local authorities who want to know what's coming before it turns into demand.</p>
+        </div>
+        <div class="spark-row pitch">
+          <span class="spark-label">The Pitch</span>
+          <p>Commission a Neighbourhood Signals pilot for your patch.</p>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -642,44 +800,6 @@
       <p>Digital and Transformation Lead across five GP practices and 74,000 patients on the Isle of Portland and in Weymouth — and, before that, over twenty years as a Playout Director for the BBC, Channel 4, ITV and BT Sport, sending live news and sport out across a curved wall of a hundred screens.</p>
       <p class="dim">Different control rooms, same job: separating the signal from the noise.</p>
     </div>
-  </section>
-
-  <section id="proof">
-    <div class="cue">Proof of concept: Afternote</div>
-    <div class="bio">
-      <p>Afternote is the Lens at work inside a single conversation — a GP appointment, an assessment, a difficult call. It's your recording, made on your own phone, run through the Lens before anything is kept, and yours to keep afterwards.</p>
-    </div>
-    <div class="steps">
-      <div class="step-row">
-        <span class="step-num">01</span>
-        <div class="step-body">
-          <h3>Ask</h3>
-          <p>You ask, out loud, before anything runs. Your consent to receive it, their consent to be recorded — both, every time.</p>
-        </div>
-      </div>
-      <div class="step-row">
-        <span class="step-num">02</span>
-        <div class="step-body">
-          <h3>Listen</h3>
-          <p>MyScribe captures the conversation as it happens, in the room, without anyone needing to type.</p>
-        </div>
-      </div>
-      <div class="step-row">
-        <span class="step-num">03</span>
-        <div class="step-body">
-          <h3>Lens</h3>
-          <p>The CoLab Lens reads it back through four professional voices — accuracy, practical safety, emotional impact, and coherence and meaning.</p>
-        </div>
-      </div>
-      <div class="step-row">
-        <span class="step-num">04</span>
-        <div class="step-body">
-          <h3>Save</h3>
-          <p>What comes out is your Afternote — what happened, what was agreed, what to watch for, what to do next.</p>
-        </div>
-      </div>
-    </div>
-    <p class="aside">Also proving the Lens: <a href="https://neighbourhoodsignals.uk" target="_blank" rel="noopener">Neighbourhood Signals</a>, listening at the level of a whole community rather than one conversation at a time.</p>
   </section>
 
   <section id="colab">
