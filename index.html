@@ -489,6 +489,43 @@
     .spark-label{width:auto;}
   }
 
+  .proof-lead{
+    font-family:var(--mono);
+    font-size:12px;
+    letter-spacing:0.06em;
+    color:var(--text-faint);
+    margin:32px 0 4px;
+  }
+  .proof-strip{
+    margin-top:8px;
+  }
+  .proof-row{
+    display:flex;
+    gap:16px;
+    padding:16px 0;
+    border-top:1px solid var(--hairline);
+  }
+  .proof-row:first-child{border-top:none;}
+  .proof-name{
+    font-family:var(--mono);
+    font-size:12px;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--text-dim);
+    width:150px;
+    flex-shrink:0;
+    padding-top:2px;
+  }
+  .proof-row p{
+    margin:0;
+    font-size:15px;
+    color:var(--text-dim);
+  }
+  @media (max-width:420px){
+    .proof-row{flex-direction:column; gap:4px;}
+    .proof-name{width:auto;}
+  }
+
   .hett-card{
     display:block;
     border:1px solid var(--hairline);
@@ -671,15 +708,16 @@
       <p class="statement">Solve machine to human communication.</p>
       <p class="sub">A standard. Everywhere a system speaks to a person and it matters.</p>
       <p class="sub" style="margin-top:10px;">Solved means this. Every line a machine sends a person has been read through the Lens first, and traces back to something real. Everywhere it matters, as standard, the way a broadcast doesn't go to air until it's passed through the gallery.</p>
+      <p class="sub" style="margin-top:10px;">That's not procedure for its own sake. If someone's about to be told something that matters, the least a machine owes them is a version that does no extra harm on the way there — trauma-informed in practice, not just in principle.</p>
     </div>
   </section>
 
   <section id="products">
-    <div class="cue">Four things. One rule.</div>
-    <p class="pivot" style="margin-bottom:32px;">Built inside the NHS because it's the hardest proving ground there is. Nothing below leaves until it's been through the Lens.</p>
+    <div class="cue">One rule, proven three ways</div>
+    <p class="pivot" style="margin-bottom:32px;">Built inside the NHS because it's the hardest proving ground there is. Nothing reaches a patient until it's been through the Lens.</p>
 
-    <div class="product" style="--accent:var(--amber); margin-bottom:20px;">
-      <div class="plabel">Product 01</div>
+    <div class="product" style="--accent:var(--amber);">
+      <div class="plabel">The rule</div>
       <h3 class="pname">CoLab Lens</h3>
       <div class="spark">
         <div class="spark-row">
@@ -700,48 +738,19 @@
       </div>
     </div>
 
-    <div class="product" style="--accent:var(--teal); margin-bottom:20px;">
-      <div class="plabel">Product 02</div>
-      <h3 class="pname">Afternote</h3>
-      <div class="spark">
-        <div class="spark-row">
-          <span class="spark-label">The Thing</span>
-          <p>A "what's next," sent to the person's phone before they leave the building — every line traceable back to something that was actually said.</p>
-        </div>
-        <div class="spark-row pitch">
-          <span class="spark-label">The Pitch</span>
-          <p>Commission Afternote for your service.</p>
-        </div>
+    <p class="proof-lead">Already running, at three different scales</p>
+    <div class="proof-strip">
+      <div class="proof-row">
+        <span class="proof-name">Afternote</span>
+        <p>What's next, sent to a patient's phone before they leave the building — every line traced back through the Lens to something that was actually said.</p>
       </div>
-    </div>
-
-    <div class="product" style="--accent:var(--lens-blue); margin-bottom:20px;">
-      <div class="plabel">Product 03</div>
-      <h3 class="pname">MyScribe</h3>
-      <div class="spark">
-        <div class="spark-row">
-          <span class="spark-label">The Thing</span>
-          <p>An app. The listening engine underneath Afternote, in the person's own pocket — always person-triggered, always traceable back to the conversation itself.</p>
-        </div>
-        <div class="spark-row pitch">
-          <span class="spark-label">The Pitch</span>
-          <p>Download MyScribe. We're hoping to demo it live at HETT 2026, 29–30 September.</p>
-        </div>
+      <div class="proof-row">
+        <span class="proof-name">MyScribe</span>
+        <p>The listening engine underneath Afternote, in the patient's own pocket — always person-triggered, always Lens-checked before it's saved.</p>
       </div>
-    </div>
-
-    <div class="product" style="--accent:#5f9e4c;">
-      <div class="plabel">Product 04</div>
-      <h3 class="pname">Neighbourhood Signals</h3>
-      <div class="spark">
-        <div class="spark-row">
-          <span class="spark-label">The Thing</span>
-          <p>The Lens, applied at the level of a whole community instead of one conversation — live and running on the Isle of Portland and in Weymouth, open, public, no actions or recommendations attached.</p>
-        </div>
-        <div class="spark-row pitch">
-          <span class="spark-label">The Pitch</span>
-          <p>See the live Neighbourhood Brief, or commission a Neighbourhood Signals pilot for your patch.</p>
-        </div>
+      <div class="proof-row">
+        <span class="proof-name">Neighbourhood Signals</span>
+        <p>The Lens applied to a whole community instead of one conversation — live on the Isle of Portland and in Weymouth.</p>
       </div>
     </div>
   </section>
@@ -792,7 +801,7 @@
       <a class="branch-link" href="/demo">
         <span>
           <span class="label">See it working</span>
-          <span class="title">Walk through demo: Ask &gt; Listen &gt; Lens &gt; Save</span>
+          <span class="title">Watch the Lens do this: Ask &gt; Listen &gt; Lens &gt; Save</span>
         </span>
         <span class="arrow">→</span>
       </a>
@@ -821,7 +830,7 @@
 
   <footer>
     <span>This page is a scrollsite made by M.R.Winterburn</span>
-    <span>Last rebuilt 11 Aug 2026</span>
+    <span>Last rebuilt 31 Aug 2026</span>
     <a href="https://www.linkedin.com/in/mark-winterburn/" target="_blank" rel="noopener">linkedin.com/in/mark-winterburn</a>
   </footer>
 
