@@ -350,202 +350,41 @@
   }
   .bio p.dim{color:var(--text-dim);}
 
-  .dims{
-    display:flex;
-    flex-wrap:wrap;
-    gap:8px;
-    margin:20px 0 0;
-  }
-  .dim{
-    font-family:var(--mono);
-    font-size:11.5px;
-    letter-spacing:0.04em;
-    padding:6px 10px;
-    border:1px solid var(--hairline);
-    color:var(--teal);
-    background:var(--panel);
-  }
-
-  .questions{
-    list-style:none;
-    margin:0;
-    padding:0;
-  }
-  .questions li{
-    font-family:var(--serif);
-    font-style:italic;
-    font-size:18px;
-    color:var(--text);
-    padding:16px 0;
-    border-top:1px solid var(--hairline);
-  }
-  .questions li:first-child{border-top:none; padding-top:0;}
-
-  .steps{
-    display:flex;
-    flex-direction:column;
-    gap:0;
-    margin-top:8px;
-  }
-  .step-row{
-    display:flex;
-    gap:18px;
-    padding:18px 0;
-    border-top:1px solid var(--hairline);
-  }
-  .step-row:first-child{border-top:none;}
-  .step-num{
-    font-family:var(--mono);
-    font-size:13px;
-    color:var(--text-faint);
-    padding-top:2px;
-    flex-shrink:0;
-    width:24px;
-  }
-  .step-body h3{
-    font-family:var(--mono);
-    text-transform:uppercase;
-    letter-spacing:0.08em;
-    font-size:13px;
-    font-weight:600;
-    margin:0 0 6px;
-    color:var(--teal);
-  }
-  .step-body p{
-    margin:0;
-    font-size:16px;
-    color:var(--text-dim);
-  }
-
   .colab p{font-size:16px; color:var(--text-dim); margin:0 0 12px;}
   .colab strong{color:var(--text); font-weight:600;}
 
-  .product{
-    padding:22px 24px;
+  .products{
+    display:flex;
+    flex-direction:column;
+    gap:2px;
+  }
+  .pcard{
+    display:flex;
+    gap:16px;
+    padding:18px 20px;
     background:var(--panel);
     border:1px solid var(--hairline);
     border-left:3px solid var(--accent, var(--teal));
   }
-  .product .plabel{
+  .pcard .pname{
     font-family:var(--mono);
     font-size:11px;
-    letter-spacing:0.14em;
-    text-transform:uppercase;
-    color:var(--text-faint);
-    margin-bottom:6px;
-  }
-  .product .pname{
-    font-family:var(--serif);
-    font-weight:600;
-    font-size:22px;
-    color:var(--text);
-    margin:0 0 18px;
-  }
-  .spark{
-    display:flex;
-    flex-direction:column;
-  }
-  .spark-row{
-    display:flex;
-    gap:16px;
-    padding:14px 0;
-    border-top:1px solid var(--hairline);
-  }
-  .spark-row:first-child{border-top:none; padding-top:0;}
-  .spark-label{
-    font-family:var(--mono);
-    font-size:10.5px;
-    letter-spacing:0.09em;
+    letter-spacing:0.1em;
     text-transform:uppercase;
     color:var(--accent, var(--teal));
-    width:82px;
+    width:130px;
     flex-shrink:0;
     padding-top:2px;
   }
-  .spark-row p{
+  .pcard p{
     margin:0;
-    font-size:15.5px;
-    color:var(--text-dim);
-  }
-  .spark-row.pitch{border-top:1px solid var(--hairline);}
-  .spark-row.pitch p{color:var(--text); font-weight:500;}
-  .spark-row.pitch .spark-label{color:var(--text);}
-  .product .mini-dims{
-    display:flex;
-    flex-wrap:wrap;
-    gap:6px;
-    margin-top:10px;
-  }
-  .product .mini-dim{
-    font-family:var(--mono);
-    font-size:10.5px;
-    letter-spacing:0.03em;
-    padding:4px 8px;
-    border:1px solid var(--hairline);
-    color:var(--text-faint);
-  }
-  .product .mini-note{
-    font-family:var(--serif);
-    font-size:14.5px;
-    line-height:1.55;
-    color:var(--text-dim);
-    margin:14px 0 0;
-  }
-  @media (max-width:420px){
-    .spark-row{flex-direction:column; gap:4px;}
-    .spark-label{width:auto;}
-  }
-
-  .proof-lead{
-    font-family:var(--mono);
-    font-size:12px;
-    letter-spacing:0.06em;
-    color:var(--text-faint);
-    margin:32px 0 4px;
-  }
-  .proof-strip{
-    margin-top:8px;
-  }
-  .proof-row{
-    display:flex;
-    gap:16px;
-    padding:16px 0;
-    border-top:1px solid var(--hairline);
-  }
-  .proof-row:first-child{border-top:none;}
-  .proof-name{
-    font-family:var(--mono);
-    font-size:12px;
-    letter-spacing:0.06em;
-    text-transform:uppercase;
-    color:var(--text-dim);
-    width:150px;
-    flex-shrink:0;
-    padding-top:2px;
-  }
-  .proof-row p{
-    margin:0;
-    font-size:15px;
+    font-size:16px;
     color:var(--text-dim);
   }
   @media (max-width:420px){
-    .proof-row{flex-direction:column; gap:4px;}
-    .proof-name{width:auto;}
+    .pcard{flex-direction:column; gap:6px;}
+    .pcard .pname{width:auto;}
   }
-
-  .worked-example{
-    margin-top:28px;
-    padding-top:24px;
-    border-top:1px solid var(--hairline);
-  }
-  .worked-example p{
-    font-family:var(--serif);
-    font-size:15.5px;
-    line-height:1.6;
-    color:var(--text-dim);
-    margin:0 0 16px;
-  }
-  .worked-example p strong{color:var(--text); font-weight:600;}
 
   .hett-card{
     display:block;
@@ -727,76 +566,30 @@
     <div class="moonshot">
       <div class="label">Timecode: 2030</div>
       <p class="statement">Solve machine to human communication.</p>
-      <p class="sub">A standard. Everywhere a system speaks to a person and it matters.</p>
-      <p class="sub" style="margin-top:10px;">Solved means this. Every line a machine sends a person has been read through the Lens first, and traces back to something real. Everywhere it matters, as standard, the way a broadcast doesn't go to air until it's passed through the gallery.</p>
-      <p class="sub" style="margin-top:10px;">That's not procedure for its own sake. If someone's about to be told something that matters, the least a machine owes them is a version that does no extra harm on the way there — trauma-informed in practice, not just in principle.</p>
+      <p class="sub">A standard, everywhere a system speaks to a person and it matters.</p>
     </div>
   </section>
 
   <section id="products">
-    <div class="cue">One rule, proven three ways</div>
-    <p class="pivot" style="margin-bottom:32px;">Built inside the NHS because it's the hardest proving ground there is. Nothing reaches a patient until it's been through the Lens.</p>
-
-    <div class="product" style="--accent:var(--amber);">
-      <div class="plabel">The rule</div>
-      <h3 class="pname">CoLab Lens</h3>
-      <div class="spark">
-        <div class="spark-row">
-          <span class="spark-label">The Thing</span>
-          <p>A licensable safety and quality-of-communication layer that sits between capture and dispatch — the Patient Stream that turns a clinical record into something a person can safely read.</p>
-        </div>
-        <div class="spark-row pitch">
-          <span class="spark-label">The Pitch</span>
-          <p>License the Lens. Put a checked, human-safe layer between your AI and the people it talks to.</p>
-        </div>
+    <div class="cue">One rule, four ways</div>
+    <div class="products">
+      <div class="pcard" style="--accent:var(--amber);">
+        <span class="pname">CoLab Lens</span>
+        <p>The rule itself — a safety and communication layer that sits between a system and the person it's talking to.</p>
       </div>
-      <div class="mini-dims">
-        <span class="mini-dim">Tone Gradient</span>
-        <span class="mini-dim">Disclosure Readiness</span>
-        <span class="mini-dim">Omission Topology</span>
-        <span class="mini-dim">Relational Load</span>
-        <span class="mini-dim">Temporal Pressure</span>
+      <div class="pcard">
+        <span class="pname">MyScribe</span>
+        <p>Patient-triggered listening, on-device, always checked by the Lens before it's saved.</p>
       </div>
-      <p class="mini-note">An Afternote keeps the decision, not the record — the medication, the safety-netting, the one date that matters. Examination findings, diagnostic labels, and consultation admin stay in the clinical note, where they belong.</p>
-    </div>
-
-    <p class="proof-lead">Already running, at three different scales</p>
-    <div class="proof-strip">
-      <div class="proof-row">
-        <span class="proof-name">Afternote</span>
-        <p>What's next, sent to a patient's phone before they leave the building — one tick alongside Send Referral, Send Prescription, and Send Letter to Patient, and every line traced back through the Lens to something that was actually said.</p>
+      <div class="pcard">
+        <span class="pname">Afternote</span>
+        <p>What's next, sent to a patient's phone — traced back to what was actually said.</p>
       </div>
-      <div class="proof-row">
-        <span class="proof-name">MyScribe</span>
-        <p>The listening engine underneath Afternote, in the patient's own pocket — always person-triggered, always Lens-checked before it's saved.</p>
-      </div>
-      <div class="proof-row">
-        <span class="proof-name">Neighbourhood Signals</span>
-        <p>The Lens applied to a whole community instead of one conversation — live on the Isle of Portland and in Weymouth.</p>
+      <div class="pcard">
+        <span class="pname">Neighbourhood Signals</span>
+        <p>The Lens applied to a whole community. Live on the Isle of Portland and in Weymouth.</p>
       </div>
     </div>
-
-    <div class="worked-example">
-      <p>A patient with worsening breathing, flying to the Caribbean on Sunday. The clinical note has crackles, a diagnosis, and seven named destinations. The Afternote has three sentences and one decision point: <strong>Sunday</strong>.</p>
-      <a class="branch-link" href="https://what-is-an-after-note.netlify.app/" target="_blank" rel="noopener">
-        <span>
-          <span class="label">Worked example</span>
-          <span class="title">See what was left out, and why</span>
-        </span>
-        <span class="arrow">→</span>
-      </a>
-    </div>
-  </section>
-
-  <section id="questions">
-    <div class="cue">Questions Mark keeps asking</div>
-    <ul class="questions">
-      <li>What if support was ridiculously easy to reach?</li>
-      <li>What lives in the space before demand?</li>
-      <li>Why build for completeness when only utility travels?</li>
-      <li>What if the note belonged to the patient before they reached the car?</li>
-      <li>What does this look like everywhere, not just here?</li>
-    </ul>
   </section>
 
   <section id="bio">
@@ -808,7 +601,7 @@
       <span class="tag op">Opsimath</span>
     </div>
     <div class="bio">
-      <p>Digital and Transformation Lead across five GP practices and 74,000 patients on the Isle of Portland and in Weymouth — and, before that, over twenty years as a Playout Director for the BBC, Channel 4, ITV and BT Sport, sending live news and sport out across a curved wall of a hundred screens.</p>
+      <p>Digital and Transformation Lead across five GP practices and 74,000 patients on the Isle of Portland and in Weymouth — and, before that, over twenty years as a Playout Director for the BBC, Channel 4, ITV and BT Sport.</p>
       <p class="dim">Different control rooms, same job: separating the signal from the noise.</p>
     </div>
   </section>
@@ -816,8 +609,7 @@
   <section id="colab">
     <div class="cue">Built by</div>
     <div class="colab">
-      <p class="dim" style="font-style:italic;">The thinking is owned by the CIC. Where it goes to do that at scale is a different shape entirely.</p>
-      <p><strong>Neighbourhood CoLab CIC</strong> is four childhood friends from Weymouth and Portland — a nurse, a social worker, a counselling psychologist and an applied philosopher — putting well over a century of frontline experience into deciding what a machine is and isn't allowed to say about a conversation it just heard.</p>
+      <p><strong>Neighbourhood CoLab CIC</strong> — four childhood friends from Weymouth and Portland: a nurse, a social worker, a counselling psychologist and an applied philosopher.</p>
     </div>
   </section>
 
@@ -828,13 +620,6 @@
         <span>
           <span class="label">Connect</span>
           <span class="title">Find me on LinkedIn</span>
-        </span>
-        <span class="arrow">→</span>
-      </a>
-      <a class="branch-link" href="https://what-is-an-after-note.netlify.app/" target="_blank" rel="noopener">
-        <span>
-          <span class="label">See it working</span>
-          <span class="title">What was left out, and why — a real consultation, redacted line by line</span>
         </span>
         <span class="arrow">→</span>
       </a>
@@ -863,7 +648,7 @@
 
   <footer>
     <span>This page is a scrollsite made by M.R.Winterburn</span>
-    <span>Last rebuilt 1 Sep 2026</span>
+    <span>Last rebuilt 2 Sep 2026</span>
     <a href="https://www.linkedin.com/in/mark-winterburn/" target="_blank" rel="noopener">linkedin.com/in/mark-winterburn</a>
   </footer>
 
