@@ -92,12 +92,13 @@
 
   .cam{
     position:relative;
-    width:132px;
-    height:165px;
+    width:140px;
+    height:175px;
     aspect-ratio:4/5;
     flex-shrink:0;
-    border:1px solid var(--hairline);
-    background:var(--panel);
+    border-radius:8px;
+    overflow:hidden;
+    box-shadow:0 16px 28px rgba(0,0,0,0.5);
   }
   .cam img{
     display:block;
@@ -105,7 +106,7 @@
     height:100%;
     object-fit:cover;
     object-position:center 22%;
-    filter:saturate(0.9);
+    filter:saturate(0.95) contrast(1.03);
   }
   .cam .bracket{
     position:absolute;
@@ -434,16 +435,29 @@
     min-width:0;
   }
   .phone-mock{
+    position:relative;
     flex-shrink:0;
-    width:84px;
+    width:30vw;
+    min-width:96px;
+    max-width:150px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .phone-mock::before{
+    content:"";
+    position:absolute;
+    inset:-16% -22%;
+    background:radial-gradient(ellipse at 50% 42%, rgba(63,169,160,0.38), rgba(63,169,160,0) 68%);
+    z-index:0;
   }
   .phone-mock svg{
+    position:relative;
+    z-index:1;
     display:block;
     width:100%;
     height:auto;
-  }
-  @media (max-width:380px){
-    .phone-mock{ width:70px; }
+    filter:drop-shadow(0 20px 26px rgba(0,0,0,0.55)) drop-shadow(0 3px 5px rgba(0,0,0,0.4));
   }
 
   .stats{
@@ -624,11 +638,6 @@
     <div class="header-row">
       <div class="cam">
         <img src="f4f15a06-48f5-4d89-9ed3-e8fdb72ebfa5.jpg" alt="Mark Winterburn, on Portland">
-        <span class="tag-label"><span class="dot" aria-hidden="true"></span>Cam 1</span>
-        <span class="bracket tl" aria-hidden="true"></span>
-        <span class="bracket tr" aria-hidden="true"></span>
-        <span class="bracket bl" aria-hidden="true"></span>
-        <span class="bracket br" aria-hidden="true"></span>
       </div>
       <div class="phone-mock" aria-hidden="true">
         <svg viewBox="0 0 300 620" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="MyScribe app screen showing the prompt: do you mind if I record this, just to help me remember, with a tap to start button">
@@ -653,9 +662,7 @@
       </div>
     </div>
     <div class="ident">
-      <span class="tally" aria-hidden="true"></span>
-      <span>On air</span>
-      <span class="timecode">Portland, Dorset</span>
+      <span>Portland, Dorset</span>
     </div>
     <div class="name">Mark Winterburn</div>
     <h1 class="headline">Founder: MyScribe</h1>
