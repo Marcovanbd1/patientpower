@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mark Winterburn — Founder: CoLab Lens</title>
-<meta name="description" content="Mark Winterburn — Founder: CoLab Lens. Solving machine to human communication by 2030. NHS Primary Care, Neighbourhood Health, Applied Philosopher.">
+<title>Mark Winterburn — Founder: MyScribe</title>
+<meta name="description" content="Mark Winterburn — Founder: MyScribe. Every conversation that matters. NHS Primary Care, Neighbourhood Health, Applied Philosopher.">
 
 <!-- Open Graph / LinkedIn preview card -->
 <meta property="og:type" content="profile">
 <meta property="og:site_name" content="markwinterburn.uk">
-<meta property="og:title" content="Mark Winterburn — Founder: CoLab Lens">
-<meta property="og:description" content="Solving machine to human communication by 2030. Built inside the NHS, proven at HETT 2026.">
+<meta property="og:title" content="Mark Winterburn — Founder: MyScribe">
+<meta property="og:description" content="Every conversation that matters. Built inside the NHS, proven at HETT 2026.">
 <meta property="og:url" content="https://markwinterburn.uk/">
 <meta property="og:image" content="https://markwinterburn.uk/og-card.jpg">
 <meta property="og:image:width" content="1200">
@@ -18,8 +18,8 @@
 
 <!-- Twitter/X card (falls back to OG tags above if omitted, but explicit is safer) -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Mark Winterburn — Founder: CoLab Lens">
-<meta name="twitter:description" content="Solving machine to human communication by 2030. Built inside the NHS, proven at HETT 2026.">
+<meta name="twitter:title" content="Mark Winterburn — Founder: MyScribe">
+<meta name="twitter:description" content="Every conversation that matters. Built inside the NHS, proven at HETT 2026.">
 <meta name="twitter:image" content="https://markwinterburn.uk/og-card.jpg">
 
 <link rel="canonical" href="https://markwinterburn.uk/">
@@ -413,6 +413,14 @@
     color:var(--text-faint);
     white-space:nowrap;
   }
+  .pcard.featured .tagline{
+    font-family:var(--serif);
+    font-style:italic;
+    font-weight:600;
+    font-size:16px;
+    color:var(--teal);
+    margin:-8px 0 0;
+  }
   .featured-body{
     display:flex;
     gap:20px;
@@ -427,17 +435,52 @@
   }
   .phone-mock{
     flex-shrink:0;
-    width:118px;
+    width:84px;
   }
   .phone-mock svg{
     display:block;
     width:100%;
     height:auto;
   }
-  @media (max-width:480px){
-    .featured-body{ flex-direction:column-reverse; align-items:center; }
-    .phone-mock{ width:150px; }
+  @media (max-width:380px){
+    .phone-mock{ width:70px; }
   }
+
+  .stats{
+    display:flex;
+    flex-direction:column;
+    gap:2px;
+  }
+  .stat{
+    padding:20px 20px 18px;
+    background:var(--panel);
+    border:1px solid var(--hairline);
+    border-left:3px solid var(--amber);
+  }
+  .stat-num{
+    font-family:var(--mono);
+    font-weight:600;
+    font-size:clamp(26px, 7vw, 34px);
+    color:var(--amber);
+    margin:0 0 6px;
+  }
+  .stat-desc{
+    font-size:16px;
+    color:var(--text);
+    margin:0 0 8px;
+  }
+  .stat-cite{
+    font-family:var(--mono);
+    font-size:11px;
+    color:var(--text-faint);
+    margin:0;
+  }
+  .also-building{
+    font-size:16px;
+    color:var(--text-dim);
+    margin:0;
+  }
+  .also-building strong{ color:var(--text); font-weight:600; }
 
   .hett-card{
     display:block;
@@ -587,18 +630,26 @@
         <span class="bracket bl" aria-hidden="true"></span>
         <span class="bracket br" aria-hidden="true"></span>
       </div>
-      <div class="lens-strip" aria-hidden="true">
-        <div class="strip-line"></div>
-        <div class="strip-dots">
-          <span class="strip-dot"></span>
-          <span class="strip-dot active"></span>
-          <span class="strip-dot"></span>
-        </div>
-        <div class="strip-caps">
-          <span class="strip-cap">Machine</span>
-          <span class="strip-cap active">Lens</span>
-          <span class="strip-cap">Human</span>
-        </div>
+      <div class="phone-mock" aria-hidden="true">
+        <svg viewBox="0 0 300 620" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="MyScribe app screen showing the prompt: do you mind if I record this, just to help me remember, with a tap to start button">
+          <rect x="4" y="4" width="292" height="612" rx="42" fill="#181c1f" stroke="#262a2d" stroke-width="2"></rect>
+          <rect x="18" y="18" width="264" height="584" rx="30" fill="#f2efe6"></rect>
+          <rect x="112" y="30" width="76" height="22" rx="11" fill="#181c1f"></rect>
+          <text x="46" y="42" font-family="IBM Plex Mono, monospace" font-size="11" fill="#3a3a36">9:41</text>
+          <text x="150" y="90" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" letter-spacing="1.5" fill="#8a8a82">MYSCRIBE</text>
+          <text font-family="Source Serif 4, Georgia, serif" font-style="italic" font-size="21" fill="#2a2a24">
+            <tspan x="150" y="180" text-anchor="middle">Do you mind if</tspan>
+            <tspan x="150" y="212" text-anchor="middle">I record this?</tspan>
+          </text>
+          <text x="150" y="244" text-anchor="middle" font-family="Source Serif 4, Georgia, serif" font-size="12" fill="#7a7a72">Just to help me remember.</text>
+          <circle cx="150" cy="340" r="48" fill="#e8a33d"></circle>
+          <path d="M150 320 a10 10 0 0 1 10 10 v14 a10 10 0 0 1 -20 0 v-14 a10 10 0 0 1 10 -10 z" fill="#181c1f"></path>
+          <path d="M138 344 a12 12 0 0 0 24 0" stroke="#181c1f" stroke-width="2.4" fill="none" stroke-linecap="round"></path>
+          <line x1="150" y1="356" x2="150" y2="364" stroke="#181c1f" stroke-width="2.4" stroke-linecap="round"></line>
+          <text x="150" y="410" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-weight="600" font-size="12" letter-spacing="0.5" fill="#2a2a24">TAP TO START</text>
+          <text x="150" y="540" text-anchor="middle" font-family="Source Serif 4, Georgia, serif" font-style="italic" font-size="11.5" fill="#9a9a92">This is just for you.</text>
+          <rect x="120" y="586" width="60" height="4" rx="2" fill="#2a2a24" opacity="0.6"></rect>
+        </svg>
       </div>
     </div>
     <div class="ident">
@@ -607,71 +658,66 @@
       <span class="timecode">Portland, Dorset</span>
     </div>
     <div class="name">Mark Winterburn</div>
-    <h1 class="headline">Founder: CoLab Lens</h1>
-    <p class="pivot"><strong>Built to be looked through</strong> — wherever a machine talks to a person, and it matters, the Lens sits between them.</p>
+    <h1 class="headline">Founder: MyScribe</h1>
+    <p class="pivot"><strong>"Do you mind if I record this?"</strong> — the question that opens every MyScribe conversation. Everything about trust follows from getting that right.</p>
     <div class="scroll-cue" aria-hidden="true">
       <span class="scroll-arrow">↓</span>
     </div>
   </header>
 
-  <section id="moonshot">
-    <div class="cue">The moonshot</div>
-    <div class="moonshot">
-      <div class="label">Timecode: 2030</div>
-      <p class="statement">Solve machine to human communication.</p>
-      <p class="sub">A standard, everywhere a system speaks to a person and it matters.</p>
+  <section id="problem">
+    <div class="cue">The problem</div>
+    <div class="bio">
+      <p>People are already recording the conversations that matter — often covertly. Smart glasses. Wearable recorders. AI chat apps.</p>
+      <p class="dim">Unsupervised. Unreviewed. Ready or not.</p>
     </div>
   </section>
 
-  <section id="myscribe">
-    <div class="cue">Right now</div>
-    <div class="pcard featured" style="--accent:var(--teal);">
-      <div class="featured-head">
-        <span class="pname">MyScribe</span>
-        <span class="status">In development · national AVT partner</span>
+  <section id="why-it-matters">
+    <div class="cue">Why it matters</div>
+    <div class="stats">
+      <div class="stat">
+        <p class="stat-num">40–80%</p>
+        <p class="stat-desc">of what's said in a medical appointment is forgotten immediately.</p>
+        <p class="stat-cite">Kessels, R.P.C. (2003), Journal of the Royal Society of Medicine</p>
       </div>
-      <div class="featured-body">
-        <p>Record, with consent asked plainly. Summarise, faithfully. Remember — without you having to do the remembering.</p>
-        <div class="phone-mock" aria-hidden="true">
-          <svg viewBox="0 0 300 620" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="MyScribe app screen showing the prompt: do you mind if I record this, just to help me remember, with a tap to start button">
-            <rect x="4" y="4" width="292" height="612" rx="42" fill="#181c1f" stroke="#262a2d" stroke-width="2"></rect>
-            <rect x="18" y="18" width="264" height="584" rx="30" fill="#f2efe6"></rect>
-            <rect x="112" y="30" width="76" height="22" rx="11" fill="#181c1f"></rect>
-            <text x="46" y="42" font-family="IBM Plex Mono, monospace" font-size="11" fill="#3a3a36">9:41</text>
-            <text x="150" y="90" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" letter-spacing="1.5" fill="#8a8a82">MYSCRIBE</text>
-            <text font-family="Source Serif 4, Georgia, serif" font-style="italic" font-size="21" fill="#2a2a24">
-              <tspan x="150" y="180" text-anchor="middle">Do you mind if</tspan>
-              <tspan x="150" y="212" text-anchor="middle">I record this?</tspan>
-            </text>
-            <text x="150" y="244" text-anchor="middle" font-family="Source Serif 4, Georgia, serif" font-size="12" fill="#7a7a72">Just to help me remember.</text>
-            <circle cx="150" cy="340" r="48" fill="#e8a33d"></circle>
-            <path d="M150 320 a10 10 0 0 1 10 10 v14 a10 10 0 0 1 -20 0 v-14 a10 10 0 0 1 10 -10 z" fill="#181c1f"></path>
-            <path d="M138 344 a12 12 0 0 0 24 0" stroke="#181c1f" stroke-width="2.4" fill="none" stroke-linecap="round"></path>
-            <line x1="150" y1="356" x2="150" y2="364" stroke="#181c1f" stroke-width="2.4" stroke-linecap="round"></line>
-            <text x="150" y="410" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-weight="600" font-size="12" letter-spacing="0.5" fill="#2a2a24">TAP TO START</text>
-            <text x="150" y="540" text-anchor="middle" font-family="Source Serif 4, Georgia, serif" font-style="italic" font-size="11.5" fill="#9a9a92">This is just for you.</text>
-            <rect x="120" y="586" width="60" height="4" rx="2" fill="#2a2a24" opacity="0.6"></rect>
-          </svg>
-        </div>
+      <div class="stat">
+        <p class="stat-num">1 in 5</p>
+        <p class="stat-desc">GP appointments are for non-medical needs — loneliness, housing, debt, relationships.</p>
+        <p class="stat-cite">Widely cited in NHS social prescribing research</p>
+      </div>
+      <div class="stat">
+        <p class="stat-num">15 million</p>
+        <p class="stat-desc">GP appointments are missed every year in England — costing the NHS over £216 million.</p>
+        <p class="stat-cite">NHS England, General Practice Appointments data</p>
       </div>
     </div>
   </section>
 
-  <section id="products">
-    <div class="cue">One rule, and where it shows up</div>
+  <section id="how-it-works">
+    <div class="cue">How it works</div>
     <div class="products">
-      <div class="pcard" style="--accent:var(--amber);">
-        <span class="pname">CoLab Lens</span>
-        <p>The rule underneath everything — a safety and communication layer that sits between a system and the person it's talking to.</p>
+      <div class="pcard" style="--accent:var(--teal);">
+        <span class="pname">Record</span>
+        <p>Start it like a conversation. Ask if it's alright, then let it run in the background.</p>
       </div>
-      <div class="pcard">
-        <span class="pname">Neighbourhood Signals</span>
-        <p>The Lens applied to a whole community. Live on the Isle of Portland and in Weymouth.</p>
+      <div class="pcard" style="--accent:var(--teal);">
+        <span class="pname">Summarise</span>
+        <p>MyScribe turns what was said into a clear, faithful summary — nothing added, nothing implied.</p>
       </div>
-      <div class="pcard">
-        <span class="pname">Afternote</span>
-        <p>The name for what's sent after any consultation. Anyone can offer one. Ask if it's Lens-certified.</p>
+      <div class="pcard" style="--accent:var(--teal);">
+        <span class="pname">Remember</span>
+        <p>It's yours to keep, revisit, and share, whenever you need it again.</p>
       </div>
+    </div>
+  </section>
+
+  <section id="trust">
+    <div class="cue">The line we hold</div>
+    <div class="moonshot" style="border-left-color:var(--teal);">
+      <div class="label">No interpretation</div>
+      <p class="statement">A record. Not an interpretation.</p>
+      <p class="sub">MyScribe tells you what was said — never what it means, or what to do next.</p>
     </div>
   </section>
 
@@ -684,6 +730,7 @@
       <span class="tag op">Opsimath</span>
     </div>
     <div class="bio">
+      <p>We're starting with the hardest conversations. A health appointment carries more weight than almost any other conversation people have — if MyScribe can be trusted here, it can be trusted anywhere.</p>
       <p>Digital and Transformation Lead across five GP practices and 74,000 patients on the Isle of Portland and in Weymouth — and, before that, over twenty years as a Playout Director for the BBC, Channel 4, ITV and BT Sport.</p>
       <p class="dim">Different control rooms, same job: separating the signal from the noise.</p>
     </div>
@@ -693,7 +740,53 @@
     <div class="cue">Built by</div>
     <div class="colab">
       <p><strong>Neighbourhood CoLab CIC</strong> — four childhood friends from Weymouth and Portland: a nurse, a social worker, a counselling psychologist and an applied philosopher.</p>
+      <p>That same group shapes MyScribe's sensibility — built for launch with a national AVT partner.</p>
     </div>
+  </section>
+
+  <section id="nhs-alignment">
+    <div class="cue">Aligned with where the NHS is already heading</div>
+    <div class="bio">
+      <p>The NHS 10 Year Health Plan sets three shifts — hospital to community, analogue to digital, sickness to prevention. MyScribe already points the same way.</p>
+    </div>
+    <div class="products">
+      <div class="pcard" style="--accent:var(--amber);">
+        <span class="pname">Patient power</span>
+        <p>The power stays with the patient, not the institution.</p>
+      </div>
+      <div class="pcard" style="--accent:var(--amber);">
+        <span class="pname">Neighbourhood health</span>
+        <p>Care that happens locally, not centralised in a hospital record.</p>
+      </div>
+      <div class="pcard" style="--accent:var(--amber);">
+        <span class="pname">AVT</span>
+        <p>Ambient voice technology is a named pillar of the shift to digital.</p>
+      </div>
+      <div class="pcard" style="--accent:var(--amber);">
+        <span class="pname">Care closer to home</span>
+        <p>MyScribe lives on the patient's own device, wherever they are.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="everywhere">
+    <div class="cue">Health is where we start, not where we stop</div>
+    <div class="bio">
+      <p>The same principle — a faithful record of a conversation that matters — applies just as much beyond the surgery.</p>
+    </div>
+    <div class="tags">
+      <span class="tag">Legal consultations</span>
+      <span class="tag">Job interviews</span>
+      <span class="tag">School meetings</span>
+      <span class="tag">Family conversations</span>
+      <span class="tag">Financial advice</span>
+      <span class="tag">Property viewings</span>
+    </div>
+  </section>
+
+  <section id="other-work">
+    <div class="cue">Also building</div>
+    <p class="also-building"><strong>CoLab Lens</strong>, <strong>Neighbourhood Signals</strong>, and <strong>Afternote</strong> — come find me and ask.</p>
   </section>
 
   <section id="connect">
@@ -731,7 +824,7 @@
 
   <footer>
     <span>This page is a scrollsite made by M.R.Winterburn</span>
-    <span>Last rebuilt 6 Sep 2026</span>
+    <span>Last rebuilt 12 Sep 2026</span>
     <a href="https://www.linkedin.com/in/mark-winterburn/" target="_blank" rel="noopener">linkedin.com/in/mark-winterburn</a>
   </footer>
 
