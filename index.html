@@ -1,438 +1,544 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-GB">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MyScribe — Every conversation that matters.</title>
-<meta name="description" content="MyScribe: a faithful record of the conversations that matter most. Built inside the NHS by Mark Winterburn.">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mark Winterburn | Building the gold standard in neighbourhood health and care</title>
+<meta name="description" content="I build inside the NHS at neighbourhood level, then invite health tech partners to help complete the build. MyScribe, Afternote, Neighbourhood Signals and the CoLab Lens.">
+<link rel="canonical" href="https://markwinterburn.uk/">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#101418">
 
-<!-- Open Graph / LinkedIn preview card -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="markwinterburn.uk">
-<meta property="og:title" content="MyScribe — Every conversation that matters.">
-<meta property="og:description" content="A faithful record of the conversations that matter most. Built inside the NHS, speaking at HETT 2026.">
 <meta property="og:url" content="https://markwinterburn.uk/">
+<meta property="og:title" content="Mark Winterburn | Building the gold standard in neighbourhood health and care">
+<meta property="og:description" content="Built inside the NHS, at neighbourhood level, for the hardest day. MyScribe, Afternote, Neighbourhood Signals and the CoLab Lens. Speaking at HETT 2026.">
 <meta property="og:image" content="https://markwinterburn.uk/og-card.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="MyScribe — Every conversation that matters.">
-<meta name="twitter:description" content="A faithful record of the conversations that matter most. Built inside the NHS, speaking at HETT 2026.">
+<meta name="twitter:title" content="Mark Winterburn | Building the gold standard in neighbourhood health and care">
+<meta name="twitter:description" content="Built inside the NHS, at neighbourhood level, for the hardest day. Speaking at HETT 2026.">
 <meta name="twitter:image" content="https://markwinterburn.uk/og-card.jpg">
 
-<link rel="canonical" href="https://markwinterburn.uk/">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<!-- Analytics: swap in your existing Plausible snippet if it differs from this one -->
+<script defer data-domain="markwinterburn.uk" src="https://plausible.io/js/script.js"></script>
+
 <style>
-  :root{
-    --bg:#ffffff;
-    --bg-soft:#f5f5f7;
-    --text:#1d1d1f;
-    --text-dim:#6e6e73;
-    --text-faint:#a1a1a6;
-    --hairline:#e6e6e9;
-    --teal:#2f7d75;
-    --amber:#b5790a;
-    --amber-bright:#e8a33d;
-    --mono:'IBM Plex Mono', ui-monospace, monospace;
-    --serif:'Source Serif 4', Georgia, serif;
-  }
-  *{box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  body{
-    margin:0;
-    background:var(--bg);
-    color:var(--text);
-    font-family:var(--serif);
-    line-height:1.6;
-    -webkit-font-smoothing:antialiased;
-  }
-  a{color:var(--teal);}
-  a:hover{color:var(--amber);}
-  a:focus-visible, button:focus-visible{
-    outline:2px solid var(--amber);
-    outline-offset:3px;
-  }
+:root{
+  --bg:#101418;
+  --gallery:#0b0f13;
+  --screen:#070a0d;
+  --bezel:#1a2027;
+  --line:#2a323c;
+  --paper:#ece7dc;
+  --muted:#9ba4ae;
+  --amber:#f2a33a;
+  --green:#4fd08a;
+  --serif:"Iowan Old Style","Palatino Linotype",Palatino,Charter,Georgia,serif;
+  --sans:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--bg);color:var(--paper);
+  font-family:var(--sans);font-size:1.0625rem;line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block}
+a{color:inherit}
+a:focus-visible,button:focus-visible{outline:2px solid var(--amber);outline-offset:3px;border-radius:4px}
+.wrap{width:100%;max-width:1120px;margin:0 auto;padding:0 1.5rem}
 
-  .wrap{
-    max-width:640px;
-    margin:0 auto;
-    padding:0 24px;
-  }
+/* Header */
+.top{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;padding:1.4rem 0;border-bottom:1px solid var(--line)}
+.mark{font-family:var(--serif);font-size:1.25rem;font-weight:600;text-decoration:none;letter-spacing:.01em}
+.mark small{display:block;font-family:var(--sans);font-size:.8rem;font-weight:400;color:var(--muted);letter-spacing:0}
+.topnav{display:flex;gap:1.4rem;font-size:.95rem}
+.topnav a{color:var(--muted);text-decoration:none}
+.topnav a:hover{color:var(--paper)}
 
-  .eyebrow{
-    font-family:var(--mono);
-    font-size:12px;
-    letter-spacing:0.14em;
-    text-transform:uppercase;
-    color:var(--text-faint);
-    margin:0 0 14px;
-  }
+/* Hero */
+.hero{padding:clamp(3rem,8vw,6rem) 0 clamp(2.5rem,6vw,4rem)}
+.hero h1{
+  text-wrap:balance;font-family:var(--serif);font-weight:600;
+  font-size:clamp(2.6rem,7.2vw,5.2rem);line-height:1.04;letter-spacing:-.015em;
+  margin:0 0 1.6rem;max-width:14em;
+}
+/* Hero layout with portrait monitor */
+.hero-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:1.6rem;grid-template-areas:"title" "photo" "rest"}
+.hero .hero-grid h1{grid-area:title;margin:0;max-width:none;font-size:clamp(2.6rem,6.4vw,4.5rem)}
+.hero-grid .portrait{grid-area:photo;margin:0;max-width:280px}
+.hero-grid .hero-rest{grid-area:rest}
+.portrait .screen{aspect-ratio:4/5;background:var(--paper)}
+.portrait .umd .name{white-space:nowrap;letter-spacing:.06em;font-size:.8rem}
+.portrait img{width:100%;height:100%;object-fit:cover;object-position:50% 50%;mix-blend-mode:multiply}
+@media (min-width:900px){
+  .hero-grid{grid-template-columns:minmax(0,1fr) 300px;column-gap:clamp(2rem,5vw,4.5rem);grid-template-areas:"title photo" "rest photo";align-items:start}
+  .hero-grid .portrait{max-width:none;margin-top:.6rem}
+}
+.lede{font-size:clamp(1.1rem,2.2vw,1.35rem);line-height:1.55;color:#d9d4c8;max-width:38em;margin:0 0 1.2rem}
+.gold{text-wrap:balance;font-family:var(--serif);font-size:clamp(1.25rem,2.6vw,1.65rem);line-height:1.35;margin:0 0 2rem;max-width:30em}
+.actions{display:flex;flex-wrap:wrap;gap:.8rem;margin-bottom:2.6rem}
+.btn{display:inline-block;padding:.85rem 1.5rem;border-radius:999px;font-weight:600;text-decoration:none;font-size:1rem;border:1px solid var(--paper)}
+.btn.primary{background:var(--paper);color:#12161b}
+.btn.primary:hover{background:#fff}
+.btn.ghost{background:transparent;color:var(--paper)}
+.btn.ghost:hover{background:rgba(236,231,220,.1)}
 
-  /* ---------- Product / hero ---------- */
-  .section-product{
-    padding:72px 0 40px;
-    text-align:center;
-  }
-  .product-headline{
-    font-family:var(--serif);
-    font-weight:600;
-    font-size:clamp(34px, 8vw, 56px);
-    line-height:1.12;
-    letter-spacing:-0.01em;
-    margin:0 0 20px;
-    color:var(--text);
-  }
-  .product-sub{
-    font-size:18px;
-    color:var(--text-dim);
-    max-width:38ch;
-    margin:0 auto;
-  }
-  .product-shot{
-    position:relative;
-    display:flex;
-    justify-content:center;
-    margin:48px 0 4px;
-  }
-  .product-shot .ground-shadow{
-    position:absolute;
-    bottom:-4px;
-    left:50%;
-    transform:translateX(-50%);
-    width:58%;
-    height:22px;
-    background:radial-gradient(ellipse at center, rgba(0,0,0,0.16), rgba(0,0,0,0) 72%);
-    filter:blur(3px);
-    z-index:0;
-  }
-  .product-shot svg{
-    position:relative;
-    z-index:1;
-    width:62vw;
-    max-width:260px;
-    height:auto;
-    filter:drop-shadow(0 22px 28px rgba(0,0,0,0.14)) drop-shadow(0 4px 8px rgba(0,0,0,0.08));
-  }
-  .product-caption{
-    font-family:var(--mono);
-    font-size:12px;
-    color:var(--text-faint);
-    margin:22px 0 0;
-    letter-spacing:0.02em;
-  }
+/* Source bus: jump buttons styled like a vision mixer row */
+.bus-label{font-size:.85rem;color:var(--muted);margin:0 0 .6rem}
+.bus{display:flex;flex-wrap:wrap;gap:.5rem;padding:0;margin:0;list-style:none}
+.bus a{
+  display:flex;align-items:center;gap:.6rem;padding:.7rem 1rem;
+  background:var(--bezel);border:1px solid var(--line);border-bottom:3px solid var(--line);
+  border-radius:6px;text-decoration:none;font-weight:600;font-size:.95rem;
+}
+.bus a:hover{background:#222a33}
+.bus a[data-s="build"]{border-bottom-color:var(--amber)}
+.bus a[data-s="live"]{border-bottom-color:var(--green)}
+.bus .dot{width:.6rem;height:.6rem;border-radius:50%;background:var(--amber)}
+.bus a[data-s="live"] .dot{background:var(--green)}
 
-  /* ---------- Who's behind this ---------- */
-  .section-who{
-    padding:44px 0;
-    border-top:1px solid var(--hairline);
-  }
-  .who-row{
-    display:flex;
-    align-items:flex-start;
-    gap:20px;
-  }
-  .who-row .cam{
-    flex-shrink:0;
-    width:88px;
-    height:110px;
-    border-radius:8px;
-    overflow:hidden;
-    box-shadow:0 10px 22px rgba(0,0,0,0.12);
-  }
-  .who-row .cam img{
-    display:block;
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    object-position:center 22%;
-  }
-  .who-text p{
-    margin:0 0 12px;
-    font-size:17px;
-    color:var(--text);
-  }
-  .who-text p.dim{
-    font-size:15px;
-    color:var(--text-dim);
-    margin:0;
-  }
-  @media (max-width:420px){
-    .who-row{ flex-direction:column; }
-  }
+.hett-chip{margin-top:2.4rem;display:inline-flex;gap:.7rem;align-items:center;font-size:.95rem;color:var(--muted);text-decoration:none;border-top:1px solid var(--line);padding-top:1.2rem}
+.hett-chip strong{color:var(--paper);font-weight:600}
 
-  /* ---------- Contact ---------- */
-  .section-contact{
-    padding:44px 0 56px;
-    border-top:1px solid var(--hairline);
-  }
-  .branch{
-    display:flex;
-    flex-direction:column;
-    gap:2px;
-    margin-bottom:16px;
-  }
-  .branch-link{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:16px;
-    padding:18px 18px;
-    background:var(--bg-soft);
-    border:1px solid var(--hairline);
-    text-decoration:none;
-    color:var(--text);
-    transition:border-color 0.15s ease, background 0.15s ease;
-  }
-  .branch-link:hover{
-    border-color:var(--amber-bright);
-  }
-  .branch-link .label{
-    font-family:var(--mono);
-    font-size:11px;
-    letter-spacing:0.1em;
-    text-transform:uppercase;
-    color:var(--text-faint);
-    display:block;
-    margin-bottom:4px;
-  }
-  .branch-link .title{
-    font-family:var(--serif);
-    font-size:17px;
-    color:var(--text);
-  }
-  .branch-link .arrow{
-    font-family:var(--mono);
-    color:var(--amber);
-    font-size:18px;
-    flex-shrink:0;
-    display:flex;
-    align-items:center;
-  }
-  button.branch-link{
-    font:inherit;
-    cursor:pointer;
-    -webkit-appearance:none;
-    appearance:none;
-    width:100%;
-  }
-  .copy-icon svg{display:block; width:18px; height:18px;}
-  .copy-confirm{color:var(--teal);}
+/* Sections */
+section{padding:clamp(3rem,7vw,5.5rem) 0}
+.kicker{font-size:.9rem;color:var(--muted);margin:0 0 .8rem}
+h2{text-wrap:balance;font-family:var(--serif);font-weight:600;font-size:clamp(1.9rem,4.4vw,3rem);line-height:1.12;letter-spacing:-.01em;margin:0 0 1rem;max-width:20em}
+.sub{color:#cfc9bd;max-width:40em;margin:0 0 2.4rem}
 
-  .hett-card{
-    display:block;
-    border:1px solid var(--hairline);
-    background:var(--bg-soft);
-    text-decoration:none;
-    overflow:hidden;
-    transition:border-color 0.15s ease;
-  }
-  .hett-card:hover{border-color:var(--amber-bright);}
-  .hett-card img{
-    display:block;
-    width:100%;
-    height:auto;
-  }
-  .hett-card .cap{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:16px;
-    padding:14px 16px;
-  }
-  .hett-card .cap .label{
-    font-family:var(--mono);
-    font-size:11px;
-    letter-spacing:0.1em;
-    text-transform:uppercase;
-    color:var(--text-faint);
-    display:block;
-    margin-bottom:4px;
-  }
-  .hett-card .cap .title{
-    font-family:var(--serif);
-    font-size:16px;
-    color:var(--text);
-  }
-  .hett-card .cap .arrow{
-    font-family:var(--mono);
-    color:var(--amber);
-    font-size:18px;
-    flex-shrink:0;
-  }
+/* How a build happens */
+.steps{list-style:none;counter-reset:s;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid var(--line)}
+.steps li{counter-increment:s;padding:1.4rem 1.4rem 0 0}
+.steps li::before{content:counter(s);display:block;font-family:var(--serif);font-size:2.6rem;line-height:1;color:var(--amber);margin-bottom:.8rem}
+.steps h3{font-family:var(--serif);font-size:1.25rem;margin:0 0 .4rem;line-height:1.25}
+.steps p{margin:0;color:var(--muted);font-size:.98rem}
 
-  .aside{
-    font-family:var(--serif);
-    font-style:italic;
-    font-size:15px;
-    color:var(--text-faint);
-    border-left:2px solid var(--hairline);
-    padding-left:14px;
-    margin-top:20px;
-  }
-  .aside a{color:var(--text-faint); text-decoration-color:var(--hairline);}
+/* Builds: multiviewer wall */
+.builds{background:var(--gallery);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.wall{display:grid;grid-template-columns:repeat(2,1fr);gap:1.25rem}
+.monitor{background:var(--bezel);border:1px solid var(--line);border-radius:12px;overflow:hidden;display:flex;flex-direction:column;scroll-margin-top:1.5rem}
+.umd{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:.65rem 1rem;background:#0d1116;border-bottom:1px solid var(--line)}
+.umd .name{display:flex;align-items:center;gap:.65rem;font-weight:700;font-size:.85rem;letter-spacing:.09em;text-transform:uppercase}
+.umd .status{font-size:.85rem;color:var(--muted);text-align:right}
+.tally{flex:none;width:.72rem;height:.72rem;border-radius:50%;background:var(--amber);box-shadow:0 0 0 3px rgba(242,163,58,.2)}
+.tally.green{background:var(--green);box-shadow:0 0 0 3px rgba(79,208,138,.2)}
+.tally.pulse{animation:tally 2.6s ease-in-out infinite}
+@keyframes tally{0%,100%{opacity:1}50%{opacity:.35}}
+.screen{aspect-ratio:16/9;background:var(--screen);border-bottom:1px solid var(--line)}
+.screen svg{width:100%;height:100%;display:block}
+.mbody{padding:1.3rem 1.5rem 1.5rem;display:flex;flex-direction:column;flex:1}
+.mbody h3{font-family:var(--serif);font-size:1.5rem;line-height:1.22;margin:0 0 .7rem;font-weight:600}
+.mbody p{margin:0 0 1rem;color:#d3cec2;font-size:1rem}
+.mbody .fine{font-size:.88rem;color:var(--muted)}
+.shifts-tags{display:flex;flex-wrap:wrap;gap:.4rem;margin:.2rem 0 1.1rem;padding:0;list-style:none}
+.shifts-tags li{font-size:.82rem;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:.15rem .7rem}
+.ask{margin-top:auto;font-weight:600;font-size:.98rem;text-decoration:underline;text-underline-offset:4px;text-decoration-color:var(--line);width:max-content}
+.ask:hover{text-decoration-color:var(--amber)}
 
-  footer{
-    padding:32px 0 48px;
-    border-top:1px solid var(--hairline);
-    font-family:var(--mono);
-    font-size:11.5px;
-    color:var(--text-faint);
-    display:flex;
-    justify-content:space-between;
-    flex-wrap:wrap;
-    gap:10px;
-  }
-  footer a{color:var(--text-faint);}
-  footer a:hover{color:var(--amber);}
+/* Lens section */
+.lens-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(2rem,5vw,4.5rem);align-items:start}
+.pull{font-family:var(--serif);font-size:clamp(1.4rem,3vw,2rem);line-height:1.3;border-left:3px solid var(--amber);padding-left:1.4rem;margin:0}
+.tri{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem;padding-top:2rem;border-top:1px solid var(--line)}
+.tri h3{font-family:var(--serif);font-size:1.2rem;margin:0 0 .35rem}
+.tri p{margin:0;color:var(--muted);font-size:.98rem}
 
-  @media (max-width:480px){
-    .wrap{padding:0 18px;}
-    .branch-link{flex-direction:row;}
-  }
+/* Three shifts */
+.shift-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
+.shift{border-top:2px solid var(--paper);padding-top:1.2rem}
+.shift h3{font-family:var(--serif);font-size:1.4rem;line-height:1.2;margin:0 0 1.1rem}
+.shift dl{margin:0}
+.shift dt{font-weight:700;margin-top:1rem}
+.shift dd{margin:.15rem 0 0;color:var(--muted);font-size:.98rem}
+
+/* HETT and bio */
+.people{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,4.5rem);align-items:start}
+.bio{display:grid;grid-template-columns:170px 1fr;gap:1.6rem;align-items:start}
+.bio img{width:170px;aspect-ratio:4/5;object-fit:cover;border-radius:8px;border:1px solid var(--line)}
+.bio p{margin:0 0 1rem;color:#d3cec2}
+.hett-card{display:block;text-decoration:none;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--bezel)}
+.hett-card:hover{border-color:var(--muted)}
+.hett-card div{padding:1.1rem 1.3rem 1.3rem}
+.hett-card strong{display:block;font-family:var(--serif);font-size:1.25rem;line-height:1.3;margin-bottom:.3rem}
+.hett-card span{color:var(--muted);font-size:.95rem}
+
+/* Contact */
+.contact{background:var(--gallery);border-top:1px solid var(--line)}
+.contact-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:clamp(2rem,5vw,4.5rem);align-items:start}
+.notify{background:var(--bezel);border:1px solid var(--line);border-radius:12px;padding:1.5rem}
+.notify h3{font-family:var(--serif);font-size:1.35rem;margin:0 0 .4rem}
+.notify p{margin:0 0 1.2rem;color:var(--muted);font-size:.95rem}
+
+footer{border-top:1px solid var(--line);padding:1.6rem 0 2.4rem;color:var(--muted);font-size:.9rem}
+footer .wrap{display:flex;flex-wrap:wrap;gap:.6rem 2rem;justify-content:space-between}
+
+@media (max-width:900px){
+  .wall{grid-template-columns:1fr}
+  .steps{grid-template-columns:repeat(2,1fr);row-gap:1.6rem}
+  .lens-grid,.people,.contact-grid{grid-template-columns:1fr}
+  .shift-grid,.tri{grid-template-columns:1fr}
+}
+@media (max-width:520px){
+  .wrap{padding:0 1.15rem}
+  .topnav{display:none}
+  .steps{grid-template-columns:1fr}
+  .bio{grid-template-columns:1fr}
+  .bio img{width:150px}
+  .bus a{flex:1 1 calc(50% - .5rem)}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .tally.pulse{animation:none}
+}
 </style>
-<!-- Privacy-friendly analytics by Plausible -->
-<script async src="https://plausible.io/js/pa-zKSxfIkTUTpFtGNyIhGJP.js"></script>
-<script>
-  window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
-  plausible.init()
-</script>
 </head>
 <body>
 
-<div class="wrap">
+<header class="wrap">
+  <div class="top">
+    <a class="mark" href="/">Mark Winterburn<small>Applied Philosopher, inside the NHS</small></a>
+    <nav class="topnav" aria-label="Page sections">
+      <a href="#builds">The builds</a>
+      <a href="#shifts">Ten Year Health Plan</a>
+      <a href="#contact">Talk to me</a>
+    </nav>
+  </div>
+</header>
 
-  <header class="section-product">
-    <p class="eyebrow">MyScribe</p>
-    <h1 class="product-headline">Every conversation<br>that matters.</h1>
-    <p class="product-sub">A faithful record of the conversations you don't want to lose — starting with the hardest ones, inside the NHS.</p>
+<main>
 
-    <div class="product-shot">
-      <div class="ground-shadow" aria-hidden="true"></div>
-      <svg viewBox="0 0 300 620" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="MyScribe app screen showing the prompt: do you mind if I record this, just to help me remember, with a tap to start button">
-        <defs>
-          <linearGradient id="rimLight" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#ffffff" stop-opacity="0.55"></stop>
-            <stop offset="30%" stop-color="#ffffff" stop-opacity="0.12"></stop>
-            <stop offset="55%" stop-color="#ffffff" stop-opacity="0"></stop>
-          </linearGradient>
-        </defs>
-        <rect x="4" y="4" width="292" height="612" rx="42" fill="#181c1f" stroke="#262a2d" stroke-width="2"></rect>
-        <rect x="4" y="4" width="292" height="612" rx="42" fill="none" stroke="url(#rimLight)" stroke-width="2.5"></rect>
-        <rect x="18" y="18" width="264" height="584" rx="30" fill="#f2efe6"></rect>
-        <rect x="112" y="30" width="76" height="22" rx="11" fill="#181c1f"></rect>
-        <text x="46" y="42" font-family="IBM Plex Mono, monospace" font-size="11" fill="#3a3a36">9:41</text>
-        <text x="150" y="90" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" letter-spacing="1.5" fill="#8a8a82">MYSCRIBE</text>
-        <text font-family="Source Serif 4, Georgia, serif" font-style="italic" font-size="21" fill="#2a2a24">
-          <tspan x="150" y="180" text-anchor="middle">Do you mind if</tspan>
-          <tspan x="150" y="212" text-anchor="middle">I record this?</tspan>
-        </text>
-        <text x="150" y="244" text-anchor="middle" font-family="Source Serif 4, Georgia, serif" font-size="12" fill="#7a7a72">Just to help me remember.</text>
-        <circle cx="150" cy="340" r="48" fill="#e8a33d"></circle>
-        <path d="M150 320 a10 10 0 0 1 10 10 v14 a10 10 0 0 1 -20 0 v-14 a10 10 0 0 1 10 -10 z" fill="#181c1f"></path>
-        <path d="M138 344 a12 12 0 0 0 24 0" stroke="#181c1f" stroke-width="2.4" fill="none" stroke-linecap="round"></path>
-        <line x1="150" y1="356" x2="150" y2="364" stroke="#181c1f" stroke-width="2.4" stroke-linecap="round"></line>
-        <text x="150" y="410" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-weight="600" font-size="12" letter-spacing="0.5" fill="#2a2a24">TAP TO START</text>
-        <text x="150" y="540" text-anchor="middle" font-family="Source Serif 4, Georgia, serif" font-style="italic" font-size="11.5" fill="#9a9a92">This is just for you.</text>
-        <rect x="120" y="586" width="60" height="4" rx="2" fill="#2a2a24" opacity="0.6"></rect>
-      </svg>
-    </div>
-    <p class="product-caption">In development · launching with a national AVT partner</p>
-  </header>
-
-  <section class="section-who">
-    <p class="eyebrow">Who's behind this</p>
-    <div class="who-row">
-      <div class="cam">
-        <img src="f4f15a06-48f5-4d89-9ed3-e8fdb72ebfa5.jpg" alt="Mark Winterburn, on Portland">
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <h1>I build inside the NHS, at neighbourhood level.</h1>
+    <figure class="portrait monitor">
+      <div class="umd">
+        <span class="name"><span class="tally green" aria-hidden="true"></span>Mark Winterburn</span>
+        <span class="status">Portland</span>
       </div>
-      <div class="who-text">
-        <p>Built inside the NHS by Mark Winterburn, Digital and Transformation Lead across five GP practices and 74,000 patients in Weymouth and on Portland, and the applied philosopher on Neighbourhood CoLab CIC's four-person team — alongside a nurse, a social worker, and a counselling psychologist shaping how MyScribe speaks to patients.</p>
-        <p class="dim">Twenty years before that, separating signal from noise as a broadcast Playout Director for the BBC, Channel 4, ITV and BT Sport.</p>
+      <div class="screen">
+        <img src="/headshot.jpg" alt="Mark Winterburn" width="868" height="1085" fetchpriority="high">
+      </div>
+    </figure>
+    <div class="hero-rest">
+    <p class="lede">Every build starts on my own patch and serves my neighbours on their hardest days: stressed, tired, overwhelmed. I take each one as far as my technical ceiling, then invite health tech partners to help me finish it.</p>
+    <p class="gold">Together we are building the gold standard in neighbourhood health and care.</p>
+    <div class="actions">
+      <a class="btn primary" href="#builds">See the builds</a>
+      <a class="btn ghost" href="mailto:hello@markwinterburn.uk">Talk to me</a>
+    </div>
+
+    <p class="bus-label" id="bus-label">Jump to a build</p>
+    <ul class="bus" aria-labelledby="bus-label">
+      <li><a href="#myscribe" data-s="build"><span class="dot" aria-hidden="true"></span>MyScribe</a></li>
+      <li><a href="#afternote" data-s="live"><span class="dot" aria-hidden="true"></span>Afternote</a></li>
+      <li><a href="#signals" data-s="live"><span class="dot" aria-hidden="true"></span>Neighbourhood Signals</a></li>
+      <li><a href="#lens" data-s="live"><span class="dot" aria-hidden="true"></span>CoLab Lens</a></li>
+    </ul>
+
+    <a class="hett-chip" href="https://www.hettshow.co.uk/"><span><strong>Speaking at HETT 2026.</strong> Opening panel, 29 September, ExCeL London.</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- HOW A BUILD HAPPENS -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <p class="kicker">How a build happens</p>
+    <ol class="steps">
+      <li>
+        <h3>Build inside the NHS</h3>
+        <p>Each build starts in one neighbourhood: five GP practices, 74,000 patients, real problems.</p>
+      </li>
+      <li>
+        <h3>Reach my technical ceiling</h3>
+        <p>I take the idea as far as I can myself, so it reaches partners as a working thing.</p>
+      </li>
+      <li>
+        <h3>Invite health tech partners</h3>
+        <p>Partners bring engineering depth and reach to complete the build.</p>
+      </li>
+      <li>
+        <h3>Go live and list it here</h3>
+        <p>Every build that goes live joins the wall below.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- BUILDS -->
+<section class="builds" id="builds">
+  <div class="wrap">
+    <p class="kicker">The builds</p>
+    <h2>Four builds. One rule: made for the hardest day.</h2>
+    <p class="sub">Each one is small enough to explain in a sentence and built to work when a person has the least energy to spare.</p>
+
+    <div class="wall">
+
+      <!-- MyScribe -->
+      <article class="monitor" id="myscribe">
+        <div class="umd">
+          <span class="name"><span class="tally pulse" aria-hidden="true"></span>MyScribe</span>
+          <span class="status">Building now with tech partners</span>
+        </div>
+        <div class="screen">
+          <svg viewBox="0 0 320 180" role="img" aria-label="A phone screen asking: Do you mind if I record this? Just to help me remember." preserveAspectRatio="xMidYMid slice">
+            <g stroke="#ece7dc" stroke-opacity=".35" stroke-width="3" stroke-linecap="round">
+              <line x1="20" y1="80" x2="20" y2="100"/><line x1="30" y1="68" x2="30" y2="112"/><line x1="40" y1="76" x2="40" y2="104"/>
+              <line x1="50" y1="56" x2="50" y2="124"/><line x1="60" y1="70" x2="60" y2="110"/><line x1="70" y1="50" x2="70" y2="130"/>
+              <line x1="80" y1="64" x2="80" y2="116"/><line x1="90" y1="74" x2="90" y2="106"/><line x1="100" y1="82" x2="100" y2="98"/>
+              <line x1="220" y1="78" x2="220" y2="102"/><line x1="230" y1="60" x2="230" y2="120"/><line x1="240" y1="72" x2="240" y2="108"/>
+              <line x1="250" y1="48" x2="250" y2="132"/><line x1="260" y1="66" x2="260" y2="114"/><line x1="270" y1="76" x2="270" y2="104"/>
+              <line x1="280" y1="62" x2="280" y2="118"/><line x1="290" y1="80" x2="290" y2="100"/><line x1="300" y1="86" x2="300" y2="94"/>
+            </g>
+            <rect x="115" y="10" width="90" height="160" rx="14" fill="#0e1216" stroke="#3a4450" stroke-width="1.5"/>
+            <text x="160" y="62" text-anchor="middle" font-family="Georgia,serif" font-size="10.5" fill="#ece7dc">Do you mind if</text>
+            <text x="160" y="76" text-anchor="middle" font-family="Georgia,serif" font-size="10.5" fill="#ece7dc">I record this?</text>
+            <text x="160" y="92" text-anchor="middle" font-family="system-ui,sans-serif" font-size="5.6" fill="#9ba4ae">Just to help me remember.</text>
+            <circle cx="160" cy="126" r="15" fill="none" stroke="#f2a33a" stroke-width="1.6"/>
+            <circle cx="160" cy="126" r="7" fill="#f2a33a"/>
+            <text x="160" y="153" text-anchor="middle" font-family="system-ui,sans-serif" font-size="5" fill="#9ba4ae">Tap to start</text>
+          </svg>
+        </div>
+        <div class="mbody">
+          <h3>Your appointment. Your record. On your phone.</h3>
+          <p>Most of what a clinician says is forgotten straight away. MyScribe records the conversation, summarises it faithfully and keeps it for you, to share with who you choose.</p>
+          <p class="fine">Between 40 and 80 percent of a medical appointment is forgotten immediately (Kessels, 2003).</p>
+          <ul class="shifts-tags" aria-label="Ten Year Health Plan shifts">
+            <li>Analogue to digital</li>
+            <li>Hospital to community</li>
+          </ul>
+          <a class="ask" href="mailto:hello@markwinterburn.uk?subject=MyScribe">Ask me about MyScribe</a>
+        </div>
+      </article>
+
+      <!-- Afternote -->
+      <article class="monitor" id="afternote">
+        <div class="umd">
+          <span class="name"><span class="tally green" aria-hidden="true"></span>Afternote</span>
+          <span class="status">In demonstration</span>
+        </div>
+        <div class="screen">
+          <svg viewBox="0 0 320 180" role="img" aria-label="A paper note titled Your Afternote with the line: Every word from your clinician." preserveAspectRatio="xMidYMid slice">
+            <rect x="96" y="12" width="128" height="156" rx="6" fill="#ece7dc"/>
+            <text x="110" y="36" font-family="Georgia,serif" font-size="11" fill="#1b1f24" font-weight="700">Your Afternote</text>
+            <g fill="#c9c2b3">
+              <rect x="110" y="48" width="98" height="4" rx="2"/>
+              <rect x="110" y="58" width="84" height="4" rx="2"/>
+              <rect x="110" y="68" width="92" height="4" rx="2"/>
+            </g>
+            <rect x="110" y="86" width="52" height="5" rx="2.5" fill="#8c8577"/>
+            <g fill="#c9c2b3">
+              <rect x="110" y="98" width="96" height="4" rx="2"/>
+              <rect x="110" y="108" width="72" height="4" rx="2"/>
+            </g>
+            <rect x="110" y="124" width="52" height="5" rx="2.5" fill="#8c8577"/>
+            <g fill="#c9c2b3">
+              <rect x="110" y="136" width="88" height="4" rx="2"/>
+            </g>
+            <text x="110" y="158" font-family="system-ui,sans-serif" font-size="5.6" fill="#5f594d">Every word from your clinician</text>
+          </svg>
+        </div>
+        <div class="mbody">
+          <h3>Your clinician's words, made readable for your hardest day.</h3>
+          <p>A plain language note from your appointment or your hospital stay, made for reading at home. Every word comes from what your clinician said. Afternote is an open format that any team can adopt.</p>
+          <ul class="shifts-tags" aria-label="Ten Year Health Plan shifts">
+            <li>Hospital to community</li>
+            <li>Analogue to digital</li>
+          </ul>
+          <a class="ask" href="mailto:hello@markwinterburn.uk?subject=Afternote">Ask me about Afternote</a>
+        </div>
+      </article>
+
+      <!-- Neighbourhood Signals -->
+      <article class="monitor" id="signals">
+        <div class="umd">
+          <span class="name"><span class="tally green" aria-hidden="true"></span>Neighbourhood Signals</span>
+          <span class="status">Pilot complete</span>
+        </div>
+        <div class="screen">
+          <svg viewBox="0 0 320 180" role="img" aria-label="A map of three clusters of neighbourhood themes, sized by how often they appear." preserveAspectRatio="xMidYMid slice">
+            <g stroke="#ece7dc" stroke-opacity=".18" stroke-width="1">
+              <line x1="100" y1="96" x2="196" y2="70"/><line x1="196" y1="70" x2="246" y2="128"/><line x1="100" y1="96" x2="246" y2="128"/>
+            </g>
+            <circle cx="100" cy="96" r="46" fill="#f2a33a" fill-opacity=".22" stroke="#f2a33a" stroke-opacity=".8" stroke-width="1.4"/>
+            <circle cx="196" cy="70" r="30" fill="#ece7dc" fill-opacity=".14" stroke="#ece7dc" stroke-opacity=".6" stroke-width="1.4"/>
+            <circle cx="246" cy="128" r="22" fill="#4fd08a" fill-opacity=".2" stroke="#4fd08a" stroke-opacity=".8" stroke-width="1.4"/>
+            <g fill="#ece7dc" fill-opacity=".85">
+              <circle cx="84" cy="84" r="2.4"/><circle cx="108" cy="78" r="2.4"/><circle cx="96" cy="104" r="2.4"/><circle cx="118" cy="104" r="2.4"/><circle cx="78" cy="106" r="2.4"/><circle cx="100" cy="94" r="2.4"/>
+              <circle cx="188" cy="62" r="2.4"/><circle cx="204" cy="74" r="2.4"/><circle cx="194" cy="80" r="2.4"/>
+              <circle cx="240" cy="124" r="2.4"/><circle cx="252" cy="132" r="2.4"/>
+            </g>
+            <text x="16" y="168" font-family="system-ui,sans-serif" font-size="7" fill="#9ba4ae">3 signal clusters from a 91 day pilot</text>
+          </svg>
+        </div>
+        <div class="mbody">
+          <h3>Hear the neighbourhood before it reaches crisis.</h3>
+          <p>Neighbourhood Signals reads neighbourhood activity for themes of unmet need and shows them on a public dashboard, so the Integrated Neighbourhood Team can act early.</p>
+          <ul class="shifts-tags" aria-label="Ten Year Health Plan shifts">
+            <li>Sickness to prevention</li>
+          </ul>
+          <a class="ask" href="mailto:hello@markwinterburn.uk?subject=Neighbourhood%20Signals">Ask me about Neighbourhood Signals</a>
+        </div>
+      </article>
+
+      <!-- CoLab Lens -->
+      <article class="monitor" id="lens">
+        <div class="umd">
+          <span class="name"><span class="tally green" aria-hidden="true"></span>CoLab Lens</span>
+          <span class="status">In demonstration</span>
+        </div>
+        <div class="screen">
+          <svg viewBox="0 0 320 180" role="img" aria-label="Four overlapping lenses, a nurse, a social worker, a counselling psychologist and an applied philosopher, focusing on one centre point." preserveAspectRatio="xMidYMid slice">
+            <g fill="#ece7dc" fill-opacity=".1" stroke="#ece7dc" stroke-opacity=".55" stroke-width="1.3">
+              <circle cx="140" cy="76" r="38"/><circle cx="180" cy="76" r="38"/>
+              <circle cx="140" cy="108" r="38"/><circle cx="180" cy="108" r="38"/>
+            </g>
+            <circle cx="160" cy="92" r="11" fill="#f2a33a" fill-opacity=".9"/>
+            <g font-family="system-ui,sans-serif" font-size="7.4" fill="#9ba4ae">
+              <text x="98" y="36" text-anchor="end">Nurse</text>
+              <text x="222" y="36">Social worker</text>
+              <text x="98" y="160" text-anchor="end">Counselling psychologist</text>
+              <text x="222" y="160">Applied philosopher</text>
+            </g>
+          </svg>
+        </div>
+        <div class="mbody">
+          <h3>A checking layer for wherever a machine speaks to a person.</h3>
+          <p>Four professional perspectives look through five dimensions of emotional architecture. The Lens works only with what was said and softens clinical language until it helps the person receiving it.</p>
+          <p class="fine">Held by Neighbourhood CoLab CIC, an asset locked community interest company.</p>
+          <ul class="shifts-tags" aria-label="Ten Year Health Plan shifts">
+            <li>Analogue to digital</li>
+            <li>Hospital to community</li>
+          </ul>
+          <a class="ask" href="mailto:hello@markwinterburn.uk?subject=CoLab%20Lens">Ask me about the CoLab Lens</a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- INT LENS AND THE HARDEST DAY -->
+<section>
+  <div class="wrap">
+    <div class="lens-grid">
+      <div>
+        <p class="kicker">The lens every build passes through</p>
+        <h2>Health, social care and the voluntary sector at one table.</h2>
+        <p class="sub" style="margin-bottom:0">Every build is shaped through an Integrated Neighbourhood Team lens. The people who treat, the people who support and the people who know the community all get to say what good looks like, before anything ships. Every interface explains itself, so a tired person can use it on first touch.</p>
+      </div>
+      <blockquote class="pull">A build that serves people on their hardest day serves them every other day too.</blockquote>
+    </div>
+    <div class="tri">
+      <div>
+        <h3>Health</h3>
+        <p>What the clinician needs to say and the patient needs to keep.</p>
+      </div>
+      <div>
+        <h3>Social care</h3>
+        <p>What the social worker sees at home and in the gaps between services.</p>
+      </div>
+      <div>
+        <h3>Voluntary and community sector</h3>
+        <p>What the community already knows, offers and holds together.</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section class="section-contact">
-    <p class="eyebrow">Get in touch</p>
-    <div class="branch">
-      <a class="branch-link" href="https://www.linkedin.com/in/mark-winterburn/" target="_blank" rel="noopener">
-        <span>
-          <span class="label">Connect</span>
-          <span class="title">Find me on LinkedIn</span>
-        </span>
-        <span class="arrow">→</span>
-      </a>
-      <button type="button" class="branch-link" id="talk-btn" onclick="copyEmail()">
-        <span>
-          <span class="label">Talk to me</span>
-          <span class="title" id="talk-title">hello@markwinterburn.uk</span>
-        </span>
-        <span class="arrow copy-icon" id="talk-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="1.5"></rect><path d="M5 15H4.5A1.5 1.5 0 0 1 3 13.5v-9A1.5 1.5 0 0 1 4.5 3h9A1.5 1.5 0 0 1 15 4.5V5"></path></svg>
-        </span>
-      </button>
+<!-- THREE SHIFTS -->
+<section id="shifts" style="padding-top:0">
+  <div class="wrap">
+    <p class="kicker">From framework to function</p>
+    <h2>Each build delivers a shift from the Ten Year Health Plan.</h2>
+    <p class="sub">The Neighbourhood Health Framework sets the direction. These builds put it to work in one neighbourhood, at the level of the Integrated Neighbourhood Team.</p>
+    <div class="shift-grid">
+      <div class="shift">
+        <h3>From hospital to community</h3>
+        <dl>
+          <dt>Afternote</dt>
+          <dd>A note from the hospital or the surgery that arrives home in words a tired person can use.</dd>
+          <dt>MyScribe</dt>
+          <dd>The appointment goes home with the person who was in it.</dd>
+        </dl>
+      </div>
+      <div class="shift">
+        <h3>From analogue to digital</h3>
+        <dl>
+          <dt>MyScribe</dt>
+          <dd>A patient's own phone becomes the place the conversation lives.</dd>
+          <dt>CoLab Lens</dt>
+          <dd>Digital tools that speak humanely, checked through four professional perspectives.</dd>
+        </dl>
+      </div>
+      <div class="shift">
+        <h3>From sickness to prevention</h3>
+        <dl>
+          <dt>Neighbourhood Signals</dt>
+          <dd>Themes of unmet need surface early, while a neighbourhood team can still act on them.</dd>
+        </dl>
+      </div>
     </div>
-    <a class="hett-card" href="https://www.hettshow.co.uk/" target="_blank" rel="noopener">
-      <img src="hett-2026.png" alt="HETT Show 2026 speaker card for Mark Winterburn, Digital Transformation Lead, Weymouth &amp; Portland PCN, 29–30 September, ExCeL London">
-      <span class="cap">
-        <span>
-          <span class="label">Speaking · 29 September</span>
-          <span class="title">HETT 2026 opening panel: Neighbourhood Health, From Framework to Function</span>
-        </span>
-        <span class="arrow">→</span>
-      </span>
+  </div>
+</section>
+
+<!-- HETT AND BIO -->
+<section style="padding-top:0">
+  <div class="wrap people">
+    <div>
+      <p class="kicker">Who is building this</p>
+      <div class="bio">
+        <img src="/f4f15a06-48f5-4d89-9ed3-e8fdb72ebfa5.jpg" alt="Mark Winterburn, on Portland" width="170" height="212">
+        <div>
+          <p>I am Digital and Transformation Lead across five GP practices and 74,000 patients in Weymouth and on Portland, and the applied philosopher on the Neighbourhood CoLab CIC team, alongside a nurse, a social worker and a counselling psychologist.</p>
+          <p>Before that I spent twenty years as a broadcast Playout Director at the BBC, Channel 4, ITV and BT Sport, separating signal from noise.</p>
+        </div>
+      </div>
+    </div>
+    <a class="hett-card" href="https://www.hettshow.co.uk/">
+      <img src="/hett-2026.png" alt="HETT Show 2026 speaker card for Mark Winterburn, Digital Transformation Lead, Weymouth and Portland PCN, 29 and 30 September, ExCeL London" loading="lazy">
+      <div>
+        <strong>HETT 2026 opening panel: Neighbourhood Health, From Framework to Function</strong>
+        <span>29 September, ExCeL London. Come and find me over the two days.</span>
+      </div>
     </a>
-    <p class="aside">Coming to HETT? Email <a href="mailto:hello@markwinterburn.uk">hello@markwinterburn.uk</a> and I'll look out for you. Also building CoLab Lens, Neighbourhood Signals, and Afternote — ask me about any of them.</p>
-  </section>
+  </div>
+</section>
 
-  <footer>
-    <span>markwinterburn.uk</span>
-    <span>Last rebuilt 13 Sep 2026</span>
-    <a href="https://www.linkedin.com/in/mark-winterburn/" target="_blank" rel="noopener">linkedin.com/in/mark-winterburn</a>
-  </footer>
+</main>
 
-</div>
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="wrap contact-grid">
+    <div>
+      <p class="kicker">Talk to me</p>
+      <h2>Want to help finish a build?</h2>
+      <p class="sub">If your team brings engineering depth and cares about neighbourhood health, I would like to hear from you. Coming to HETT? Email me and I will look out for you.</p>
+      <div class="actions" style="margin-bottom:0">
+        <a class="btn primary" href="mailto:hello@markwinterburn.uk">hello@markwinterburn.uk</a>
+        <a class="btn ghost" href="https://www.linkedin.com/in/mark-winterburn/">Find me on LinkedIn</a>
+      </div>
+    </div>
 
-<script>
-function copyEmail(){
-  var email = "hello@markwinterburn.uk";
-  var title = document.getElementById('talk-title');
-  var icon = document.getElementById('talk-icon');
-  var original = title.textContent;
-  var originalIcon = icon.innerHTML;
+    <div class="notify">
+      <h3>Hear first when MyScribe launches</h3>
+      <p>Send me a short email and I will let you know the moment MyScribe is ready.</p>
+      <a class="btn primary" href="mailto:hello@markwinterburn.uk?subject=Tell%20me%20when%20MyScribe%20launches">Email me to hear first</a>
+    </div>
+  </div>
+</section>
 
-  function showCopied(){
-    title.textContent = "Copied to clipboard";
-    title.classList.add('copy-confirm');
-    icon.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"></path></svg>';
-    setTimeout(function(){
-      title.textContent = original;
-      title.classList.remove('copy-confirm');
-      icon.innerHTML = originalIcon;
-    }, 1800);
-  }
-
-  if(navigator.clipboard && navigator.clipboard.writeText){
-    navigator.clipboard.writeText(email).then(showCopied).catch(function(){ fallbackCopy(email, showCopied); });
-  } else {
-    fallbackCopy(email, showCopied);
-  }
-}
-function fallbackCopy(text, cb){
-  var ta = document.createElement('textarea');
-  ta.value = text;
-  ta.style.position = 'fixed';
-  ta.style.opacity = '0';
-  document.body.appendChild(ta);
-  ta.select();
-  try { document.execCommand('copy'); } catch(e){}
-  document.body.removeChild(ta);
-  if(cb) cb();
-}
-</script>
+<footer>
+  <div class="wrap">
+    <span>markwinterburn.uk. Last rebuilt 20 Sep 2026.</span>
+    <a href="https://www.linkedin.com/in/mark-winterburn/">linkedin.com/in/mark-winterburn</a>
+  </div>
+</footer>
 
 </body>
 </html>
