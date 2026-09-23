@@ -188,7 +188,39 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:.6rem 2rem;justify-content:space-be
   .steps{grid-template-columns:1fr}
   .bio{grid-template-columns:1fr}
   .bio img{width:150px}
-  .bus a{flex:1 1 calc(50% - .5rem)}
+  .bus li{flex:1 1 calc(50% - .5rem);display:flex}
+  .bus a{flex:1}
+}
+/* Phone layout: text first, pictures compact, shorter scroll */
+@media (max-width:640px){
+  section{padding:2.6rem 0}
+  .hero{padding:2rem 0 2rem}
+  .hero-grid{gap:1.2rem}
+  .hero .hero-grid h1{font-size:clamp(2.2rem,10vw,2.8rem)}
+  .hero-grid .portrait{display:flex;flex-direction:row;justify-content:flex-start;align-items:center;gap:.9rem;max-width:none;background:none;border:0;border-radius:0;overflow:visible}
+  .hero-grid .portrait .screen{order:-1;flex:none;width:68px;height:85px;aspect-ratio:auto;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+  .hero-grid .portrait .umd{flex-direction:column;align-items:flex-start;gap:.15rem;padding:0;background:none;border:0}
+  .hero-grid .portrait .umd .status{text-align:left}
+  .gold{margin-bottom:1.4rem}
+  .actions{margin-bottom:1.8rem}
+  .hett-chip{margin-top:1.6rem}
+
+  .steps li{display:grid;grid-template-columns:2.2rem 1fr;column-gap:.6rem;padding:1.1rem 0 0}
+  .steps li::before{grid-row:1 / span 2;font-size:1.9rem;margin:0}
+  .steps{row-gap:1rem}
+
+  .wall{gap:1rem}
+  .monitor .screen{aspect-ratio:auto;height:140px}
+  .mbody{padding:1.1rem 1.2rem 1.25rem}
+  .mbody h3{font-size:1.3rem}
+  .sub{margin-bottom:1.6rem}
+
+  .tri{gap:1.1rem;margin-top:2rem;padding-top:1.5rem}
+  .shift-grid{gap:1.5rem}
+  .shift dt{margin-top:.7rem}
+
+  .bio{grid-template-columns:84px 1fr;gap:1rem}
+  .bio img{width:84px;height:auto}
 }
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
@@ -286,7 +318,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:.6rem 2rem;justify-content:space-be
           <span class="status">Building now with tech partners</span>
         </div>
         <div class="screen">
-          <svg viewBox="0 0 320 180" role="img" aria-label="A phone screen asking: Do you mind if I record this? Just to help me remember." preserveAspectRatio="xMidYMid slice">
+          <svg viewBox="0 0 320 180" role="img" aria-label="A phone screen asking: Do you mind if I record this? Just to help me remember." preserveAspectRatio="xMidYMid meet">
             <g stroke="#ece7dc" stroke-opacity=".35" stroke-width="3" stroke-linecap="round">
               <line x1="20" y1="80" x2="20" y2="100"/><line x1="30" y1="68" x2="30" y2="112"/><line x1="40" y1="76" x2="40" y2="104"/>
               <line x1="50" y1="56" x2="50" y2="124"/><line x1="60" y1="70" x2="60" y2="110"/><line x1="70" y1="50" x2="70" y2="130"/>
@@ -323,7 +355,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:.6rem 2rem;justify-content:space-be
           <span class="status">In demonstration</span>
         </div>
         <div class="screen">
-          <svg viewBox="0 0 320 180" role="img" aria-label="A paper note titled Your Afternote with the line: Every word from your clinician." preserveAspectRatio="xMidYMid slice">
+          <svg viewBox="0 0 320 180" role="img" aria-label="A paper note titled Your Afternote with the line: Every word from your clinician." preserveAspectRatio="xMidYMid meet">
             <rect x="96" y="12" width="128" height="156" rx="6" fill="#ece7dc"/>
             <text x="110" y="36" font-family="Georgia,serif" font-size="11" fill="#1b1f24" font-weight="700">Your Afternote</text>
             <g fill="#c9c2b3">
@@ -361,7 +393,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:.6rem 2rem;justify-content:space-be
           <span class="status">Pilot complete</span>
         </div>
         <div class="screen">
-          <svg viewBox="0 0 320 180" role="img" aria-label="A map of three clusters of neighbourhood themes, sized by how often they appear." preserveAspectRatio="xMidYMid slice">
+          <svg viewBox="0 0 320 180" role="img" aria-label="A map of three clusters of neighbourhood themes, sized by how often they appear." preserveAspectRatio="xMidYMid meet">
             <g stroke="#ece7dc" stroke-opacity=".18" stroke-width="1">
               <line x1="100" y1="96" x2="196" y2="70"/><line x1="196" y1="70" x2="246" y2="128"/><line x1="100" y1="96" x2="246" y2="128"/>
             </g>
@@ -393,7 +425,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:.6rem 2rem;justify-content:space-be
           <span class="status">In demonstration</span>
         </div>
         <div class="screen">
-          <svg viewBox="0 0 320 180" role="img" aria-label="Four overlapping lenses, a nurse, a social worker, a counselling psychologist and an applied philosopher, focusing on one centre point." preserveAspectRatio="xMidYMid slice">
+          <svg viewBox="0 0 320 180" role="img" aria-label="Four overlapping lenses, a nurse, a social worker, a counselling psychologist and an applied philosopher, focusing on one centre point." preserveAspectRatio="xMidYMid meet">
             <g fill="#ece7dc" fill-opacity=".1" stroke="#ece7dc" stroke-opacity=".55" stroke-width="1.3">
               <circle cx="140" cy="76" r="38"/><circle cx="180" cy="76" r="38"/>
               <circle cx="140" cy="108" r="38"/><circle cx="180" cy="108" r="38"/>
