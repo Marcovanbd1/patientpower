@@ -14,13 +14,13 @@
 <meta property="og:site_name" content="markwinterburn.uk">
 <meta property="og:url" content="https://markwinterburn.uk/">
 <meta property="og:title" content="Mark Winterburn | Building the gold standard in neighbourhood health and care">
-<meta property="og:description" content="Built inside the NHS, at neighbourhood level, for the hardest day. MyScribe, Afternote, Neighbourhood Signals and the CoLab Lens. Speaking at HETT 2026.">
+<meta property="og:description" content="Built inside the NHS, at neighbourhood level, for the hardest day. MyScribe, Afternote, Neighbourhood Signals and the CoLab Lens.">
 <meta property="og:image" content="https://markwinterburn.uk/og-card.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Mark Winterburn | Building the gold standard in neighbourhood health and care">
-<meta name="twitter:description" content="Built inside the NHS, at neighbourhood level, for the hardest day. Speaking at HETT 2026.">
+<meta name="twitter:description" content="Built inside the NHS, at neighbourhood level, for the hardest day. MyScribe is launching soon.">
 <meta name="twitter:image" content="https://markwinterburn.uk/og-card.jpg">
 
 <!-- Analytics: swap in your existing Plausible snippet if it differs from this one -->
@@ -53,10 +53,13 @@ a{color:inherit}
 a:focus-visible,button:focus-visible{outline:2px solid var(--amber);outline-offset:3px;border-radius:4px}
 .wrap{width:100%;max-width:1120px;margin:0 auto;padding:0 1.5rem}
 
-/* Header */
-.top{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;padding:1.4rem 0;border-bottom:1px solid var(--line)}
-.mark{font-family:var(--serif);font-size:1.25rem;font-weight:600;text-decoration:none;letter-spacing:.01em}
-.mark small{display:block;font-family:var(--sans);font-size:.8rem;font-weight:400;color:var(--muted);letter-spacing:0}
+/* Header: small headshot sits with the name, not in the hero */
+.top{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1.2rem 0;border-bottom:1px solid var(--line)}
+.mark{display:flex;align-items:center;gap:.85rem;text-decoration:none}
+.avatar{flex:none;width:46px;height:46px;border-radius:50%;overflow:hidden;background:var(--paper);border:1px solid var(--line)}
+.avatar img{width:100%;height:100%;object-fit:cover;object-position:50% 30%;mix-blend-mode:multiply}
+.mark-text{font-family:var(--serif);font-size:1.25rem;font-weight:600;letter-spacing:.01em;line-height:1.25}
+.mark-text small{display:block;font-family:var(--sans);font-size:.8rem;font-weight:400;color:var(--muted);letter-spacing:0}
 .topnav{display:flex;gap:1.4rem;font-size:.95rem}
 .topnav a{color:var(--muted);text-decoration:none}
 .topnav a:hover{color:var(--paper)}
@@ -67,18 +70,6 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--amber);outline-offs
   text-wrap:balance;font-family:var(--serif);font-weight:600;
   font-size:clamp(2.6rem,7.2vw,5.2rem);line-height:1.04;letter-spacing:-.015em;
   margin:0 0 1.6rem;max-width:14em;
-}
-/* Hero layout with portrait monitor */
-.hero-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:1.6rem;grid-template-areas:"title" "photo" "rest"}
-.hero .hero-grid h1{grid-area:title;margin:0;max-width:none;font-size:clamp(2.6rem,6.4vw,4.5rem)}
-.hero-grid .portrait{grid-area:photo;margin:0;max-width:280px}
-.hero-grid .hero-rest{grid-area:rest}
-.portrait .screen{aspect-ratio:4/5;background:var(--paper)}
-.portrait .umd .name{white-space:nowrap;letter-spacing:.06em;font-size:.8rem}
-.portrait img{width:100%;height:100%;object-fit:cover;object-position:50% 50%;mix-blend-mode:multiply}
-@media (min-width:900px){
-  .hero-grid{grid-template-columns:minmax(0,1fr) 300px;column-gap:clamp(2rem,5vw,4.5rem);grid-template-areas:"title photo" "rest photo";align-items:start}
-  .hero-grid .portrait{max-width:none;margin-top:.6rem}
 }
 .lede{font-size:clamp(1.1rem,2.2vw,1.35rem);line-height:1.55;color:#d9d4c8;max-width:38em;margin:0 0 1.2rem}
 .gold{text-wrap:balance;font-family:var(--serif);font-size:clamp(1.25rem,2.6vw,1.65rem);line-height:1.35;margin:0 0 2rem;max-width:30em}
@@ -103,8 +94,12 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--amber);outline-offs
 .bus .dot{width:.6rem;height:.6rem;border-radius:50%;background:var(--amber)}
 .bus a[data-s="live"] .dot{background:var(--green)}
 
-.hett-chip{margin-top:2.4rem;display:inline-flex;gap:.7rem;align-items:center;font-size:.95rem;color:var(--muted);text-decoration:none;border-top:1px solid var(--line);padding-top:1.2rem}
-.hett-chip strong{color:var(--paper);font-weight:600}
+/* News line under the hero (was the HETT chip) */
+.news-chip{margin-top:2.4rem;display:flex;gap:.8rem;align-items:center;font-size:.95rem;color:var(--muted);text-decoration:none;border-top:1px solid var(--line);padding-top:1.2rem;max-width:38em}
+.news-chip strong{color:var(--paper);font-weight:600}
+.news-chip .tally{margin-left:.15rem}
+.news-chip:hover span{color:var(--paper)}
+.news-chip u{text-underline-offset:3px;text-decoration-color:var(--amber)}
 
 /* Sections */
 section{padding:clamp(3rem,7vw,5.5rem) 0}
@@ -139,8 +134,11 @@ h2{text-wrap:balance;font-family:var(--serif);font-weight:600;font-size:clamp(1.
 .mbody .tagline{font-family:var(--serif);font-size:1.1rem;color:var(--paper);margin:0 0 1rem}
 .shifts-tags{display:flex;flex-wrap:wrap;gap:.4rem;margin:.2rem 0 1.1rem;padding:0;list-style:none}
 .shifts-tags li{font-size:.82rem;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:.15rem .7rem}
-.ask{margin-top:auto;font-weight:600;font-size:.98rem;text-decoration:underline;text-underline-offset:4px;text-decoration-color:var(--line);width:max-content}
+.ask{margin-top:auto;font-weight:600;font-size:.98rem;text-decoration:underline;text-underline-offset:4px;text-decoration-color:var(--line);width:max-content;max-width:100%}
 .ask:hover{text-decoration-color:var(--amber)}
+.links{margin-top:auto;display:flex;flex-wrap:wrap;gap:.6rem 1.6rem;align-items:center}
+.links .ask{margin-top:0}
+.links .go{text-decoration-color:var(--amber)}
 
 /* Lens section */
 .lens-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(2rem,5vw,4.5rem);align-items:start}
@@ -157,16 +155,10 @@ h2{text-wrap:balance;font-family:var(--serif);font-weight:600;font-size:clamp(1.
 .shift dt{font-weight:700;margin-top:1rem}
 .shift dd{margin:.15rem 0 0;color:var(--muted);font-size:.98rem}
 
-/* HETT and bio */
-.people{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,4.5rem);align-items:start}
-.bio{display:grid;grid-template-columns:170px 1fr;gap:1.6rem;align-items:start}
+/* Bio */
+.bio{display:grid;grid-template-columns:170px 1fr;gap:1.8rem;align-items:start;max-width:48rem}
 .bio img{width:170px;aspect-ratio:4/5;object-fit:cover;border-radius:8px;border:1px solid var(--line)}
 .bio p{margin:0 0 1rem;color:#d3cec2}
-.hett-card{display:block;text-decoration:none;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--bezel)}
-.hett-card:hover{border-color:var(--muted)}
-.hett-card div{padding:1.1rem 1.3rem 1.3rem}
-.hett-card strong{display:block;font-family:var(--serif);font-size:1.25rem;line-height:1.3;margin-bottom:.3rem}
-.hett-card span{color:var(--muted);font-size:.95rem}
 
 /* Contact */
 .contact{background:var(--gallery);border-top:1px solid var(--line)}
@@ -174,6 +166,8 @@ h2{text-wrap:balance;font-family:var(--serif);font-weight:600;font-size:clamp(1.
 .notify{background:var(--bezel);border:1px solid var(--line);border-radius:12px;padding:1.5rem}
 .notify h3{font-family:var(--serif);font-size:1.35rem;margin:0 0 .4rem}
 .notify p{margin:0 0 1.2rem;color:var(--muted);font-size:.95rem}
+.notify .small-link{display:inline-block;margin-top:1rem;font-size:.92rem;color:var(--muted);text-underline-offset:4px}
+.notify .small-link:hover{color:var(--paper)}
 
 footer{border-top:1px solid var(--line);padding:1.6rem 0 2.4rem;color:var(--muted);font-size:.9rem}
 footer .wrap{display:flex;flex-wrap:wrap;gap:.6rem 2rem;justify-content:space-between}
@@ -181,15 +175,13 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:.6rem 2rem;justify-content:space-be
 @media (max-width:900px){
   .wall{grid-template-columns:1fr}
   .steps{grid-template-columns:repeat(2,1fr);row-gap:1.6rem}
-  .lens-grid,.people,.contact-grid{grid-template-columns:1fr}
+  .lens-grid,.contact-grid{grid-template-columns:1fr}
   .shift-grid,.tri{grid-template-columns:1fr}
 }
 @media (max-width:520px){
   .wrap{padding:0 1.15rem}
   .topnav{display:none}
   .steps{grid-template-columns:1fr}
-  .bio{grid-template-columns:1fr}
-  .bio img{width:150px}
   .bus li{flex:1 1 calc(50% - .5rem);display:flex}
   .bus a{flex:1}
 }
@@ -197,15 +189,12 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:.6rem 2rem;justify-content:space-be
 @media (max-width:640px){
   section{padding:2.6rem 0}
   .hero{padding:2rem 0 2rem}
-  .hero-grid{gap:1.2rem}
-  .hero .hero-grid h1{font-size:clamp(2.2rem,10vw,2.8rem)}
-  .hero-grid .portrait{display:flex;flex-direction:row;justify-content:flex-start;align-items:center;gap:.9rem;max-width:none;background:none;border:0;border-radius:0;overflow:visible}
-  .hero-grid .portrait .screen{order:-1;flex:none;width:68px;height:85px;aspect-ratio:auto;border:1px solid var(--line);border-radius:8px;overflow:hidden}
-  .hero-grid .portrait .umd{flex-direction:column;align-items:flex-start;gap:.15rem;padding:0;background:none;border:0}
-  .hero-grid .portrait .umd .status{text-align:left}
+  .hero h1{font-size:clamp(2.2rem,10vw,2.8rem)}
+  .avatar{width:40px;height:40px}
+  .mark-text{font-size:1.1rem}
   .gold{margin-bottom:1.4rem}
   .actions{margin-bottom:1.8rem}
-  .hett-chip{margin-top:1.6rem}
+  .news-chip{margin-top:1.6rem}
 
   .steps li{display:grid;grid-template-columns:2.2rem 1fr;column-gap:.6rem;padding:1.1rem 0 0}
   .steps li::before{grid-row:1 / span 2;font-size:1.9rem;margin:0}
@@ -234,7 +223,10 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:.6rem 2rem;justify-content:space-be
 
 <header class="wrap">
   <div class="top">
-    <a class="mark" href="/">Mark Winterburn<small>Applied Philosopher, inside the NHS</small></a>
+    <a class="mark" href="/">
+      <span class="avatar"><img src="/headshot.jpg" alt="" width="92" height="92"></span>
+      <span class="mark-text">Mark Winterburn<small>Applied Philosopher, inside the NHS</small></span>
+    </a>
     <nav class="topnav" aria-label="Page sections">
       <a href="#builds">The builds</a>
       <a href="#shifts">10 Year Health Plan</a>
@@ -247,18 +239,8 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:.6rem 2rem;justify-content:space-be
 
 <!-- HERO -->
 <section class="hero">
-  <div class="wrap hero-grid">
+  <div class="wrap">
     <h1>I build inside the NHS, at neighbourhood level.</h1>
-    <figure class="portrait monitor">
-      <div class="umd">
-        <span class="name"><span class="tally green" aria-hidden="true"></span>Mark Winterburn</span>
-        <span class="status">Portland</span>
-      </div>
-      <div class="screen">
-        <img src="/headshot.jpg" alt="Mark Winterburn" width="868" height="1085" fetchpriority="high">
-      </div>
-    </figure>
-    <div class="hero-rest">
     <p class="lede">Every build starts on my own patch, made for my neighbours on their hardest days, when they are stressed, tired or overwhelmed. I take each build as far as my technical ceiling, then invite health tech partners to help me finish it.</p>
     <p class="gold">Together we are building the gold standard in neighbourhood health and care.</p>
     <div class="actions">
@@ -274,8 +256,10 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:.6rem 2rem;justify-content:space-be
       <li><a href="#lens" data-s="live"><span class="dot" aria-hidden="true"></span>CoLab Lens</a></li>
     </ul>
 
-    <a class="hett-chip" href="https://www.hettshow.co.uk/"><span><strong>Speaking at HETT 2026.</strong> Opening panel, 29 September, 09:40, Integrated Care Forum Theatre, ExCeL London.</span></a>
-    </div>
+    <a class="news-chip" href="https://www.hellomyscribe.com/">
+      <span class="tally pulse" aria-hidden="true"></span>
+      <span><strong>MyScribe launches soon.</strong> It has its own home now, at <u>hellomyscribe.com</u>. Join the waitlist to hear first.</span>
+    </a>
   </div>
 </section>
 
@@ -317,7 +301,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:.6rem 2rem;justify-content:space-be
       <article class="monitor" id="myscribe">
         <div class="umd">
           <span class="name"><span class="tally pulse" aria-hidden="true"></span>MyScribe</span>
-          <span class="status">Building now with tech partners</span>
+          <span class="status">Launching soon</span>
         </div>
         <div class="screen">
           <svg viewBox="0 0 320 180" role="img" aria-label="A phone screen asking: Do you mind if I record this? Just to help me remember." preserveAspectRatio="xMidYMid meet">
@@ -335,20 +319,23 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:.6rem 2rem;justify-content:space-be
             <text x="160" y="92" text-anchor="middle" font-family="system-ui,sans-serif" font-size="5.6" fill="#9ba4ae">Just to help me remember.</text>
             <circle cx="160" cy="126" r="15" fill="none" stroke="#f2a33a" stroke-width="1.6"/>
             <circle cx="160" cy="126" r="7" fill="#f2a33a"/>
-            <text x="160" y="153" text-anchor="middle" font-family="system-ui,sans-serif" font-size="5" fill="#9ba4ae">Tap to start</text>
+            <text x="160" y="153" text-anchor="middle" font-family="system-ui,sans-serif" font-size="5" fill="#9ba4ae">Start recording</text>
           </svg>
         </div>
         <div class="mbody">
           <h3>Your appointment. Your record. On your phone.</h3>
-          <p>Much of what a clinician says is forgotten straight away. MyScribe records the conversation, summarises it faithfully and keeps it for you, to share with who you choose.</p>
-          <p>Ask it a question later and it answers with your clinician's own words, played back. Not a summary of what they meant. What they actually said.</p>
+          <p>Much of what a clinician says is forgotten straight away. MyScribe records your appointment on your phone, with permission, and gives you a clear summary in plain words, to share with the people you choose.</p>
+          <p>Later, ask your appointment anything. &ldquo;Was it one tablet or two?&rdquo; MyScribe takes you straight to your clinician's own words, to read or hear aloud. The audio is deleted once it has been written down.</p>
           <p class="fine">Between 40 and 80 percent of what a clinician tells you is forgotten straight away (Kessels, 2003).</p>
           <ul class="shifts-tags" aria-label="10 Year Health Plan shifts">
             <li>Analogue to digital</li>
             <li>Hospital to community</li>
           </ul>
           <p class="tagline">For every conversation that matters.</p>
-          <a class="ask" href="mailto:hello@markwinterburn.uk?subject=MyScribe">Ask me about MyScribe</a>
+          <div class="links">
+            <a class="ask go" href="https://www.hellomyscribe.com/">Visit hellomyscribe.com</a>
+            <a class="ask" href="https://www.hellomyscribe.com/organisations">For practices, PCNs and ICBs</a>
+          </div>
         </div>
       </article>
 
@@ -523,26 +510,18 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:.6rem 2rem;justify-content:space-be
   </div>
 </section>
 
-<!-- HETT AND BIO -->
+<!-- BIO -->
 <section style="padding-top:0">
-  <div class="wrap people">
-    <div>
-      <p class="kicker">Who is building this</p>
-      <div class="bio">
-        <img src="/f4f15a06-48f5-4d89-9ed3-e8fdb72ebfa5.jpg" alt="Mark Winterburn, on Portland" width="170" height="212">
-        <div>
-          <p>I am Digital and Transformation Lead across five GP practices and 74,000 patients in Weymouth and on Portland, and the applied philosopher on the Neighbourhood CoLab CIC team, alongside a nurse, a social worker and a counselling psychologist.</p>
-          <p>Before that I spent twenty years as a broadcast Playout Director at the BBC, Channel 4, ITV and BT Sport, separating signal from noise.</p>
-        </div>
+  <div class="wrap">
+    <p class="kicker">Who is building this</p>
+    <div class="bio">
+      <img src="/f4f15a06-48f5-4d89-9ed3-e8fdb72ebfa5.jpg" alt="Mark Winterburn, on Portland" width="170" height="212" loading="lazy">
+      <div>
+        <p>I am Digital and Transformation Lead across five GP practices and 74,000 patients in Weymouth and on Portland, and the applied philosopher on the Neighbourhood CoLab CIC team, alongside a nurse, a social worker and a counselling psychologist.</p>
+        <p>Before that I spent twenty years as a broadcast Playout Director at the BBC, Channel 4, ITV and BT Sport, separating signal from noise.</p>
+        <p>In September I spoke on the opening panel at HETT 2026, Neighbourhood Health: From Framework to Function, about what this work looks like in one real neighbourhood.</p>
       </div>
     </div>
-    <a class="hett-card" href="https://www.hettshow.co.uk/">
-      <img src="/hett-2026.png" alt="HETT Show 2026 speaker card for Mark Winterburn, Digital Transformation Lead, Weymouth and Portland PCN, 29 and 30 September, ExCeL London" loading="lazy">
-      <div>
-        <strong>HETT 2026 opening panel: Neighbourhood Health, From Framework to Function</strong>
-        <span>29 September, 09:40, Integrated Care Forum Theatre, ExCeL London. Come and find me over the two days.</span>
-      </div>
-    </a>
   </div>
 </section>
 
@@ -554,7 +533,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:.6rem 2rem;justify-content:space-be
     <div>
       <p class="kicker">Talk to me</p>
       <h2>Want to help finish a build?</h2>
-      <p class="sub">If your team brings engineering depth and cares about neighbourhood health, I would like to hear from you. Coming to HETT? Email me and I will look out for you.</p>
+      <p class="sub">If your team brings engineering depth and cares about neighbourhood health, I would like to hear from you.</p>
       <div class="actions" style="margin-bottom:0">
         <a class="btn primary" href="mailto:hello@markwinterburn.uk">hello@markwinterburn.uk</a>
         <a class="btn ghost" href="https://www.linkedin.com/in/mark-winterburn/">Find me on LinkedIn</a>
@@ -563,15 +542,17 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:.6rem 2rem;justify-content:space-be
 
     <div class="notify">
       <h3>Hear first when MyScribe launches</h3>
-      <p>Send me a short email and I will let you know the moment MyScribe is ready.</p>
-      <a class="btn primary" href="mailto:hello@markwinterburn.uk?subject=Tell%20me%20when%20MyScribe%20launches">Email me to hear first</a>
+      <p>Leave your email on the MyScribe waitlist and you will hear the moment it is ready.</p>
+      <a class="btn primary" href="https://www.hellomyscribe.com/#waitlist">Join the MyScribe waitlist</a>
+      <br>
+      <a class="small-link" href="https://www.hellomyscribe.com/organisations">Commissioning for a practice, PCN or ICB? Talk to the MyScribe team</a>
     </div>
   </div>
 </section>
 
 <footer>
   <div class="wrap">
-    <span>markwinterburn.uk. Last rebuilt 25 Sep 2026.</span>
+    <span>markwinterburn.uk. Last rebuilt 5 Oct 2026.</span>
     <a href="https://www.linkedin.com/in/mark-winterburn/">linkedin.com/in/mark-winterburn</a>
   </div>
 </footer>
